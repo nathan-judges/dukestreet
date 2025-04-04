@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://dukestudio.com/sitemap.xml 
