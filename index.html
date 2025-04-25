@@ -1,249 +1,53 @@
 <!DOCTYPE html>
-<html lang="en-AU">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Duke Street Studio - Digital Media Agency Sydney</title>
+    <meta name="description" content="Duke Street Studio - Digital Media Agency in Kensington, Sydney">
+    <meta name="robots" content="index, follow">
+    <meta name="googlebot" content="index, follow">
     
-    <!-- SEO Meta Tags -->
-    <title>Duke St Studio | Sydney Digital Media Production Agency</title>
-    <meta name="description" content="Sydney-based digital media agency specialising in podcast production, branding & website design. We create content that gets your vibe.">
-    <meta name="keywords" content="podcast production sydney, website design, branding agency, digital media production, sydney creative agency">
-    
-    <!-- Open Graph / Social Media Meta Tags -->
+    <!-- Social Meta Tags -->
+    <meta property="og:title" content="Duke Street Studio">
+    <meta property="og:description" content="Digital Media Agency in Kensington, Sydney">
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Duke St Studio | Sydney Digital Media Production">
-    <meta property="og:description" content="Sydney-based digital media agency specialising in podcast production, branding & website design.">
-    <meta property="og:image" content="https://dukestudio.com/assets/og-image.jpg">
-    <meta property="og:url" content="https://dukestudio.com">
+    <meta property="og:url" content="https://dukestreet.studio/">
+    <meta property="og:image" content="https://via.placeholder.com/1200x630.png?text=Open+Graph">
     
-    <!-- Twitter Card Meta Tags -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Duke St Studio | Sydney Digital Media Production">
-    <meta name="twitter:description" content="Sydney-based digital media agency specialising in podcast production, branding & website design.">
-    <meta name="twitter:image" content="https://dukestudio.com/assets/og-image.jpg">
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://dukestreet.studio/">
+    <meta property="twitter:title" content="Duke Street Studio">
+    <meta property="twitter:description" content="Digital Media Agency in Kensington, Sydney">
+    <meta property="twitter:image" content="https://via.placeholder.com/1200x675.png?text=Twitter+Card">
     
-    <!-- Canonical URL -->
-    <link rel="canonical" href="https://dukestudio.com">
+    <!-- Theme -->
+    <meta name="theme-color" content="#0C0D11">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎙️</text></svg>">
+    <link rel="apple-touch-icon" href="https://via.placeholder.com/180.png?text=Webclip">
     
-    <!-- Favicon -->
-    <link rel="icon" type="image/jpeg" href="assets/favicon.jpg">
-    
-    <link rel="stylesheet" href="css/styles.css">
-
-    <!-- Structured Data -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "ProfessionalService",
-        "name": "Duke St Studio",
-        "description": "Sydney-based digital media agency specialising in podcast production, branding & website design.",
-        "image": "https://dukestudio.com/assets/og-image.jpg",
-        "url": "https://dukestudio.com",
-        "address": {
-            "@type": "PostalAddress",
-            "addressLocality": "Sydney",
-            "addressRegion": "NSW",
-            "addressCountry": "AU"
-        },
-        "priceRange": "$$",
-        "sameAs": [
-            "https://www.instagram.com/dukestudio",
-            "https://www.linkedin.com/company/duke-st-studio"
-        ],
-        "serviceArea": {
-            "@type": "GeoCircle",
-            "geoMidpoint": {
-                "@type": "GeoCoordinates",
-                "latitude": "-33.8688",
-                "longitude": "151.2093"
-            },
-            "geoRadius": "100000"
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            font-family: "Atkinson Hyperlegible Next", sans-serif;
+            font-optical-sizing: auto;
         }
-    }
-    </script>
+    </style>
 </head>
 <body>
-    <header class="hero">
-        <div class="container">
-            <h1 class="hero__title">Duke St Studio – Podcast Production, Branding & Web Design</h1>
-            <p class="hero__tagline">Sydney-based creative studio helping brands & creators stand out.</p>
-            <div class="hero__buttons">
-                <a href="#contact" class="button button--primary">Get in Touch</a>
+    <div className="w-full">
+      <section className="section">
+        <div className="page-container">
+          <div className="content-container">
+            <div id="root"></div>
             </div>
         </div>
-    </header>
-
-    <main>
-        <div class="marquee">
-            <div class="marquee__content">
-                <span class="marquee__item">DUKE ST</span>
-                <span class="marquee__item">DUKE ST</span>
-                <span class="marquee__item">DUKE ST</span>
-                <span class="marquee__item">DUKE ST</span>
-                <span class="marquee__item">DUKE ST</span>
-                <span class="marquee__item">DUKE ST</span>
-            </div>
-        </div>
-        
-        <section class="services" id="services">
-            <div class="container">
-                <div class="services__grid">
-                    <div class="service-card">
-                        <h2>Podcast Production</h2>
-                        <p>Studio-quality audio & expert editing. Professional sound that elevates your message.</p>
-                    </div>
-                    <div class="service-card">
-                        <h2>Branding</h2>
-                        <p>Logos, identity & design that make an impact. Stand out in your market.</p>
-                    </div>
-                    <div class="service-card">
-                        <h2>Website Design</h2>
-                        <p>Beautiful, high-performing sites built for growth. Designed to convert.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="wave-separator"></div>
-        </section>
-
-        <section class="work" id="work">
-            <div class="container">
-                <h2>Our Work</h2>
-                <div class="work__grid">
-                    <article class="work-card">
-                        <header>
-                            <h3>Luke Bona Photography</h3>
-                        </header>
-                        <div class="work-card__image">
-                            <img src="images/bonafide.png" 
-                                 alt="Luke Bona Photography portfolio website featuring landscape photography and minimal design" 
-                                 loading="lazy">
-                        </div>
-                        <div class="work-card__content">
-                            <p>A minimalist portfolio showcasing stunning landscape photography with seamless gallery integration.</p>
-                        </div>
-                        <footer>
-                            <a href="https://www.lukebona.com.au/" target="_blank" rel="noopener noreferrer" class="button">View Project</a>
-                        </footer>
-                    </article>
-
-                    <article class="work-card">
-                        <header>
-                            <h3>Sojourns Of Me</h3>
-                        </header>
-                        <div class="work-card__image">
-                            <img src="images/sojourns.jpg" 
-                                 alt="Sojourns Of Me Travel Blog Preview" 
-                                 loading="lazy">
-                        </div>
-                        <div class="work-card__content">
-                            <p>A travel blog featuring rich storytelling and immersive photography from around the world.</p>
-                        </div>
-                        <footer>
-                            <a href="https://www.sojournsof.me/" target="_blank" rel="noopener noreferrer" class="button">View Project</a>
-                        </footer>
-                    </article>
-
-                    <article class="work-card">
-                        <header>
-                            <h3>Bayside Dogs</h3>
-                        </header>
-                        <div class="work-card__image">
-                            <img src="images/bayside-dogs.png" 
-                                 alt="Bayside Dogs Website Preview" 
-                                 loading="lazy">
-                        </div>
-                        <div class="work-card__content">
-                            <p>A playful yet professional site for dog training services with integrated booking system.</p>
-                        </div>
-                        <footer>
-                            <a href="https://www.baysidedogs.com.au/" target="_blank" rel="noopener noreferrer" class="button">View Project</a>
-                        </footer>
-                    </article>
-
-                    <article class="work-card">
-                        <header>
-                            <h3>By Storm Beauty</h3>
-                        </header>
-                        <div class="work-card__image">
-                            <img src="images/bystorm.jpg" 
-                                 alt="By Storm Beauty Website Preview" 
-                                 loading="lazy">
-                        </div>
-                        <div class="work-card__content">
-                            <p>Elegant beauty salon website with online booking and product showcase.</p>
-                        </div>
-                        <footer>
-                            <a href="https://www.bystormbeauty.com/" target="_blank" rel="noopener noreferrer" class="button">View Project</a>
-                        </footer>
-                    </article>
-
-                    <article class="work-card">
-                        <header>
-                            <h3>Fika Floristry</h3>
-                        </header>
-                        <div class="work-card__image">
-                            <img src="images/fika.jpg" 
-                                 alt="Fika Floristry Website Preview" 
-                                 loading="lazy">
-                        </div>
-                        <div class="work-card__content">
-                            <p>A delicate and sophisticated florist website with e-commerce functionality.</p>
-                        </div>
-                        <footer>
-                            <a href="https://www.fikafloristry.com.au/" target="_blank" rel="noopener noreferrer" class="button">View Project</a>
-                        </footer>
-                    </article>
-
-                    <article class="work-card">
-                        <header>
-                            <h3>Falling Awake with Sattva</h3>
-                        </header>
-                        <div class="work-card__image">
-                            <img src="images/falling-awake.jpg" 
-                                 alt="Falling Awake with Sattva Website Preview" 
-                                 loading="lazy">
-                        </div>
-                        <div class="work-card__content">
-                            <p>Wellness and meditation website with calming aesthetics and course booking.</p>
-                        </div>
-                        <footer>
-                            <a href="https://www.fallingawakewithsattva.com.au/" target="_blank" rel="noopener noreferrer" class="button">View Project</a>
-                        </footer>
-                    </article>
-                </div>
-            </div>
-        </section>
-
-        <section class="contact" id="contact">
-            <div class="container">
-                <h2>Get in Touch</h2>
-                <form class="contact-form">
-                    <div class="form-group">
-                        <label for="name">Name</label>
-                        <input type="text" id="name" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" id="email" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="message">Message</label>
-                        <textarea id="message" rows="4" required></textarea>
-                    </div>
-                    <button type="submit" class="button button--primary" aria-label="Send message">
-                        Send Message
-                    </button>
-                </form>
-            </div>
-        </section>
-    </main>
-
-    <footer class="footer">
-        <div class="container">
-            <p>&copy; 2024 Duke St Studio. All rights reserved.</p>
-        </div>
-    </footer>
-
-    <script src="js/main.js"></script>
+      </section>
+    </div>
+    <script type="module" src="/src/index.jsx"></script>
 </body>
 </html>

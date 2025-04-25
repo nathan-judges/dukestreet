@@ -1,0 +1,270 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    @apply bg-[#120B1E] text-[#F9F8FC] font-normal;
+    font-feature-settings: "ss01" on, "ss02" on, "cv01" on, "cv03" on;
+  }
+
+  body {
+    @apply antialiased min-h-screen w-full;
+  }
+
+  h1 {
+    @apply text-[#F9F8FC] font-normal;
+  }
+
+  h2 {
+    @apply text-[#F9F8FC] font-normal;
+  }
+
+  h3 {
+    @apply text-[#F9F8FC] font-normal;
+  }
+
+  h4 {
+    @apply text-h3 font-bold;
+  }
+
+  p {
+    @apply text-[#F9F8FC]/90 font-normal;
+  }
+
+  a {
+    @apply text-[#F9F8FC] relative opacity-80 transition-opacity duration-200;
+    &:hover {
+      @apply opacity-100;
+    }
+    &:active {
+      @apply opacity-70;
+    }
+    &::after {
+      display: none;
+    }
+  }
+
+  button {
+    @apply focus:outline-none focus-visible:ring-2 focus-visible:ring-[#F9F8FC] focus-visible:ring-offset-1 focus-visible:ring-offset-[#120B1E];
+  }
+
+  /* Focus styles */
+  :focus-visible {
+    @apply outline-2 outline-[#F9F8FC] outline-offset-2;
+  }
+}
+
+@layer components {
+  .page-container {
+    @apply w-full px-5;
+  }
+
+  .content-container {
+    @apply max-w-7xl mx-auto w-full;
+  }
+
+  .navbar {
+    @apply max-w-[1440px] mx-auto px-8 h-20 flex items-center justify-between;
+  }
+
+  .nav-logo {
+    @apply h-5 w-auto;
+  }
+
+  .nav-tree {
+    @apply h-8 w-auto;
+  }
+
+  .nav-links {
+    @apply relative flex items-center gap-0 bg-[#F9F8FC]/5 rounded-full p-1 w-[180px];
+  }
+
+  .nav-link {
+    @apply relative z-10 w-[86px] text-center py-2 text-sm font-medium text-[#F9F8FC]/60 transition-colors duration-200 hover:text-[#F9F8FC];
+  }
+
+  .nav-link.active {
+    @apply text-[#120B1E];
+  }
+
+  .nav-background {
+    @apply absolute left-1 top-1 h-[36px] bg-[#F9F8FC] rounded-full;
+  }
+
+  .primary-button {
+    @apply inline-flex items-center justify-center font-normal px-8 py-4
+           rounded-full transition-all duration-200 relative
+           bg-[#F9F8FC] text-[#120B1E]
+           hover:bg-[#F9F8FC]/90
+           active:scale-[0.98]
+           disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .secondary-button {
+    @apply inline-flex items-center justify-center font-normal px-8 py-4
+           rounded-full transition-all duration-200 relative
+           bg-transparent border-2 border-[#F9F8FC] text-[#F9F8FC]
+           hover:bg-[#F9F8FC]/10
+           active:scale-[0.98]
+           disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .card {
+    @apply bg-surface-secondary rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow duration-200;
+  }
+
+  .inset-section {
+    @apply rounded-inset shadow-inset p-inset;
+  }
+
+  .hero-section {
+    @apply text-text-light;
+  }
+
+  .about-section {
+    @apply text-text-primary;
+  }
+
+  .services-section {
+    @apply text-text-primary;
+  }
+
+  .projects-section {
+    @apply text-text-light;
+  }
+
+  .contact-section {
+    @apply text-text-light;
+  }
+
+  .mesh-background {
+    @apply bg-gradient-mesh blur-[100px] opacity-25 absolute -z-10;
+  }
+
+  .content-section {
+    @apply py-content-xl;
+  }
+
+  .content-section-lg {
+    @apply py-content-2xl;
+  }
+
+  .content-section-xl {
+    @apply py-content-3xl;
+  }
+
+  .skip-link {
+    @apply absolute -top-full left-0 bg-button-primary text-button-text px-4 py-2 z-50;
+  }
+
+  .skip-link:focus {
+    @apply top-0;
+  }
+
+  .stroke-text {
+    @apply inline-block;
+    -webkit-text-fill-color: transparent;
+    -webkit-text-stroke: 1px #F9F8FC;
+    paint-order: stroke fill;
+  }
+
+  .horizontal-scroll {
+    opacity: 0;
+    animation: fade-in 0.5s ease forwards,
+               scroll-x 30s linear infinite;
+    animation-delay: 0s, 1s;
+    will-change: transform, opacity;
+  }
+
+  .section {
+    @apply w-full;
+  }
+
+  /* Hero height accounting for navbar */
+  .hero-height {
+    @apply h-[84dvh];
+  }
+
+  /* Mobile menu styles */
+  .mobile-menu {
+    @apply fixed inset-0 bg-[#120B1E]/90 backdrop-blur-sm flex items-center justify-center;
+  }
+
+  .mobile-menu-links {
+    @apply flex flex-col items-center gap-6 bg-[#F9F8FC]/5 rounded-full p-6;
+  }
+
+  .mobile-menu-link {
+    @apply relative text-center py-2 px-8 text-lg font-medium text-[#F9F8FC]/60 transition-colors duration-200 hover:text-[#F9F8FC];
+  }
+
+  .mobile-menu-link.active {
+    @apply text-[#F9F8FC];
+  }
+}
+
+@layer utilities {
+  .animate-fade-in {
+    @apply animate-fade-in;
+  }
+
+  .animate-slide-up {
+    @apply animate-slide-up;
+  }
+
+  .animate-slide-down {
+    @apply animate-slide-down;
+  }
+}
+
+/* Custom animations */
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes scroll-x {
+  0%, 3.33% {  /* 1 second pause of 30 second total duration */
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* Accessibility */
+.visually-hidden {
+  @apply sr-only;
+}
+
+/* Print styles */
+@media print {
+  .no-print {
+    @apply hidden;
+  }
+
+  body {
+    @apply text-black;
+  }
+} 
