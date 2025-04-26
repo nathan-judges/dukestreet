@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
+import { AnimatePresence } from 'framer-motion';
 import Navbar from './components/Navbar';
 import Footer from './components/common/Footer';
 import Routes from './Routes';
@@ -14,7 +15,9 @@ const AppContent = () => {
     <div className="min-h-screen w-full flex flex-col">
       <Navbar />
       <main className="w-full flex-grow pt-24 md:pt-[96px]">
-        <Routes />
+        <AnimatePresence mode="wait">
+          <Routes key={location.pathname} />
+        </AnimatePresence>
       </main>
       {!hideFooter && <Footer />}
     </div>
@@ -25,12 +28,7 @@ const App = () => {
   return (
     <HelmetProvider>
       <BrowserRouter>
-        <div className="min-h-screen bg-white">
-          <Navbar />
-          <main>
-            <Routes />
-          </main>
-        </div>
+        <AppContent />
       </BrowserRouter>
     </HelmetProvider>
   );
