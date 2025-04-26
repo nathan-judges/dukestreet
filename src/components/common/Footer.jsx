@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Container } from '../layout/Container';
 import { motion } from 'framer-motion';
+import AcknowledgementModal from '../AcknowledgementModal';
 
 const Footer = () => {
+  const [isAcknowledgementOpen, setIsAcknowledgementOpen] = useState(false);
+  
   const navigation = {
     main: [
       { name: 'Home', href: '/' },
@@ -51,26 +54,40 @@ const Footer = () => {
   };
 
   return (
-    <footer className="bg-background">
+    <footer className="bg-[#120B1E] pt-16 sm:pt-20 md:pt-24 lg:pt-32">
       <Container>
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 py-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-12 lg:gap-16">
           {/* Company Info */}
-          <div className="md:col-span-2">
-            <h3 className="text-[18px] font-['Atkinson_Hyperlegible_Next'] mb-4">Duke Street Studio</h3>
-            <p className="text-white/60">
+          <div className="lg:col-span-2">
+            <h3 className="text-[20px] sm:text-[24px] font-['Atkinson_Hyperlegible_Next'] mb-4 sm:mb-6">Duke Street Studio</h3>
+            <p className="text-base sm:text-lg text-white/60 max-w-md">
               Helping small businesses and non-technical clients create impactful digital experiences.
             </p>
+            <div className="flex items-center gap-4 mt-6 sm:mt-8">
+              {navigation.social.map((item) => (
+                <a
+                  key={item.name}
+                  href={item.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-white/60 hover:text-white transition-colors"
+                  aria-label={item.name}
+                >
+                  <item.icon className="h-6 w-6" aria-hidden="true" />
+                </a>
+              ))}
+            </div>
           </div>
 
           {/* Navigation */}
           <div>
-            <h3 className="text-[18px] font-['Atkinson_Hyperlegible_Next'] mb-4">Navigation</h3>
-            <ul className="flex flex-col gap-2">
+            <h3 className="text-[18px] sm:text-[20px] font-['Atkinson_Hyperlegible_Next'] mb-4 sm:mb-6">Navigation</h3>
+            <ul className="flex flex-col gap-3 sm:gap-4">
               {navigation.main.map((item) => (
                 <li key={item.name}>
                   <Link
                     to={item.href}
-                    className="text-white/60 hover:text-white transition-colors"
+                    className="text-base sm:text-lg text-white/60 hover:text-white transition-colors"
                   >
                     {item.name}
                   </Link>
@@ -81,13 +98,13 @@ const Footer = () => {
 
           {/* Legal */}
           <div>
-            <h3 className="text-[18px] font-['Atkinson_Hyperlegible_Next'] mb-4">Legal</h3>
-            <div className="flex flex-col gap-2">
+            <h3 className="text-[18px] sm:text-[20px] font-['Atkinson_Hyperlegible_Next'] mb-4 sm:mb-6">Legal</h3>
+            <div className="flex flex-col gap-3 sm:gap-4">
               <a 
                 href="https://abr.business.gov.au/ABN/View?id=12685983279" 
                 target="_blank" 
                 rel="noopener noreferrer" 
-                className="text-white/60 hover:text-white transition-colors"
+                className="text-base sm:text-lg text-white/60 hover:text-white transition-colors"
               >
                 ABN: 12 685 983 279
               </a>
@@ -96,24 +113,34 @@ const Footer = () => {
         </div>
 
         {/* Bottom Section */}
-        <div className="flex flex-col md:flex-row justify-between items-center w-full border-t border-white/10 py-8 gap-4">
-          <div className="flex flex-col md:flex-row items-center gap-4">
-            <span className="text-white/60">© {new Date().getFullYear()}</span>
-            <Link to="/privacy" className="text-white/60 hover:text-white transition-colors">Privacy</Link>
-            <Link to="/acknowledgement" className="text-white/60 hover:text-white transition-colors">Acknowledgement of Country</Link>
+        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center w-full border-t border-white/10 mt-12 sm:mt-16 md:mt-20 lg:mt-24 py-6 sm:py-8 gap-4 sm:gap-6">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-6">
+            <span className="text-sm sm:text-base text-white/60">© {new Date().getFullYear()}</span>
+            <Link to="/privacy" className="text-sm sm:text-base text-white/60 hover:text-white transition-colors">Privacy</Link>
+            <button
+              onClick={() => setIsAcknowledgementOpen(true)}
+              className="text-sm sm:text-base text-white/60 hover:text-white transition-colors"
+            >
+              Acknowledgement of Country
+            </button>
           </div>
           <div>
             <a 
               href="https://g.page/r/CV31f8PYUPXxEBM/review" 
               target="_blank" 
               rel="noopener noreferrer" 
-              className="text-white/60 hover:text-white transition-colors"
+              className="text-sm sm:text-base text-white/60 hover:text-white transition-colors"
             >
               Leave us a Google Review
             </a>
           </div>
         </div>
       </Container>
+
+      <AcknowledgementModal
+        isOpen={isAcknowledgementOpen}
+        onClose={() => setIsAcknowledgementOpen(false)}
+      />
     </footer>
   );
 };

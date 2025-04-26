@@ -1,76 +1,60 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import images from '../config/images';
+import AcknowledgementModal from '../components/AcknowledgementModal';
 
 const Home = () => {
+  const [isAcknowledgementOpen, setIsAcknowledgementOpen] = useState(false);
+
   return (
-    <div className="w-full">
+    <div className="w-full overflow-x-hidden">
       {/* Hero Section */}
-      <section className="section min-h-[100svh] w-full py-8 md:py-12 lg:py-16">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="h-full flex flex-col justify-center w-full"
-        >
-          <div className="page-container px-4 md:px-6">
-            <h1 className="flex flex-wrap leading-none tracking-tight w-full mb-0 justify-center md:justify-start">
-              {/* Split text into array for better control */}
-              {['Vision', 'Voice', 'Design'].map((word, wordIndex) => (
-                <React.Fragment key={word}>
-                  {word.split('').map((letter, letterIndex) => (
-                    <span 
-                      key={`${word}-${letter}-${letterIndex}`}
-                      className="text-[clamp(2rem,8vw,12rem)] md:text-[clamp(2rem,12vw,12rem)] lg:text-[clamp(2rem,15vw,12rem)]"
+      <section className="section h-[80dvh] w-full flex items-center overflow-x-hidden">
+        <div className="page-container">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="w-full"
+          >
+            <div className="flex flex-col gap-12">
+              {/* Main heading */}
+              <div className="w-full">
+                <h1 className="w-full flex justify-center gap-[0.3em]">
+                  <span className="text-[clamp(3rem,25dvw,20rem)] leading-none whitespace-nowrap">Vision.</span>
+                  <span className="text-[clamp(3rem,25dvw,20rem)] leading-none whitespace-nowrap">Voice.</span>
+                  <span className="text-[clamp(3rem,25dvw,20rem)] leading-none whitespace-nowrap">Design.</span>
+                </h1>
+              </div>
+
+              {/* Outlined text */}
+              <div className="scroll-container relative">
+                <div className="flex whitespace-nowrap">
+                  {[1, 2].map((_, index) => (
+                    <p 
+                      key={index}
+                      className="text-[clamp(3rem,10vw,12rem)] leading-none font-light stroke-text scroll-text"
                     >
-                      {letter}
-                    </span>
+                      Sydney-based podcast production & digital design for small businesses.&nbsp;
+                    </p>
                   ))}
-                  <span 
-                    className="text-[clamp(2rem,8vw,12rem)] md:text-[clamp(2rem,12vw,12rem)] lg:text-[clamp(2rem,15vw,12rem)]"
-                  >
-                    {wordIndex < 2 ? '. ' : '.'}
-                  </span>
-                </React.Fragment>
-              ))}
-            </h1>
-          </div>
+                </div>
+              </div>
 
-          <div className="relative w-full overflow-hidden -mt-4 md:-mt-6 lg:-mt-8">
-            <div className="whitespace-nowrap horizontal-scroll">
-              {[1, 2].map((_, index) => (
-                <p 
-                  key={index}
-                  className="text-[clamp(1rem,4vw,3rem)] md:text-[clamp(1.5rem,6vw,4rem)] lg:text-[clamp(2rem,8vw,5rem)] stroke-text opacity-100"
+              {/* CTA Button */}
+              <div className="flex justify-center">
+                <Link 
+                  to="/contact" 
+                  className="inline-flex items-center px-8 py-3 text-base font-medium rounded-full 
+                    bg-[#C3FFAD] text-[#141E0B] hover:bg-[#B4F29E] transition-all duration-300"
                 >
-                  Sydney-based podcast production & digital design for small businesses.&nbsp;
-                </p>
-              ))}
+                  Let's chat
+                </Link>
+              </div>
             </div>
-          </div>
-
-          <div className="page-container mt-8 md:mt-10 lg:mt-12 text-center md:text-left">
-            <Link 
-              to="/contact" 
-              className="primary-button bg-[#C3FFAD] hover:bg-[#B4F29E] text-[#141E0B] font-medium 
-                text-base md:text-lg px-6 md:px-8 py-3 md:py-4 leading-none inline-flex items-center gap-2
-                transition-all duration-300 ease-out hover:gap-3"
-            >
-              Let's chat
-              <svg 
-                xmlns="http://www.w3.org/2000/svg" 
-                fill="none" 
-                viewBox="0 0 24 24" 
-                strokeWidth={2} 
-                stroke="currentColor" 
-                className="w-4 h-4 md:w-5 md:h-5"
-              >
-                <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
-              </svg>
-            </Link>
-          </div>
-        </motion.div>
+          </motion.div>
+        </div>
       </section>
 
       {/* Who we help Section */}
@@ -410,7 +394,12 @@ const Home = () => {
               <div className="flex flex-col sm:flex-row items-start sm:items-center gap-fluid-sm sm:gap-fluid-md">
                 <span className="text-fluid-sm text-white/60">© {new Date().getFullYear()}</span>
                 <Link to="/privacy" className="text-fluid-sm text-white/60 hover:text-white transition-colors">Privacy</Link>
-                <Link to="/acknowledgement" className="text-fluid-sm text-white/60 hover:text-white transition-colors">Acknowledgement of Country</Link>
+                <button
+                  onClick={() => setIsAcknowledgementOpen(true)}
+                  className="text-fluid-sm text-white/60 hover:text-white transition-colors"
+                >
+                  Acknowledgement of Country
+                </button>
               </div>
               <div>
                 <a 
@@ -422,6 +411,11 @@ const Home = () => {
                   Leave us a Google Review
                 </a>
               </div>
+
+              <AcknowledgementModal
+                isOpen={isAcknowledgementOpen}
+                onClose={() => setIsAcknowledgementOpen(false)}
+              />
             </div>
           </motion.div>
         </div>

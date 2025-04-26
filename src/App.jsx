@@ -12,7 +12,7 @@ const AppContent = () => {
   return (
     <div className="min-h-screen w-full flex flex-col">
       <Navbar />
-      <main className="w-full flex-grow">
+      <main className="w-full flex-grow pt-24 md:pt-[96px]">
         <Routes />
       </main>
       {!hideFooter && <Footer />}

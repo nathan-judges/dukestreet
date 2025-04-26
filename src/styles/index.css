@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+body {
+  @apply bg-[#120B1E] text-[#FCF8F8] overflow-x-hidden;
+}
+
 @layer base {
   html {
     @apply bg-[#120B1E] text-[#F9F8FC] font-normal;
@@ -61,35 +65,11 @@
   }
 
   .content-container {
-    @apply max-w-7xl mx-auto w-full;
+    @apply w-full mx-auto;
   }
 
-  .navbar {
-    @apply max-w-[1440px] mx-auto px-8 h-20 flex items-center justify-between;
-  }
-
-  .nav-logo {
-    @apply h-5 w-auto;
-  }
-
-  .nav-tree {
-    @apply h-8 w-auto;
-  }
-
-  .nav-links {
-    @apply relative flex items-center gap-0 bg-[#F9F8FC]/5 rounded-full p-1 w-[180px];
-  }
-
-  .nav-link {
-    @apply relative z-10 w-[86px] text-center py-2 text-sm font-medium text-[#F9F8FC]/60 transition-colors duration-200 hover:text-[#F9F8FC];
-  }
-
-  .nav-link.active {
-    @apply text-[#120B1E];
-  }
-
-  .nav-background {
-    @apply absolute left-1 top-1 h-[36px] bg-[#F9F8FC] rounded-full;
+  .section {
+    @apply w-full;
   }
 
   .primary-button {
@@ -177,10 +157,6 @@
     will-change: transform, opacity;
   }
 
-  .section {
-    @apply w-full;
-  }
-
   /* Hero height accounting for navbar */
   .hero-height {
     @apply h-[84dvh];
@@ -188,19 +164,44 @@
 
   /* Mobile menu styles */
   .mobile-menu {
-    @apply fixed inset-0 bg-[#120B1E]/90 backdrop-blur-sm flex items-center justify-center;
+    @apply fixed inset-0 z-50;
+    background: rgba(18, 11, 30, 0.98);
+    backdrop-filter: blur(20px);
   }
 
-  .mobile-menu-links {
-    @apply flex flex-col items-center gap-6 bg-[#F9F8FC]/5 rounded-full p-6;
+  .mobile-menu-container {
+    @apply fixed inset-0 flex items-center justify-center;
+  }
+
+  .mobile-menu-content {
+    @apply flex flex-col items-center justify-center gap-12 p-8;
   }
 
   .mobile-menu-link {
-    @apply relative text-center py-2 px-8 text-lg font-medium text-[#F9F8FC]/60 transition-colors duration-200 hover:text-[#F9F8FC];
+    @apply relative text-[32px] font-['Atkinson_Hyperlegible_Next'] font-medium text-[#F9F8FC]/60 transition-colors duration-200 hover:text-[#F9F8FC];
+  }
+
+  /* Mobile styles */
+  @media (max-width: 640px) {
+    .mobile-menu-link {
+      font-size: 1.5rem; /* text-2xl equivalent */
+    }
   }
 
   .mobile-menu-link.active {
     @apply text-[#F9F8FC];
+  }
+
+  .mobile-menu-close {
+    @apply fixed top-6 right-6 z-50;
+  }
+
+  /* Mobile styles for close button */
+  @media (max-width: 640px) {
+    .mobile-menu-close {
+      top: 1rem; /* top-4 equivalent */
+      right: 1rem; /* right-4 equivalent */
+    }
   }
 }
 
@@ -249,6 +250,37 @@
     opacity: 0;
   }
   100% {
+    opacity: 1;
+  }
+}
+
+@keyframes scroll {
+  0%, 3% {  /* 1 second pause of 30 second total duration */
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.scroll-container {
+  @apply absolute left-0 right-0;
+  width: 100vw;
+  position: relative;
+}
+
+.scroll-text {
+  @apply inline-block whitespace-nowrap opacity-0;
+  animation: fadeIn 0.5s ease forwards,
+             scroll 30s linear infinite;
+  animation-delay: 1s;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
     opacity: 1;
   }
 }
