@@ -1,5 +1,6 @@
 import React from 'react';
-import { BrowserRouter as Router, useLocation } from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
+import { HelmetProvider } from 'react-helmet-async';
 import Navbar from './components/Navbar';
 import Footer from './components/common/Footer';
 import Routes from './Routes';
@@ -20,12 +21,19 @@ const AppContent = () => {
   );
 };
 
-function App() {
+const App = () => {
   return (
-    <Router>
-      <AppContent />
-    </Router>
+    <HelmetProvider>
+      <BrowserRouter>
+        <div className="min-h-screen bg-white">
+          <Navbar />
+          <main>
+            <Routes />
+          </main>
+        </div>
+      </BrowserRouter>
+    </HelmetProvider>
   );
-}
+};
 
 export default App; 
