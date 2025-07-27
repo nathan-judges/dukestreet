@@ -198,7 +198,27 @@ Tagline: text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-archivo font-medium tr
 
 Body Text: text-base sm:text-lg lg:text-xl xl:text-2xl font-archivo font-normal leading-relaxed
 
-Navigation: text-lg sm:text-xl lg:text-2xl font-instrument-serif (logo), text-sm lg:text-base font-archivo font-medium (links)
+Navigation: text-lg sm:text-xl lg:text-2xl xl:text-3xl font-instrument-serif font-normal tracking-tight (logo), text-nav lg:text-nav-lg font-archivo font-medium (links)
+
+**Navigation Component Specifications:**
+
+Logo: text-lg sm:text-xl lg:text-2xl xl:text-3xl font-instrument-serif font-normal tracking-tight text-white
+
+Navigation Links: text-nav lg:text-nav-lg font-archivo font-medium text-white/70 hover:text-white transition-all duration-300
+
+Button: text-nav lg:text-nav-lg font-archivo font-semibold bg-yellow text-dark px-6 lg:px-8 py-2.5 lg:py-3 rounded-2xl
+
+Navigation Height: h-16 sm:h-18 lg:h-22 (responsive height scaling)
+
+Link Spacing: space-x-8 lg:space-x-10 (desktop), py-3 px-4 (mobile)
+
+Button Spacing: ml-4 lg:ml-6 (desktop margin), mt-6 (mobile margin)
+
+Background: bg-dark/30 backdrop-blur-lg border-b border-white/5
+
+Hover Effects: hover:bg-white/5 (links), hover:bg-yellow/90 hover:shadow-yellow/20 (button)
+
+Focus States: focus:ring-2 focus:ring-white/20 focus:ring-offset-2 focus:ring-offset-dark (links), focus:ring-2 focus:ring-yellow/50 focus:ring-offset-2 focus:ring-offset-dark (button)
 
 Spacing:
 
@@ -219,6 +239,14 @@ Navigation: px-4 sm:px-6 lg:px-8, max-w-7xl
 Section Spacing: space-y-6 sm:space-y-8 lg:space-y-10
 
 Button Padding: px-8 sm:px-10 lg:px-12 py-3 sm:py-4 lg:py-5
+
+**Custom Tailwind Utilities:**
+
+Spacing: h-18 (4.5rem/72px), h-22 (5.5rem/88px)
+
+Font Sizes: text-nav (14px), text-nav-lg (16px)
+
+Navigation Heights: h-16 sm:h-18 lg:h-22 (responsive scaling)
 
 Border Radius: All prominent containers, cards, and buttons should have a noticeable, soft border-radius (e.g., rounded-xl or rounded-2xl) consistent with the rounded aesthetic in dss.jpg.
 
