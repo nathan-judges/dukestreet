@@ -153,6 +153,8 @@ Button Hover/Press States: Implement a subtle scale-up effect (e.g., scale-105),
 5. Design & User Experience (UX)
 Aesthetics: The website should embody a sleek, modern, and professional aesthetic, consistent with the provided dss.jpg example.
 
+**CRITICAL RESPONSIVENESS NOTE: While Figma serves as a design reference, the final implementation's layout and spacing must prioritize full responsiveness and fluid adaptation across all devices. Fixed pixel measurements from Figma should be translated into responsive Tailwind units or relative values where appropriate. The website MUST NOT follow Figma directly on layout and spacing if it compromises responsiveness.**
+
 5.1. Visual Style Guide
 The AI should extract and apply the following visual styles, primarily using Tailwind CSS classes, to match the dss.jpg reference:
 
@@ -188,6 +190,16 @@ Font Sizes & Weights: The AI should derive appropriate text- and font- Tailwind 
 
 Font Loading: Utilize Next.js's next/font for efficient loading of these custom fonts. The AI should ensure these fonts are configured in tailwind.config.ts to be easily applied via Tailwind's font-sans (for Archivo) and a custom font utility (for Instrument Serif).
 
+**Optimized Typography Implementation:**
+
+Hero Title: text-5xl sm:text-7xl lg:text-8xl xl:text-9xl font-instrument-serif font-normal tracking-tight leading-[0.9] sm:leading-[0.85] lg:leading-[0.8] text-white
+
+Tagline: text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-archivo font-medium tracking-wide text-white/90 leading-tight
+
+Body Text: text-base sm:text-lg lg:text-xl xl:text-2xl font-archivo font-normal leading-relaxed
+
+Navigation: text-lg sm:text-xl lg:text-2xl font-instrument-serif (logo), text-sm lg:text-base font-archivo font-medium (links)
+
 Spacing:
 
 General: Use Tailwind's default spacing scale (p-, m-, gap-) consistently.
@@ -198,11 +210,45 @@ Horizontal Spacing: Maintain consistent horizontal padding within content contai
 
 Container Width: Content should be constrained to a maximum readable width, similar to the centered content blocks in dss.jpg, with appropriate horizontal padding on smaller screens.
 
+**Optimized Responsive Spacing:**
+
+Hero Section: px-4 sm:px-6 lg:px-8 xl:px-12, max-w-4xl lg:max-w-5xl xl:max-w-6xl
+
+Navigation: px-4 sm:px-6 lg:px-8, max-w-7xl
+
+Section Spacing: space-y-6 sm:space-y-8 lg:space-y-10
+
+Button Padding: px-8 sm:px-10 lg:px-12 py-3 sm:py-4 lg:py-5
+
 Border Radius: All prominent containers, cards, and buttons should have a noticeable, soft border-radius (e.g., rounded-xl or rounded-2xl) consistent with the rounded aesthetic in dss.jpg.
 
 Shadows: Apply subtle, soft shadows to cards and interactive elements to give them depth, mimicking the effect seen in dss.jpg.
 
+**Optimized Shadow Implementation:**
+
+Buttons: shadow-xl hover:shadow-2xl hover:shadow-yellow/20
+
+Cards: shadow-lg hover:shadow-xl
+
+Navigation: shadow-lg hover:shadow-xl
+
 Gradients: The AI should recreate the specific purple-to-orange gradient for the header/hero section background, using Tailwind's gradient utilities (e.g., bg-gradient-to-r from-purple-700 to-orange-500, adjusting specific color values to match dss.jpg based on the provided palette).
+
+**Aurora Component Optimization:**
+
+Color Stops: ["#3971F9", "#D974FB", "#F84F07"]
+
+Blend: 0.25 (reduced for more subtlety)
+
+Amplitude: 0.3 (reduced for gentler waves)
+
+Speed: 0.12 (slightly slower for more elegant movement)
+
+Fractal Noise Iterations: 4 (increased for more detail)
+
+Amplitude Decay: 0.5 (reduced for smoother transitions)
+
+Frequency Scaling: 2.0 (increased for better detail)
 
 Fully Responsive Design (CRITICAL):
 
@@ -212,7 +258,17 @@ Layouts, spacing, typography, and interactive elements must adapt gracefully to 
 
 No horizontal scrolling should occur on any device.
 
-The AI must extensively use responsive utility classes (e.g., Tailwind's sm:, md:, lg:) for layout, padding, margin, and typography.
+The AI must extensively use responsive utility classes (e.g., Tailwind's sm:, md:, lg:, xl:) for layout, padding, margin, and typography.
+
+**Responsive Breakpoint Strategy:**
+
+Mobile: < 640px (sm:)
+
+Tablet: 640px - 1024px (sm: to lg:)
+
+Desktop: 1024px - 1280px (lg: to xl:)
+
+Large Desktop: > 1280px (xl:)
 
 Intuitive Navigation: While a single-page site, ensure smooth scrolling and clear visual hierarchy.
 
@@ -223,6 +279,14 @@ Semantic HTML elements.
 Clear focus states for interactive elements (buttons, form fields).
 
 Sufficient color contrast for text and UI elements.
+
+**Enhanced Accessibility Implementation:**
+
+Focus Rings: focus:outline-none focus:ring-2 focus:ring-yellow/50 focus:ring-offset-2 focus:ring-offset-dark
+
+Aria Labels: aria-label="Scroll to next section", aria-label="Toggle mobile menu", aria-expanded={isMobileMenuOpen}
+
+Button States: Proper hover, focus, and active states with visual feedback
 
 Loading & Feedback:
 

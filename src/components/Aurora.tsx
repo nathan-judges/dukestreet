@@ -14,9 +14,9 @@ interface AuroraProps {
 export default function Aurora({ 
   children, 
   colorStops = ["#3971F9", "#D974FB", "#F84F07"],
-  blend = 0.3,
-  amplitude = 0.4,
-  speed = 0.15
+  blend = 0.25, // Reduced for more subtlety
+  amplitude = 0.3, // Reduced for gentler waves
+  speed = 0.12 // Slightly slower for more elegant movement
 }: AuroraProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const rendererRef = useRef<Renderer | null>(null);
@@ -75,10 +75,10 @@ export default function Aurora({
         float amplitude = uAmplitude;
         float frequency = 1.0;
         
-        for(int i = 0; i < 3; i++) {
+        for(int i = 0; i < 4; i++) { // Increased iterations for more detail
           value += amplitude * smoothNoise(p * frequency);
-          amplitude *= 0.6;
-          frequency *= 1.8;
+          amplitude *= 0.5; // Reduced decay for smoother transitions
+          frequency *= 2.0; // Increased frequency scaling
         }
         
         return value;
@@ -92,15 +92,15 @@ export default function Aurora({
         
         // Create very gentle flowing aurora effect
         vec2 flow = vec2(
-          fractalNoise(p * 1.5 + vec2(time * 0.3, time * 0.2)),
-          fractalNoise(p * 1.5 + vec2(time * 0.4, time * 0.3))
+          fractalNoise(p * 2.0 + vec2(time * 0.2, time * 0.15)),
+          fractalNoise(p * 2.0 + vec2(time * 0.25, time * 0.2))
         );
         
-        float aurora = fractalNoise(p * 2.0 + flow * 0.3 + vec2(time * 0.1, time * 0.2));
+        float aurora = fractalNoise(p * 2.5 + flow * 0.2 + vec2(time * 0.08, time * 0.15));
         
         // Create very subtle gradient based on position
-        float gradient = smoothstep(-1.2, 1.2, p.x + aurora * 0.1);
-        float height = smoothstep(-1.0, 0.8, p.y + aurora * 0.05);
+        float gradient = smoothstep(-1.5, 1.5, p.x + aurora * 0.08);
+        float height = smoothstep(-1.2, 1.0, p.y + aurora * 0.04);
         
         // Blend colors very smoothly
         vec3 color1 = vec3(${colors[0].r}, ${colors[0].g}, ${colors[0].b});
@@ -111,11 +111,11 @@ export default function Aurora({
         color = mix(color, color3, height);
         
         // Add very subtle aurora variation
-        color += aurora * 0.05 * (color2 - color1);
+        color += aurora * 0.03 * (color2 - color1);
         
         // Very soft edges and transparency
-        float edge = smoothstep(1.8, 0.2, length(p));
-        float alpha = edge * uBlend * (0.15 + aurora * 0.1);
+        float edge = smoothstep(2.0, 0.1, length(p));
+        float alpha = edge * uBlend * (0.12 + aurora * 0.08);
         
         gl_FragColor = vec4(color, alpha);
       }

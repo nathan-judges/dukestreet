@@ -7,9 +7,9 @@ import Navbar from "@/components/Navbar";
 
 export default function Home() {
   const [auroraSettings] = useState({
-    blend: 0.3,
-    amplitude: 0.4,
-    speed: 0.15
+    blend: 0.25, // Optimized for subtlety
+    amplitude: 0.3, // Optimized for gentler waves
+    speed: 0.12 // Optimized for elegant movement
   });
 
   return (
