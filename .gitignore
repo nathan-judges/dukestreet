@@ -9,6 +9,12 @@ out/
 dist/
 build/
 
+# Vite (not used in Next.js)
+.vite/
+
+# Git hooks
+.husky/
+
 # Environment variables
 .env
 .env.local
