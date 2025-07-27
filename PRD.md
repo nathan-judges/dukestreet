@@ -202,23 +202,21 @@ Navigation: text-lg sm:text-xl lg:text-2xl xl:text-3xl font-instrument-serif fon
 
 **Navigation Component Specifications:**
 
-Logo: text-lg sm:text-xl lg:text-2xl xl:text-3xl font-instrument-serif font-normal tracking-tight text-white
+Text Wrapper (Left Side): flex flex-col items-start
+- "Sydney Based": text-xl font-archivo font-medium leading-[30px] text-[#F7F6F3]
+- "Working nation-wide": text-xl font-archivo font-medium leading-[30px] text-white mix-blend-overlay
 
-Navigation Links: text-nav lg:text-nav-lg font-archivo font-medium text-white/70 hover:text-white transition-all duration-300
-
-Button: text-nav lg:text-nav-lg font-archivo font-semibold bg-yellow text-dark px-6 lg:px-8 py-2.5 lg:py-3 rounded-2xl
+Button (Right Side): flex px-4 py-3 justify-center items-center gap-2.5 rounded-2xl bg-white text-dark text-xl font-archivo font-medium leading-[28px]
 
 Navigation Height: h-16 sm:h-18 lg:h-22 (responsive height scaling)
 
-Link Spacing: space-x-8 lg:space-x-10 (desktop), py-3 px-4 (mobile)
-
-Button Spacing: ml-4 lg:ml-6 (desktop margin), mt-6 (mobile margin)
-
 Background: bg-dark/30 backdrop-blur-lg border-b border-white/5
 
-Hover Effects: hover:bg-white/5 (links), hover:bg-yellow/90 hover:shadow-yellow/20 (button)
+Hover Effects: hover:bg-white/90 (button), hover:scale-1.02 (text wrapper)
 
-Focus States: focus:ring-2 focus:ring-white/20 focus:ring-offset-2 focus:ring-offset-dark (links), focus:ring-2 focus:ring-yellow/50 focus:ring-offset-2 focus:ring-offset-dark (button)
+Focus States: focus:ring-2 focus:ring-white/50 focus:ring-offset-2 focus:ring-offset-dark (button)
+
+**Note:** The navigation now features a simplified layout with location text on the left and a white "Get in touch" button on the right, removing the previous navigation links and logo.
 
 Spacing:
 

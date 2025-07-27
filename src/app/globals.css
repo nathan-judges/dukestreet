@@ -1,4 +1,6 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 :root {
   --background: #000510;
@@ -6,19 +8,16 @@
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
   --font-archivo: var(--font-archivo);
   --font-instrument-serif: var(--font-instrument-serif);
 }
 
 body {
+  font-family: var(--font-archivo);
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-archivo), Arial, Helvetica, sans-serif;
 }
 
-/* Smooth scrolling */
 html {
   scroll-behavior: smooth;
 }
@@ -39,4 +38,9 @@ html {
 
 ::-webkit-scrollbar-thumb:hover {
   background: #F8C807/80;
+}
+
+/* Custom mix-blend-overlay utility */
+.mix-blend-overlay {
+  mix-blend-mode: overlay;
 }
