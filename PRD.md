@@ -8,7 +8,7 @@ Responsive Design: This is a critical requirement. The AI must ensure all sectio
 
 Prioritization: Implement features section by section, starting from the top of the homepage and working downwards. Prioritize core functionality (layout, content, responsive design) before detailed micro-animations. Animations should be layered in after the core layout and content of a section are visually accurate and responsive.
 
-Security: Always prioritize secure coding practices, especially for form handling and API key management. The AI must ensure that sensitive information (e.g., API keys) is never exposed on the client-side.
+Security: Always prioritize secure coding practices, especially for form handling and API key management. The AI must ensure that sensitive information (e.g., API keys) is never exposed on the client-side where it can be directly accessed by users.
 
 Simplicity & Efficiency: Adhere to the low-cost and efficient nature of the project. Avoid overly complex solutions when simpler alternatives exist. The AI should prioritize lean implementations and avoid over-engineering for this low-cost project, focusing on essential functionality and clean code.
 
@@ -54,8 +54,6 @@ Content:
 "Duke St. Studio" logo/text (as seen with the specific font/styling in dss.jpg).
 
 Tagline: "audio. web. ux/ui"
-
-Call to Action Button: "Get in touch"
 
 Down Arrow Icon
 
@@ -153,8 +151,6 @@ Button Hover/Press States: Implement a subtle scale-up effect (e.g., scale-105),
 5. Design & User Experience (UX)
 Aesthetics: The website should embody a sleek, modern, and professional aesthetic, consistent with the provided dss.jpg example.
 
-**CRITICAL RESPONSIVENESS NOTE: While Figma serves as a design reference, the final implementation's layout and spacing must prioritize full responsiveness and fluid adaptation across all devices. Fixed pixel measurements from Figma should be translated into responsive Tailwind units or relative values where appropriate. The website MUST NOT follow Figma directly on layout and spacing if it compromises responsiveness.**
-
 5.1. Visual Style Guide
 The AI should extract and apply the following visual styles, primarily using Tailwind CSS classes, to match the dss.jpg reference:
 
@@ -188,9 +184,9 @@ Weights/Styles: Regular, Italic.
 
 Font Sizes & Weights: The AI should derive appropriate text- and font- Tailwind classes to match the visual hierarchy and emphasis seen in dss.jpg (e.g., large, bold headings; smaller, lighter taglines; readable body text).
 
-Font Loading: Utilize Next.js's next/font for efficient loading of these custom fonts. The AI should ensure these fonts are configured in tailwind.config.ts to be easily applied via Tailwind's font-sans (for Archivo) and a custom font utility (for Instrument Serif).
+Font Loading: Utilize custom font loading for efficient loading of these custom fonts. The AI should ensure these fonts are configured in tailwind.config.ts to be easily applied via Tailwind's font-sans (for Archivo) and a custom font utility (for Instrument Serif).
 
-**Optimized Typography Implementation:**
+Optimized Typography Implementation:
 
 Hero Title: text-5xl sm:text-7xl lg:text-8xl xl:text-9xl font-instrument-serif font-normal tracking-tight leading-[0.9] sm:leading-[0.85] lg:leading-[0.8] text-white
 
@@ -200,16 +196,19 @@ Body Text: text-base sm:text-lg lg:text-xl xl:text-2xl font-archivo font-normal 
 
 Navigation: text-lg sm:text-xl lg:text-2xl xl:text-3xl font-instrument-serif font-normal tracking-tight (logo), text-nav lg:text-nav-lg font-archivo font-medium (links)
 
-**Navigation Component Specifications:**
+Navigation Component Specifications:
 
 Container: flex justify-between items-center self-stretch py-5 px-16
 
 Text Wrapper (Left Side): flex flex-col items-start
-- "Sydney Based": text-[#F7F6F3] font-archivo text-xl font-normal font-medium leading-[30px]
-- "Working nation-wide": text-white font-archivo text-xl font-normal font-medium leading-[30px] mix-blend-overlay
+
+"Sydney Based": text-[#F7F6F3] font-archivo text-xl font-normal font-medium leading-[30px]
+
+"Working nation-wide": text-white font-archivo text-xl font-normal font-medium leading-[30px] mix-blend-overlay
 
 Button (Right Side): flex py-3 px-4 justify-center items-center gap-2.5 rounded-2xl bg-white
-- Button Text: text-dark font-archivo text-xl font-normal font-medium leading-[28px]
+
+Button Text: text-dark font-archivo text-xl font-normal font-medium leading-[28px]
 
 Background: bg-dark/30 backdrop-blur-lg border-b border-white/5
 
@@ -219,7 +218,7 @@ Focus States: focus:ring-2 focus:ring-white/50 focus:ring-offset-2 focus:ring-of
 
 Scroll Functionality: Button scrolls to contact-form-section or falls back to viewport height
 
-**Note:** The navigation features exact specifications matching the provided design with precise spacing, typography, and layout.
+Note: The navigation features exact specifications matching the provided design with precise spacing, typography, and layout.
 
 Spacing:
 
@@ -231,7 +230,7 @@ Horizontal Spacing: Maintain consistent horizontal padding within content contai
 
 Container Width: Content should be constrained to a maximum readable width, similar to the centered content blocks in dss.jpg, with appropriate horizontal padding on smaller screens.
 
-**Optimized Responsive Spacing:**
+Optimized Responsive Spacing:
 
 Hero Section: px-4 sm:px-6 lg:px-8 xl:px-12, max-w-4xl lg:max-w-5xl xl:max-w-6xl
 
@@ -241,7 +240,7 @@ Section Spacing: space-y-6 sm:space-y-8 lg:space-y-10
 
 Button Padding: px-8 sm:px-10 lg:px-12 py-3 sm:py-4 lg:py-5
 
-**Custom Tailwind Utilities:**
+Custom Tailwind Utilities:
 
 Spacing: h-18 (4.5rem/72px), h-22 (5.5rem/88px)
 
@@ -253,7 +252,7 @@ Border Radius: All prominent containers, cards, and buttons should have a notice
 
 Shadows: Apply subtle, soft shadows to cards and interactive elements to give them depth, mimicking the effect seen in dss.jpg.
 
-**Optimized Shadow Implementation:**
+Optimized Shadow Implementation:
 
 Buttons: shadow-xl hover:shadow-2xl hover:shadow-yellow/20
 
@@ -263,7 +262,7 @@ Navigation: shadow-lg hover:shadow-xl
 
 Gradients: The AI should recreate the specific purple-to-orange gradient for the header/hero section background, using Tailwind's gradient utilities (e.g., bg-gradient-to-r from-purple-700 to-orange-500, adjusting specific color values to match dss.jpg based on the provided palette).
 
-**Aurora Component Optimization:**
+Aurora Component Optimization:
 
 Color Stops: ["#3971F9", "#D974FB", "#F84F07"]
 
@@ -289,7 +288,7 @@ No horizontal scrolling should occur on any device.
 
 The AI must extensively use responsive utility classes (e.g., Tailwind's sm:, md:, lg:, xl:) for layout, padding, margin, and typography.
 
-**Responsive Breakpoint Strategy:**
+Responsive Breakpoint Strategy:
 
 Mobile: < 640px (sm:)
 
@@ -309,7 +308,7 @@ Clear focus states for interactive elements (buttons, form fields).
 
 Sufficient color contrast for text and UI elements.
 
-**Enhanced Accessibility Implementation:**
+Enhanced Accessibility Implementation:
 
 Focus Rings: focus:outline-none focus:ring-2 focus:ring-yellow/50 focus:ring-offset-2 focus:ring-offset-dark
 
@@ -327,7 +326,7 @@ Avoid browser alert() or confirm() dialogs; use custom UI for messages.
 
 6. Technical Requirements
 6.1. Core Tech Stack
-Framework: Next.js (React) - Utilize the App Router where appropriate.
+Framework: React - The project will be built using a pure React setup, focusing on client-side rendering.
 
 Styling: Tailwind CSS - All styling should be implemented using Tailwind utility classes.
 
@@ -355,7 +354,7 @@ The website should be configured as a PWA to enhance performance and user experi
 
 Manifest File: Generate a manifest.json with appropriate app name, icons, and display properties.
 
-Service Worker: Implement a service worker (e.g., using next-pwa library or manual configuration) for:
+Service Worker: Implement a service worker (e.g., using a Workbox-based solution for React) for:
 
 Caching of static assets (HTML, CSS, JS, images) for offline access and faster subsequent loads.
 
@@ -366,69 +365,61 @@ HTTPS: The site will be served over HTTPS (handled by Vercel).
 Home Screen Installability: Enable the "Add to Home Screen" prompt.
 
 6.3. Form Submission & Email Sending
-Server-Side Endpoint: Create a Next.js API Route (or Route Handler in app/api) to securely handle form submissions. This endpoint will receive form data (Name, Email, Message).
+Approach: For a pure React setup with low cost, email submission will be handled via a client-side email service.
 
-Email Sending Service: Integrate with a third-party Email API service (e.g., Resend, SendGrid's free tier, Mailgun's free tier).
+Recommended Service: Consider services like EmailJS (https://www.emailjs.com/) or Web3Forms (https://web3forms.com/). These services allow sending emails directly from client-side JavaScript without requiring a custom backend server.
 
-The API route will use the chosen service's SDK to send an email to a predefined recipient (e.g., info@dukestudio.com).
+Functionality: Upon submission, the form data will be sent to the chosen email service's API.
 
-Security: Ensure API keys for the email service, and the recipient email address, are stored securely as environment variables (e.g., in .env.local for development and configured in Vercel for production). They must never be hardcoded or exposed on the client-side. The AI should prompt for these if not provided.
+Security: API keys for the chosen client-side email service should be stored as environment variables (e.g., REACT_APP_SERVICE_ID, REACT_APP_TEMPLATE_ID, REACT_APP_PUBLIC_KEY if using Create React App, or VITE_SERVICE_ID if using Vite). While client-side keys are inherently public, these services typically rate-limit and provide security features. The AI must ensure these are correctly configured as environment variables and not hardcoded.
 
-Form Validation:
-
-Client-side HTML5 validation (required, type="email").
-
-Server-side Validation: Implement robust server-side validation within the API route to sanitize and validate input before sending the email. Return appropriate HTTP status codes (e.g., 400 Bad Request for invalid input, 500 Internal Server Error for server issues).
+Server-side Validation (via Service): The chosen email service may offer some level of server-side validation or spam filtering. The AI should leverage these features if available.
 
 6.4. Development & Deployment
+Project Setup: The project should be initialized using a standard React tooling, such as Create React App (CRA) or Vite.
+
 Version Control: GitHub repository.
 
-Hosting: Vercel for deployment.
+Hosting: Vercel for deployment (Vercel can host static React apps).
 
-Image Optimization: Utilize Next.js's next/image component for all images to ensure optimal loading and responsiveness.
+Image Optimization: Implement responsive image handling (e.g., using srcset, sizes, or a React-specific image optimization library if suitable) as next/image is not available.
 
-Font Optimization: Use Next.js's next/font for efficient loading of web fonts.
+Font Optimization: Implement custom font loading (e.g., via CSS @font-face rules in globals.css or a dedicated font utility) as next/font is not available.
 
 Code Quality: Configure ESLint and Prettier for consistent code style and quality.
 
 Favicon & App Icons: Include appropriate favicon and various app icons for PWA and general browser display.
 
-Custom 404 Page: Create a custom "Page Not Found" (404.tsx or not-found.tsx) page.
+Custom 404 Page: Implement a custom "Page Not Found" component for routing errors.
 
-Sitemap & Robots.txt: Generate sitemap.xml and robots.txt files for basic search engine guidance.
+Sitemap & Robots.txt: Generate sitemap.xml and robots.txt files for basic search engine guidance (may require manual generation or a build script).
 
 6.5. Project Structure & Naming Conventions
 The AI should adhere to the following project structure and naming conventions for consistency and maintainability:
 
 Root Level:
 
-src/: Main application source code (preferred over root-level components).
+src/: Main application source code.
 
-public/: Static assets (images, favicons, manifest.json).
+public/: Static assets (images, favicons, manifest.json, index.html).
 
-.env.local: Environment variables (for local development).
+.env or .env.local: Environment variables (for local development).
 
 PRD.md: This Product Requirements Document.
 
 Inside src/:
 
-app/: Next.js App Router specific files.
+App.tsx: Main application component.
 
-app/layout.tsx: Root layout component.
+index.tsx: Entry point for React rendering.
 
-app/page.tsx: Homepage component.
-
-app/api/: Directory for API Routes (Route Handlers).
-
-app/api/contact/route.ts: For the contact form API endpoint.
-
-components/: Reusable UI components.
+components/: Reusable UI components (e.g., HeroSection.tsx, Navbar.tsx, ContactForm.tsx).
 
 hooks/: Custom React hooks.
 
 utils/: General utility functions (e.g., helper functions, data formatting).
 
-styles/: Global styles (e.g., globals.css for Tailwind imports, or any custom CSS beyond Tailwind config).
+styles/: Global styles (e.g., globals.css for Tailwind imports, custom font CSS).
 
 Naming Conventions:
 
@@ -442,8 +433,6 @@ Custom Hooks: camelCase with use prefix (e.g., useFormInput.ts).
 
 Utility Files: camelCase (e.g., formatDate.ts, emailUtils.ts).
 
-API Routes: route.ts within a descriptive folder (e.g., app/api/contact/route.ts).
-
 Variables/Functions: camelCase.
 
 Constants: SCREAMING_SNAKE_CASE.
@@ -451,11 +440,11 @@ Constants: SCREAMING_SNAKE_CASE.
 6.6. Development Practices
 State Management: Prioritize React's useState for simple component state. For more complex local state within components (e.g., form handling), consider useReducer.
 
-Code Commenting: The AI should add clear and concise comments to explain complex logic, component props, API route functionality, and any non-obvious design decisions.
+Code Commenting: The AI should add clear and concise comments to explain complex logic, component props, and any non-obvious design decisions.
 
-Environment Variable Usage: Explicitly use process.env.NEXT_PUBLIC_VAR_NAME for environment variables accessible on the client-side (e.g., for public API keys if any, though none are planned directly for this project's client-side) and process.env.VAR_NAME for server-only variables (like the email service API key in API routes).
+Environment Variable Usage: Explicitly use environment variables (e.g., process.env.REACT_APP_VAR_NAME for CRA, or import.meta.env.VITE_VAR_NAME for Vite) for variables accessible on the client-side. The AI must ensure these are correctly configured and not hardcoded.
 
-Contact Form Development Order: For the "Contact Form Section," the AI should prioritize developing the server-side API route before implementing the client-side form component.
+Contact Form Development Order: For the "Contact Form Section," the AI should prioritize setting up the client-side email service integration before implementing the client-side form component.
 
 Git Branching Strategy (Optimal Workflow):
 The AI should adhere to the following branching strategy for a streamlined development and deployment workflow:

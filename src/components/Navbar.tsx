@@ -17,7 +17,7 @@ export default function Navbar() {
         </div>
 
         {/* Button */}
-        <button className="flex py-3 px-4 justify-center items-center gap-2.5 rounded-2xl bg-white">
+        <button className="flex py-3 px-4 justify-center items-center gap-2.5 rounded-[20px] bg-white">
           {/* Button text */}
           <span className="text-dark font-archivo text-xl font-normal font-medium leading-[28px]">
             Get in touch
