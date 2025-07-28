@@ -10,16 +10,20 @@ export default function HeroSection() {
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
-    // Set canvas size
+    // Set canvas size to match container
     const resizeCanvas = () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
+      const container = canvas.parentElement;
+      if (container) {
+        canvas.width = container.clientWidth;
+        canvas.height = container.clientHeight;
+      }
     };
     
-    resizeCanvas();
+    // Initial resize with small delay to ensure DOM is ready
+    setTimeout(resizeCanvas, 100);
     window.addEventListener('resize', resizeCanvas);
 
-    // Aurora colors (PRD palette)
+    // Aurora colors (PRD palette) - more vibrant
     const colors = [
       { r: 57, g: 113, b: 249 },   // Blue #3971F9
       { r: 217, g: 116, b: 251 },  // Pink #D974FB
@@ -36,13 +40,13 @@ export default function HeroSection() {
       // Clear canvas
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       
-      // Create gradient
+      // Create gradient - horizontal arrangement
       const gradient = ctx.createLinearGradient(0, 0, canvas.width, 0);
       
-      // Add color stops with animation
+      // Add color stops with animation - more vibrant
       colors.forEach((color, index) => {
         const offset = (index / (colors.length - 1)) + Math.sin(time + index) * 0.1;
-        const alpha = 0.3 + Math.sin(time * 2 + index) * 0.2 * blend;
+        const alpha = 0.6 + Math.sin(time * 2 + index) * 0.3 * blend; // Increased base alpha
         
         gradient.addColorStop(
           Math.max(0, Math.min(1, offset)),
@@ -50,27 +54,29 @@ export default function HeroSection() {
         );
       });
 
-      // Fill with gradient
+      // Fill with gradient - only top portion
       ctx.fillStyle = gradient;
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      ctx.fillRect(0, 0, canvas.width, canvas.height * 0.6); // Only top 60%
 
-      // Add aurora glow effect
+      // Add aurora glow effect - more pronounced
       const glowGradient = ctx.createRadialGradient(
         canvas.width * 0.5, 0, 0,
-        canvas.width * 0.5, 0, canvas.height * 0.8
+        canvas.width * 0.5, 0, canvas.height * 0.4
       );
       
-      glowGradient.addColorStop(0, 'rgba(255, 255, 255, 0.1)');
-      glowGradient.addColorStop(0.5, 'rgba(255, 255, 255, 0.05)');
+      glowGradient.addColorStop(0, 'rgba(255, 255, 255, 0.2)'); // Increased opacity
+      glowGradient.addColorStop(0.3, 'rgba(255, 255, 255, 0.1)');
+      glowGradient.addColorStop(0.7, 'rgba(255, 255, 255, 0.05)');
       glowGradient.addColorStop(1, 'transparent');
 
       ctx.fillStyle = glowGradient;
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      ctx.fillRect(0, 0, canvas.width, canvas.height * 0.6); // Only top 60%
 
       requestAnimationFrame(animate);
     };
 
-    animate();
+    // Start animation after resize
+    setTimeout(animate, 150);
 
     return () => {
       window.removeEventListener('resize', resizeCanvas);
@@ -79,10 +85,10 @@ export default function HeroSection() {
 
   return (
     <section className="relative h-[95vh] flex items-center justify-center overflow-hidden">
-      {/* Aurora Background Canvas */}
+      {/* Aurora Background Canvas - positioned at top */}
       <canvas
         ref={canvasRef}
-        className="absolute inset-0 w-full h-full"
+        className="absolute top-0 left-0 w-full h-full"
         style={{ background: 'transparent' }}
       />
       
