@@ -10,10 +10,10 @@ export default function HeroSection() {
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
-    // Set canvas size to match viewport (not just container)
+    // Set canvas size to be larger than viewport to show more Aurora
     const resizeCanvas = () => {
       canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
+      canvas.height = window.innerHeight * 1.5; // 50% taller to show more Aurora
     };
     
     // Initial resize with small delay to ensure DOM is ready
@@ -51,14 +51,14 @@ export default function HeroSection() {
         );
       });
 
-      // Fill with gradient - extend beyond container to cover navbar area
+      // Fill with gradient - extend to show more of the Aurora
       ctx.fillStyle = gradient;
-      ctx.fillRect(0, 0, canvas.width, canvas.height * 0.8); // Extend to 80% for navbar coverage
+      ctx.fillRect(0, 0, canvas.width, canvas.height * 0.9); // 90% coverage to show more
 
       // Add aurora glow effect - more pronounced and extended
       const glowGradient = ctx.createRadialGradient(
         canvas.width * 0.5, 0, 0,
-        canvas.width * 0.5, 0, canvas.height * 0.6
+        canvas.width * 0.5, 0, canvas.height * 0.7
       );
       
       glowGradient.addColorStop(0, 'rgba(255, 255, 255, 0.2)'); // Increased opacity
@@ -67,7 +67,7 @@ export default function HeroSection() {
       glowGradient.addColorStop(1, 'transparent');
 
       ctx.fillStyle = glowGradient;
-      ctx.fillRect(0, 0, canvas.width, canvas.height * 0.8); // Extend to 80% for navbar coverage
+      ctx.fillRect(0, 0, canvas.width, canvas.height * 0.9); // 90% coverage to show more
 
       requestAnimationFrame(animate);
     };
@@ -82,11 +82,16 @@ export default function HeroSection() {
 
   return (
     <section className="relative h-[95vh] flex items-center justify-center overflow-hidden">
-      {/* Aurora Background Canvas - positioned at top of viewport */}
+      {/* Aurora Background Canvas - positioned to show more of the effect */}
       <canvas
         ref={canvasRef}
-        className="fixed top-0 left-0 w-full h-full"
-        style={{ background: 'transparent', zIndex: 1 }}
+        className="fixed top-0 left-0 w-full"
+        style={{ 
+          background: 'transparent', 
+          zIndex: 1,
+          height: '150vh', // 50% taller to show more Aurora
+          transform: 'translateY(-10%)' // Move up slightly to show bottom
+        }}
       />
       
       {/* Content */}
