@@ -2,6 +2,10 @@ import { useEffect, useRef } from 'react';
 
 // Import OGL for WebGL rendering
 import { Renderer, Program, Mesh, Color, Triangle } from "ogl";
+// Import corner smoothing
+import { Squircle } from 'corner-smoothing';
+// Import Phosphor Icons
+import { CaretDown } from '@phosphor-icons/react';
 
 // WebGL Shaders
 const VERT = `#version 300 es
@@ -131,6 +135,17 @@ export default function HeroSection(props: AuroraProps) {
 
   const ctnDom = useRef<HTMLDivElement>(null);
 
+  // Scroll to next section function
+  const scrollToNextSection = () => {
+    const nextSection = document.getElementById('next-section');
+    if (nextSection) {
+      nextSection.scrollIntoView({ 
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+  };
+
   useEffect(() => {
     const ctn = ctnDom.current;
     if (!ctn) return;
@@ -212,19 +227,142 @@ export default function HeroSection(props: AuroraProps) {
     };
   }, [amplitude, blend, colorStops, speed]);
 
-  return (
-    <section className="relative h-screen flex items-center justify-center">
-      {/* Aurora Background - Exact ReactBits Implementation */}
-      <div 
-        ref={ctnDom} 
-        className="aurora-container absolute inset-0 w-full h-full"
-        style={{ zIndex: 1 }}
-      />
-      
-      {/* Content */}
-      <div className="relative z-10 text-center">
-        {/* Hero content will be added here */}
+            return (
+            <section className="hero-section flex items-center justify-center relative">
+              {/* Aurora Background - Exact ReactBits Implementation */}
+              <div 
+                ref={ctnDom} 
+                className="aurora-container absolute inset-0 w-full h-full"
+                style={{ zIndex: 1 }}
+              />
+              
+              {/* Navigation - At top of hero section */}
+              <div 
+                className="absolute top-0 left-0 right-0 z-50"
+                style={{
+                  display: 'flex',
+                  padding: '1.25rem 4rem',
+                  justifyContent: 'space-between',
+                  alignItems: 'center',
+                  alignSelf: 'stretch'
+                }}
+              >
+        {/* Text Wrapper */}
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'flex-start'
+          }}
+        >
+          {/* "Sydney Based" */}
+          <p
+            style={{
+              color: '#F7F6F3',
+              fontFamily: 'Archivo, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
+              fontSize: '1.25rem',
+              fontStyle: 'normal',
+              fontWeight: 500,
+              lineHeight: '1.875rem',
+              margin: 0,
+              padding: 0
+            }}
+          >
+            Sydney Based
+          </p>
+          {/* "Working nation-wide" */}
+          <p
+            style={{
+              color: '#FFF',
+              fontFamily: 'Archivo, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
+              fontSize: '1.25rem',
+              fontStyle: 'normal',
+              fontWeight: 500,
+              lineHeight: '1.875rem',
+              opacity: 0.7,
+              margin: 0,
+              padding: 0
+            }}
+          >
+            Working nation-wide
+          </p>
+        </div>
+
+        {/* Button */}
+        <Squircle
+          cornerRadius={20}
+          cornerSmoothing={0.6}
+          style={{
+            display: 'flex',
+            padding: '0.75rem 1rem',
+            justifyContent: 'center',
+            alignItems: 'center',
+            gap: '0.625rem',
+            background: '#FFF',
+            border: 'none',
+            cursor: 'pointer',
+            transition: 'all 0.2s ease-in-out'
+          }}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.transform = 'scale(1.05)';
+            e.currentTarget.style.background = '#F8F8F8';
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.transform = 'scale(1)';
+            e.currentTarget.style.background = '#FFF';
+          }}
+        >
+          {/* Button Text */}
+          <span
+            style={{
+              color: '#000510',
+              fontFamily: 'Archivo, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
+              fontSize: '1.25rem',
+              fontStyle: 'normal',
+              fontWeight: 500,
+              lineHeight: '1.75rem'
+            }}
+          >
+            Get in touch
+          </span>
+        </Squircle>
       </div>
-    </section>
-  );
+      
+                    {/* Hero SVG - Centered with padding */}
+              <div 
+                className="relative z-10 flex items-center justify-center w-full h-full"
+                style={{
+                  padding: '0 4rem'
+                }}
+              >
+                <img 
+                  src="/hero.svg" 
+                  alt="Hero illustration" 
+                  className="hero-svg"
+                  style={{
+                    maxHeight: '80%',
+                    width: '100%',
+                    objectFit: 'contain'
+                  }}
+                />
+              </div>
+
+              {/* Down Caret - Bottom center */}
+              <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20">
+                <button
+                  onClick={scrollToNextSection}
+                  className="flex items-center justify-center w-12 h-12 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 hover:bg-white/20 transition-all duration-300 ease-in-out group"
+                  style={{
+                    animation: 'bounce 2s infinite'
+                  }}
+                >
+                  <CaretDown 
+                    size={24} 
+                    weight="bold" 
+                    className="text-white group-hover:scale-110 transition-transform duration-300"
+                  />
+                </button>
+              </div>
+            </section>
+          );
 } 
