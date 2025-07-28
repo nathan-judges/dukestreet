@@ -2,6 +2,7 @@ import HeroSection from './components/HeroSection'
 import ContactSection from './components/ContactSection'
 import PortfolioSection from './components/PortfolioSection'
 import VariableProximitySection from './components/VariableProximitySection'
+import FooterSection from './components/FooterSection'
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
       <VariableProximitySection 
         text="Whether it's creating podcasts that connect or building websites that convert, we specialise in crafting simple yet beautiful digital experiences. From custom branding to seamless UX/UI design, we help businesses grow with a focus on the future."
       />
+      <FooterSection />
     </main>
   )
 }

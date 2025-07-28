@@ -93,3 +93,24 @@ nav p {
     opacity: 0.6;
   }
 }
+
+/* Footer Section Styles */
+.footer-section {
+  /* For future custom overrides if needed */
+}
+.footer-title {
+  color: #F9F7F1;
+  font-family: 'Archivo', sans-serif;
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+.footer-subtext {
+  color: #F9F7F1;
+  font-family: 'Archivo', sans-serif;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}

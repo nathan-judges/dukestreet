@@ -1,8 +1,5 @@
+/// <reference lib="dom" />
 import { useEffect, useRef, useMemo } from 'react'
-
-// Import image with proper typing
-const filmGrainImage = '/assets/film-grain.jpg'
-
 
 
 interface VariableProximitySectionProps {
@@ -67,6 +64,13 @@ export default function VariableProximitySection({
   const mousePositionRef = useMousePositionRef(containerRef)
   const lastPositionRef = useRef({ x: null as number | null, y: null as number | null })
   const lastUpdateTimeRef = useRef(0)
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.playbackRate = 0.7;
+    }
+  }, []);
 
   // Split text into words with simplified structure
   const words = useMemo(() => {
@@ -172,7 +176,7 @@ export default function VariableProximitySection({
         padding: 'clamp(2rem, 4vw, 4rem) clamp(1rem, 2vw, 2rem)'
       }}
     >
-      {/* Text container with background image */}
+      {/* Video background for text container */}
       <div 
         ref={containerRef}
         className="relative z-10 w-full"
@@ -184,23 +188,30 @@ export default function VariableProximitySection({
           alignItems: 'center',
           flex: '1 0 0',
           borderRadius: 'clamp(24px, 6vw, 64px)',
-          background: '#F8F7F2',
-          backgroundImage: `url(${filmGrainImage})`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          backgroundRepeat: 'no-repeat',
+          background: 'rgba(248, 247, 242, 0.85)',
           position: 'relative',
-          overflow: 'hidden'
+          overflow: 'hidden',
         }}
       >
-        {/* Background overlay for better text readability */}
+        <video
+          ref={videoRef}
+          className="absolute inset-0 w-full h-full object-cover z-0"
+          src="/film.mp4"
+          autoPlay
+          loop
+          muted
+          playsInline
+          style={{
+            borderRadius: 'clamp(24px, 6vw, 64px)',
+            pointerEvents: 'none',
+          }}
+        />
         <div
           className="absolute inset-0"
           style={{
             borderRadius: '64px'
           }}
         />
-
         {/* Text content */}
         <div
           className="relative z-10 text-center w-full"
@@ -212,7 +223,8 @@ export default function VariableProximitySection({
             fontStyle: 'normal',
             fontWeight: 300,
             lineHeight: '1.2',
-            wordBreak: 'keep-all'
+            wordBreak: 'keep-all',
+            mixBlendMode: 'color-burn',
           }}
         >
           {words.map((word, wordIndex) => (
@@ -238,7 +250,8 @@ export default function VariableProximitySection({
                     cursor: 'default',
                     userSelect: 'none',
                     willChange: 'transform, font-weight',
-                    mixBlendMode: 'color-burn'
+                    // fontWeight is set dynamically via JS for variable animation
+                    // Removed mixBlendMode from here
                   }}
                 >
                   {letter.char}
