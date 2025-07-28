@@ -10,40 +10,35 @@ export default function HeroSection() {
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
-    // Set canvas size to match viewport exactly
-    const resizeCanvas = () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    };
-    
-    // Initial resize
-    resizeCanvas();
-    window.addEventListener('resize', resizeCanvas);
-
-    // Aurora colors (PRD palette)
-    const colors = [
-      { r: 57, g: 113, b: 249 },   // Blue #3971F9
-      { r: 217, g: 116, b: 251 },  // Pink #D974FB
-      { r: 248, g: 68, b: 7 }      // Red #F84F07
-    ];
-
+    let animationId: number;
     let time = 0;
-    const speed = 1;
-    const blend = 0.5;
 
-    const animate = () => {
-      time += 0.01 * speed;
+    const resizeCanvas = () => {
+      const rect = canvas.getBoundingClientRect();
+      canvas.width = rect.width * window.devicePixelRatio;
+      canvas.height = rect.height * window.devicePixelRatio;
+      ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
+    };
+
+    const drawAurora = () => {
+      const width = canvas.width / window.devicePixelRatio;
+      const height = canvas.height / window.devicePixelRatio;
+
+      ctx.clearRect(0, 0, width, height);
+
+      // Create gradient
+      const gradient = ctx.createLinearGradient(0, 0, width, 0);
       
-      // Clear canvas
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      
-      // Create gradient - horizontal arrangement like ReactBits
-      const gradient = ctx.createLinearGradient(0, 0, canvas.width, 0);
-      
-      // Add color stops with animation
-      colors.forEach((color, index) => {
-        const offset = (index / (colors.length - 1)) + Math.sin(time + index) * 0.1;
-        const alpha = 0.4 + Math.sin(time * 2 + index) * 0.2 * blend;
+      // Aurora colors (PRD palette)
+      const colors = [
+        { r: 57, g: 113, b: 249 },   // Blue #3971F9
+        { r: 217, g: 116, b: 251 },  // Pink #D974FB
+        { r: 248, g: 68, b: 7 }      // Red #F84F07
+      ];
+
+      colors.forEach((color, i) => {
+        const offset = (i / (colors.length - 1)) + Math.sin(time + i) * 0.1;
+        const alpha = 0.3 + Math.sin(time * 2 + i) * 0.2;
         
         gradient.addColorStop(
           Math.max(0, Math.min(1, offset)),
@@ -51,14 +46,14 @@ export default function HeroSection() {
         );
       });
 
-      // Fill only top 50% of canvas with gradient (like ReactBits demo)
+      // Fill only top portion
       ctx.fillStyle = gradient;
-      ctx.fillRect(0, 0, canvas.width, canvas.height * 0.5);
+      ctx.fillRect(0, 0, width, height * 0.6);
 
-      // Add subtle glow effect - also limited to top 50%
+      // Add glow effect
       const glowGradient = ctx.createRadialGradient(
-        canvas.width * 0.5, 0, 0,
-        canvas.width * 0.5, 0, canvas.height * 0.3
+        width * 0.5, 0, 0,
+        width * 0.5, 0, height * 0.4
       );
       
       glowGradient.addColorStop(0, 'rgba(255, 255, 255, 0.1)');
@@ -66,28 +61,36 @@ export default function HeroSection() {
       glowGradient.addColorStop(1, 'transparent');
 
       ctx.fillStyle = glowGradient;
-      ctx.fillRect(0, 0, canvas.width, canvas.height * 0.5);
+      ctx.fillRect(0, 0, width, height * 0.6);
 
-      requestAnimationFrame(animate);
+      time += 0.01;
+      animationId = requestAnimationFrame(drawAurora);
     };
 
-    animate();
+    resizeCanvas();
+    drawAurora();
+
+    const handleResize = () => {
+      resizeCanvas();
+    };
+
+    window.addEventListener('resize', handleResize);
 
     return () => {
-      window.removeEventListener('resize', resizeCanvas);
+      window.removeEventListener('resize', handleResize);
+      if (animationId) {
+        cancelAnimationFrame(animationId);
+      }
     };
   }, []);
 
   return (
     <section className="relative flex items-center justify-center overflow-hidden">
-      {/* Aurora Background Canvas - full width, 50% height like demo */}
+      {/* Aurora Background Canvas */}
       <canvas
         ref={canvasRef}
-        className="fixed top-0 left-0 w-full h-full"
-        style={{ 
-          background: 'transparent', 
-          zIndex: 1
-        }}
+        className="absolute inset-0 w-full h-full"
+        style={{ background: 'transparent' }}
       />
       
       {/* Content */}
