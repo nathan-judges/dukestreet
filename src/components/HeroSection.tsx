@@ -261,12 +261,13 @@ export default function HeroSection(props: AuroraProps) {
         >
           {/* "Sydney Based" */}
           <p
-            className="mobile:text-lg tablet:text-xl"
             style={{
-              color: '#F7F6F3',
-              fontFamily: 'Archivo, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
+              color: '#FFF',
+              fontFamily: 'Archivo',
+              fontSize: '20px',
               fontStyle: 'normal',
               fontWeight: 500,
+              lineHeight: '30px',
               margin: 0,
               padding: 0
             }}
@@ -275,12 +276,13 @@ export default function HeroSection(props: AuroraProps) {
           </p>
           {/* "Working nation-wide" */}
           <p
-            className="mobile:text-lg tablet:text-xl"
             style={{
               color: '#FFF',
-              fontFamily: 'Archivo, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
+              fontFamily: 'Archivo',
+              fontSize: '20px',
               fontStyle: 'normal',
               fontWeight: 500,
+              lineHeight: '30px',
               opacity: 0.7,
               margin: 0,
               padding: 0

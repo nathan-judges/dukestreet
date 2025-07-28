@@ -183,7 +183,7 @@ export default function ContactSection() {
                   style={{
                     color: '#000510',
                     fontFamily: 'Archivo, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
-                    fontSize: '32px',
+                    fontSize: '28px',
                     fontWeight: 500,
                     marginBottom: '16px'
                   }}
@@ -310,18 +310,18 @@ export default function ContactSection() {
             {/* Services Section */}
             <div style={{ width: '100%' }}>
               <label
-                style={{
-                  color: '#000510',
-                  textAlign: 'justify',
-                  fontFamily: 'Archivo, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
-                  fontSize: '28px',
-                  fontStyle: 'normal',
-                  fontWeight: 500,
-                  lineHeight: '32px',
-                  opacity: 0.4,
-                  display: 'block',
-                  marginBottom: '16px'
-                }}
+                                  style={{
+                    color: '#000510',
+                    textAlign: 'justify',
+                    fontFamily: 'Archivo, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
+                    fontSize: '28px',
+                    fontStyle: 'normal',
+                    fontWeight: 500,
+                    lineHeight: '32px',
+                    opacity: 0.4,
+                    display: 'block',
+                    marginBottom: '16px'
+                  }}
               >
                 How can we help?
               </label>
