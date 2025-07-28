@@ -51,14 +51,14 @@ export default function HeroSection() {
         );
       });
 
-      // Fill entire canvas with gradient
+      // Fill only top 50% of canvas with gradient (like ReactBits demo)
       ctx.fillStyle = gradient;
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      ctx.fillRect(0, 0, canvas.width, canvas.height * 0.5);
 
-      // Add subtle glow effect
+      // Add subtle glow effect - also limited to top 50%
       const glowGradient = ctx.createRadialGradient(
         canvas.width * 0.5, 0, 0,
-        canvas.width * 0.5, 0, canvas.height * 0.5
+        canvas.width * 0.5, 0, canvas.height * 0.3
       );
       
       glowGradient.addColorStop(0, 'rgba(255, 255, 255, 0.1)');
@@ -66,7 +66,7 @@ export default function HeroSection() {
       glowGradient.addColorStop(1, 'transparent');
 
       ctx.fillStyle = glowGradient;
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      ctx.fillRect(0, 0, canvas.width, canvas.height * 0.5);
 
       requestAnimationFrame(animate);
     };
@@ -80,7 +80,7 @@ export default function HeroSection() {
 
   return (
     <section className="relative flex items-center justify-center overflow-hidden">
-      {/* Aurora Background Canvas - full viewport coverage */}
+      {/* Aurora Background Canvas - full width, 50% height like demo */}
       <canvas
         ref={canvasRef}
         className="fixed top-0 left-0 w-full h-full"
