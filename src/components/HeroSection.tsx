@@ -14,15 +14,14 @@ export default function HeroSection() {
     let time = 0;
 
     const resizeCanvas = () => {
-      const rect = canvas.getBoundingClientRect();
-      canvas.width = rect.width * window.devicePixelRatio;
-      canvas.height = rect.height * window.devicePixelRatio;
+      canvas.width = window.innerWidth * window.devicePixelRatio;
+      canvas.height = window.innerHeight * window.devicePixelRatio;
       ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
     };
 
     const drawAurora = () => {
-      const width = canvas.width / window.devicePixelRatio;
-      const height = canvas.height / window.devicePixelRatio;
+      const width = window.innerWidth;
+      const height = window.innerHeight;
 
       ctx.clearRect(0, 0, width, height);
 
@@ -86,11 +85,11 @@ export default function HeroSection() {
 
   return (
     <section className="relative flex items-center justify-center overflow-hidden">
-      {/* Aurora Background Canvas */}
+      {/* Aurora Background Canvas - fixed to cover entire viewport */}
       <canvas
         ref={canvasRef}
-        className="absolute inset-0 w-full h-full"
-        style={{ background: 'transparent' }}
+        className="fixed top-0 left-0 w-full h-full"
+        style={{ background: 'transparent', zIndex: 1 }}
       />
       
       {/* Content */}
