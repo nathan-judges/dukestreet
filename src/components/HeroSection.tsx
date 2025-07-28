@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react';
 
+
 export default function HeroSection() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
@@ -14,14 +15,16 @@ export default function HeroSection() {
     let time = 0;
 
     const resizeCanvas = () => {
-      canvas.width = window.innerWidth * window.devicePixelRatio;
-      canvas.height = window.innerHeight * window.devicePixelRatio;
+      const rect = canvas.getBoundingClientRect();
+      canvas.width = rect.width * window.devicePixelRatio;
+      canvas.height = rect.height * window.devicePixelRatio;
       ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
     };
 
     const drawAurora = () => {
-      const width = window.innerWidth;
-      const height = window.innerHeight;
+      const rect = canvas.getBoundingClientRect();
+      const width = rect.width;
+      const height = rect.height;
 
       ctx.clearRect(0, 0, width, height);
 
@@ -84,11 +87,11 @@ export default function HeroSection() {
   }, []);
 
   return (
-    <section className="relative flex items-center justify-center overflow-hidden">
-      {/* Aurora Background Canvas - fixed to cover entire viewport */}
+    <section className="relative h-screen flex items-center justify-center overflow-hidden">
+      {/* Aurora Background Canvas - absolute within section */}
       <canvas
         ref={canvasRef}
-        className="fixed top-0 left-0 w-full h-full"
+        className="absolute inset-0 w-full h-full"
         style={{ background: 'transparent', zIndex: 1 }}
       />
       
