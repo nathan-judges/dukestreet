@@ -46,3 +46,9 @@ html {
 .mix-blend-overlay {
   mix-blend-mode: overlay;
 }
+
+/* Navigation specific styles to override browser defaults */
+nav p {
+  margin: 0 !important;
+  padding: 0 !important;
+}
