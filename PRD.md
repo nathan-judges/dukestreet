@@ -202,13 +202,14 @@ Navigation: text-lg sm:text-xl lg:text-2xl xl:text-3xl font-instrument-serif fon
 
 **Navigation Component Specifications:**
 
-Container: flex justify-between items-center py-5 px-4 sm:px-8 lg:px-16
+Container: flex justify-between items-center self-stretch py-5 px-16
 
 Text Wrapper (Left Side): flex flex-col items-start
-- "Sydney Based": text-xl font-archivo font-medium leading-[30px] text-[#F7F6F3]
-- "Working nation-wide": text-xl font-archivo font-medium leading-[30px] text-white mix-blend-overlay
+- "Sydney Based": text-[#F7F6F3] font-archivo text-xl font-normal font-medium leading-[30px]
+- "Working nation-wide": text-white font-archivo text-xl font-normal font-medium leading-[30px] mix-blend-overlay
 
-Button (Right Side): flex px-4 py-3 justify-center items-center gap-2.5 rounded-2xl bg-white text-dark text-xl font-archivo font-medium leading-[28px]
+Button (Right Side): flex py-3 px-4 justify-center items-center gap-2.5 rounded-2xl bg-white
+- Button Text: text-dark font-archivo text-xl font-normal font-medium leading-[28px]
 
 Background: bg-dark/30 backdrop-blur-lg border-b border-white/5
 
@@ -218,7 +219,7 @@ Focus States: focus:ring-2 focus:ring-white/50 focus:ring-offset-2 focus:ring-of
 
 Scroll Functionality: Button scrolls to contact-form-section or falls back to viewport height
 
-**Note:** The navigation features a clean layout with location text on the left and a white "Get in touch" button on the right, matching the mockup design.
+**Note:** The navigation features exact specifications matching the provided design with precise spacing, typography, and layout.
 
 Spacing:
 
