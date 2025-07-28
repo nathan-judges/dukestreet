@@ -7,11 +7,11 @@ export default function Navbar() {
         {/* Text wrapper */}
         <div className="flex flex-col items-start">
           {/* "Sydney Based" */}
-          <p className="text-[#F7F6F3] font-archivo text-xl font-normal font-medium leading-[30px]">
+          <p className="text-white font-archivo text-xl font-normal font-medium leading-[30px] m-0">
             Sydney Based
           </p>
           {/* "Working nation-wide" */}
-          <p className="text-white font-archivo text-xl font-normal font-medium leading-[30px] mix-blend-overlay">
+          <p className="text-white font-archivo text-xl font-normal font-medium leading-[30px] mix-blend-overlay m-0">
             Working nation-wide
           </p>
         </div>
