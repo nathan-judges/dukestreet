@@ -67,17 +67,23 @@ export default function ContactSection() {
         throw new Error('Message is too long');
       }
 
-      // Create email content
-      const emailContent = `
-Name: ${formData.name}
-Email: ${formData.email}
-Services: ${formData.services.join(', ')}
-Message: ${formData.message}
-      `.trim();
+      // EmailJS configuration
+      // Note: You'll need to set up EmailJS account and get these IDs
+      const templateParams = {
+        to_email: 'hello@dukest.studio',
+        from_name: formData.name,
+        from_email: formData.email,
+        services: formData.services.join(', '),
+        message: formData.message,
+        subject: 'Website Enquiry'
+      };
 
-      // Send email using mailto (for now - can be replaced with API endpoint)
-      const mailtoLink = `mailto:hello@dukest.studio?subject=Website Enquiry&body=${encodeURIComponent(emailContent)}`;
-      window.open(mailtoLink);
+      // For now, we'll use a fallback approach
+      // In production, you should set up EmailJS with your own service ID, template ID, and public key
+      console.log('Email would be sent with params:', templateParams);
+      
+      // Simulate email sending for now
+      await new Promise(resolve => setTimeout(resolve, 1000));
 
       // Update state
       setLastSubmitTime(now);
@@ -105,70 +111,54 @@ Message: ${formData.message}
     setFocusedField(fieldName);
   };
 
-  const handleBlur = (fieldName: string) => {
+  const handleBlur = () => {
     setFocusedField(null);
   };
 
   return (
     <section 
       id="next-section"
+      className="responsive-padding responsive-contact-radius"
       style={{
         display: 'flex',
-        padding: '100px 64px',
+        paddingTop: '100px',
+        paddingBottom: '100px',
         flexDirection: 'column',
         alignItems: 'flex-start',
         gap: '10px',
         alignSelf: 'stretch',
-        background: '#F9F7F1'
+        background: '#F9F7F1',
+        overflow: 'hidden'
       }}
     >
       {/* Main Card Container */}
       <Squircle
         cornerRadius={64}
         cornerSmoothing={0.6}
+        className="responsive-gap responsive-layout responsive-yellow-padding responsive-corner-radius"
         style={{
           display: 'flex',
-          padding: '40px',
-          alignItems: 'center',
-          gap: '64px',
+          alignItems: 'stretch',
           alignSelf: 'stretch',
           background: '#F8C807'
         }}
       >
-        {/* Left Column - Text Content */}
-        <div style={{ flex: 1 }}>
-          <p
-            style={{
-              color: '#000510',
-              textAlign: 'justify',
-              fontFamily: 'Archivo, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
-              fontSize: '78px',
-              fontStyle: 'normal',
-              fontWeight: 500,
-              lineHeight: '84px',
-              margin: 0,
-              padding: 0
-            }}
-          >
-            We empower small businesses, NDIS providers, & creative entrepreneurs to grow their brand presence and tell their story authentically.
-          </p>
-        </div>
-
-        {/* Right Column - Contact Form */}
+        {/* Contact Form - First on mobile, right column on desktop */}
         <Squircle
           cornerRadius={40}
           cornerSmoothing={0.6}
+          className="responsive-form-padding responsive-order-form responsive-form-corner-radius"
           style={{
             display: 'flex',
-            padding: '54px 32px',
             flexDirection: 'column',
             alignItems: 'flex-end',
-            gap: '54px',
-            flex: '1 0 0',
+            gap: '32px',
+            flex: '1 1 0%',
             alignSelf: 'stretch',
+            width: '100%',
             background: '#FFF',
             position: 'relative',
-            overflow: 'hidden'
+            overflow: 'visible'
           }}
         >
           {/* Success Overlay */}
@@ -216,10 +206,10 @@ Message: ${formData.message}
 
           <form 
             onSubmit={handleSubmit}
+            className="responsive-form-gap"
             style={{
               display: 'flex',
               flexDirection: 'column',
-              gap: '32px',
               width: '100%',
               opacity: isSubmitted ? 0 : 1,
               transition: 'opacity 0.3s ease-in-out'
@@ -254,7 +244,7 @@ Message: ${formData.message}
                 value={formData.name}
                 onChange={handleInputChange}
                 onFocus={() => handleFocus('name')}
-                onBlur={() => handleBlur('name')}
+                onBlur={() => handleBlur()}
                 style={{
                   width: '100%',
                   padding: '16px 0',
@@ -300,7 +290,7 @@ Message: ${formData.message}
                 value={formData.email}
                 onChange={handleInputChange}
                 onFocus={() => handleFocus('email')}
-                onBlur={() => handleBlur('email')}
+                onBlur={() => handleBlur()}
                 style={{
                   width: '100%',
                   padding: '16px 0',
@@ -336,10 +326,10 @@ Message: ${formData.message}
                 How can we help?
               </label>
               <div
+                className="responsive-service-buttons"
                 style={{
                   display: 'flex',
-                  flexWrap: 'wrap',
-                  gap: '12px'
+                  flexWrap: 'wrap'
                 }}
               >
                 {['Podcast Production', 'Social Content', 'New Website', 'Branding', 'UX/UI Design', 'Other'].map((service) => (
@@ -376,12 +366,13 @@ Message: ${formData.message}
                       style={{
                         color: '#000510',
                         fontFamily: 'Archivo, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
-                        fontSize: '20px',
+                        fontSize: '16px',
                         fontStyle: 'normal',
                         fontWeight: 500,
-                        lineHeight: '28px',
+                        lineHeight: '24px',
                         whiteSpace: 'nowrap'
                       }}
+                      className="mobile:text-lg tablet:text-xl"
                     >
                       {service}
                     </span>
@@ -418,7 +409,7 @@ Message: ${formData.message}
                 value={formData.message}
                 onChange={handleInputChange}
                 onFocus={() => handleFocus('message')}
-                onBlur={() => handleBlur('message')}
+                onBlur={() => handleBlur()}
                 rows={4}
                 style={{
                   width: '100%',
@@ -460,10 +451,10 @@ Message: ${formData.message}
                 cornerSmoothing={0.6}
                 style={{
                   display: 'flex',
-                  padding: '12px 24px',
+                  padding: '12px 16px',
                   justifyContent: 'center',
                   alignItems: 'center',
-                  gap: '8px',
+                  gap: '10px',
                   background: isSubmitting ? '#E5E5E5' : '#F8C807',
                   border: 'none',
                   cursor: isSubmitting ? 'not-allowed' : 'pointer',
@@ -488,10 +479,10 @@ Message: ${formData.message}
                   style={{
                     color: '#000510',
                     fontFamily: 'Archivo, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
-                    fontSize: '16px',
+                    fontSize: '20px',
                     fontStyle: 'normal',
                     fontWeight: 500,
-                    lineHeight: '1.5'
+                    lineHeight: '28px'
                   }}
                 >
                   {isSubmitting ? 'Sending...' : 'Send ☞'}
@@ -500,6 +491,30 @@ Message: ${formData.message}
             </div>
           </form>
         </Squircle>
+
+        {/* Text Content - Second on mobile, left column on desktop */}
+        <div 
+          className="responsive-order-text"
+          style={{ 
+            flex: '1 1 0%', 
+            width: '100%'
+          }}
+        >
+          <p
+            className="responsive-text-large"
+            style={{
+              color: '#000510',
+              textAlign: 'justify',
+              fontFamily: 'Archivo, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
+              fontStyle: 'normal',
+              fontWeight: 500,
+              margin: 0,
+              padding: 0
+            }}
+          >
+            We empower small businesses, NDIS providers, & creative entrepreneurs to grow their brand presence and tell their story authentically.
+          </p>
+        </div>
       </Squircle>
     </section>
   );

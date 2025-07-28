@@ -1,0 +1,351 @@
+/* Responsive Design Utilities */
+
+/* Mobile-first approach */
+/* Base styles are for mobile (default) */
+
+/* Tablet breakpoint */
+@media (min-width: 768px) {
+  .tablet\:px-16 {
+    padding-left: 4rem !important;
+    padding-right: 4rem !important;
+  }
+  
+  .tablet\:px-8 {
+    padding-left: 2rem !important;
+    padding-right: 2rem !important;
+  }
+  
+  .tablet\:text-4xl {
+    font-size: 2.25rem !important;
+    line-height: 2.5rem !important;
+  }
+  
+  .tablet\:text-2xl {
+    font-size: 1.5rem !important;
+    line-height: 2rem !important;
+  }
+  
+  .tablet\:flex-row {
+    flex-direction: row !important;
+  }
+  
+  .tablet\:gap-16 {
+    gap: 4rem !important;
+  }
+  
+  .tablet\:gap-8 {
+    gap: 2rem !important;
+  }
+}
+
+/* Desktop breakpoint */
+@media (min-width: 1024px) {
+  .desktop\:px-16 {
+    padding-left: 4rem !important;
+    padding-right: 4rem !important;
+  }
+  
+  .desktop\:text-6xl {
+    font-size: 3.75rem !important;
+    line-height: 1 !important;
+  }
+  
+  .desktop\:text-5xl {
+    font-size: 3rem !important;
+    line-height: 1 !important;
+  }
+  
+  .desktop\:gap-16 {
+    gap: 4rem !important;
+  }
+}
+
+/* Large desktop breakpoint */
+@media (min-width: 1280px) {
+  .xl\:px-16 {
+    padding-left: 4rem !important;
+    padding-right: 4rem !important;
+  }
+  
+  .xl\:text-7xl {
+    font-size: 4.5rem !important;
+    line-height: 1 !important;
+  }
+}
+
+/* Mobile-specific utilities */
+.mobile\:px-4 {
+  padding-left: 1rem !important;
+  padding-right: 1rem !important;
+}
+
+.mobile\:text-xl {
+  font-size: 1.25rem !important;
+  line-height: 1.75rem !important;
+}
+
+.mobile\:text-lg {
+  font-size: 1.125rem !important;
+  line-height: 1.75rem !important;
+}
+
+.mobile\:flex-col {
+  flex-direction: column !important;
+}
+
+.mobile\:gap-8 {
+  gap: 2rem !important;
+}
+
+.mobile\:gap-4 {
+  gap: 1rem !important;
+}
+
+/* Responsive padding utilities */
+.responsive-padding {
+  padding: 1rem;
+}
+
+@media (min-width: 768px) {
+  .responsive-padding {
+    padding: 2rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .responsive-padding {
+    padding: 4rem;
+  }
+}
+
+/* Responsive navigation padding */
+.responsive-nav-padding {
+  padding: 1.25rem 1rem;
+}
+
+@media (min-width: 768px) {
+  .responsive-nav-padding {
+    padding: 1.25rem 2rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .responsive-nav-padding {
+    padding: 1.25rem 4rem;
+  }
+}
+
+/* Responsive yellow container padding */
+.responsive-yellow-padding {
+  padding: 1rem;
+}
+
+@media (min-width: 768px) {
+  .responsive-yellow-padding {
+    padding: 2rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .responsive-yellow-padding {
+    padding: 2.5rem;
+  }
+}
+
+/* Responsive corner radius */
+.responsive-corner-radius {
+  border-radius: 32px;
+}
+
+@media (min-width: 768px) {
+  .responsive-corner-radius {
+    border-radius: 48px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .responsive-corner-radius {
+    border-radius: 64px;
+  }
+}
+
+/* Responsive form corner radius */
+.responsive-form-corner-radius {
+  border-radius: 24px;
+}
+
+@media (min-width: 768px) {
+  .responsive-form-corner-radius {
+    border-radius: 32px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .responsive-form-corner-radius {
+    border-radius: 40px;
+  }
+}
+
+/* Responsive hero section corner radius */
+.responsive-hero-radius {
+  border-radius: 0 0 32px 32px;
+}
+
+@media (min-width: 768px) {
+  .responsive-hero-radius {
+    border-radius: 0 0 48px 48px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .responsive-hero-radius {
+    border-radius: 0 0 64px 64px;
+  }
+}
+
+/* Responsive contact section corner radius */
+.responsive-contact-radius {
+  border-radius: 0 0 32px 32px;
+}
+
+@media (min-width: 768px) {
+  .responsive-contact-radius {
+    border-radius: 0 0 48px 48px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .responsive-contact-radius {
+    border-radius: 0 0 64px 64px;
+  }
+}
+
+/* Responsive text utilities */
+.responsive-text-large {
+  font-size: 1.5rem;
+  line-height: 2rem;
+}
+
+@media (min-width: 768px) {
+  .responsive-text-large {
+    font-size: 2.5rem;
+    line-height: 3rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .responsive-text-large {
+    font-size: 4rem;
+    line-height: 4.5rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  .responsive-text-large {
+    font-size: 5rem;
+    line-height: 5.5rem;
+  }
+}
+
+/* Responsive gap utilities */
+.responsive-gap {
+  gap: 2rem;
+}
+
+@media (min-width: 768px) {
+  .responsive-gap {
+    gap: 3rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .responsive-gap {
+    gap: 4rem;
+  }
+}
+
+/* Responsive layout utilities */
+.responsive-layout {
+  flex-direction: column;
+}
+
+@media (min-width: 1024px) {
+  .responsive-layout {
+    flex-direction: row;
+  }
+  
+  /* Ensure equal width columns on desktop */
+  .responsive-layout > * {
+    flex: 1 1 0% !important;
+  }
+}
+
+/* Responsive order utilities */
+.responsive-order-form {
+  order: 1;
+}
+
+.responsive-order-text {
+  order: 2;
+}
+
+@media (min-width: 1024px) {
+  .responsive-order-form {
+    order: 2;
+  }
+  
+  .responsive-order-text {
+    order: 1;
+  }
+}
+
+/* Responsive padding for contact form */
+.responsive-form-padding {
+  padding: 2rem 1rem;
+}
+
+@media (min-width: 768px) {
+  .responsive-form-padding {
+    padding: 2.5rem 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .responsive-form-padding {
+    padding: 54px 32px;
+  }
+}
+
+/* Responsive form gap */
+.responsive-form-gap {
+  gap: 2rem;
+}
+
+@media (min-width: 768px) {
+  .responsive-form-gap {
+    gap: 2.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .responsive-form-gap {
+    gap: 3rem;
+  }
+}
+
+/* Responsive service buttons */
+.responsive-service-buttons {
+  gap: 0.5rem;
+}
+
+@media (min-width: 768px) {
+  .responsive-service-buttons {
+    gap: 0.75rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .responsive-service-buttons {
+    gap: 0.75rem;
+  }
+} 

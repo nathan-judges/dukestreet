@@ -4,8 +4,12 @@ import ContactSection from './components/ContactSection'
 function App() {
   return (
     <main className="bg-dark w-full min-h-screen m-0 p-0 relative overflow-x-hidden">
-      <HeroSection />
-      <ContactSection />
+      <div style={{ background: '#F8F7F2' }}>
+        <HeroSection />
+      </div>
+      <div style={{ background: '#000510' }}>
+        <ContactSection />
+      </div>
     </main>
   )
 }

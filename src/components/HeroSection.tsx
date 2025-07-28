@@ -228,7 +228,12 @@ export default function HeroSection(props: AuroraProps) {
   }, [amplitude, blend, colorStops, speed]);
 
             return (
-            <section className="hero-section flex items-center justify-center relative">
+            <section 
+              className="hero-section flex items-center justify-center relative responsive-hero-radius"
+              style={{
+                overflow: 'hidden'
+              }}
+            >
               {/* Aurora Background - Exact ReactBits Implementation */}
               <div 
                 ref={ctnDom} 
@@ -238,10 +243,9 @@ export default function HeroSection(props: AuroraProps) {
               
               {/* Navigation - At top of hero section */}
               <div 
-                className="absolute top-0 left-0 right-0 z-50"
+                className="absolute top-0 left-0 right-0 z-50 responsive-nav-padding"
                 style={{
                   display: 'flex',
-                  padding: '1.25rem 4rem',
                   justifyContent: 'space-between',
                   alignItems: 'center',
                   alignSelf: 'stretch'
@@ -257,13 +261,12 @@ export default function HeroSection(props: AuroraProps) {
         >
           {/* "Sydney Based" */}
           <p
+            className="mobile:text-lg tablet:text-xl"
             style={{
               color: '#F7F6F3',
               fontFamily: 'Archivo, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
-              fontSize: '1.25rem',
               fontStyle: 'normal',
               fontWeight: 500,
-              lineHeight: '1.875rem',
               margin: 0,
               padding: 0
             }}
@@ -272,13 +275,12 @@ export default function HeroSection(props: AuroraProps) {
           </p>
           {/* "Working nation-wide" */}
           <p
+            className="mobile:text-lg tablet:text-xl"
             style={{
               color: '#FFF',
               fontFamily: 'Archivo, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
-              fontSize: '1.25rem',
               fontStyle: 'normal',
               fontWeight: 500,
-              lineHeight: '1.875rem',
               opacity: 0.7,
               margin: 0,
               padding: 0
@@ -314,13 +316,12 @@ export default function HeroSection(props: AuroraProps) {
         >
           {/* Button Text */}
           <span
+            className="mobile:text-lg tablet:text-xl"
             style={{
               color: '#000510',
               fontFamily: 'Archivo, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
-              fontSize: '1.25rem',
               fontStyle: 'normal',
-              fontWeight: 500,
-              lineHeight: '1.75rem'
+              fontWeight: 500
             }}
           >
             Get in touch
@@ -330,10 +331,7 @@ export default function HeroSection(props: AuroraProps) {
       
                     {/* Hero SVG - Centered with padding */}
               <div 
-                className="relative z-10 flex items-center justify-center w-full h-full"
-                style={{
-                  padding: '0 4rem'
-                }}
+                className="relative z-10 flex items-center justify-center w-full h-full responsive-padding"
               >
                 <img 
                   src="/hero.svg" 
