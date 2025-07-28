@@ -47,3 +47,42 @@ nav p {
   margin: 0 !important;
   padding: 0 !important;
 }
+
+/* Aurora Background Animations */
+@keyframes aurora-float {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+    opacity: 0.8;
+  }
+  25% {
+    transform: translateY(-10px) rotate(1deg);
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(-5px) rotate(-1deg);
+    opacity: 0.9;
+  }
+  75% {
+    transform: translateY(-15px) rotate(0.5deg);
+    opacity: 0.95;
+  }
+}
+
+@keyframes aurora-glow {
+  0%, 100% {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.6;
+    transform: scale(1.05);
+  }
+}
+
+.aurora-layer {
+  animation: aurora-float 8s ease-in-out infinite;
+}
+
+.aurora-glow {
+  animation: aurora-glow 6s ease-in-out infinite;
+}
