@@ -81,3 +81,15 @@ nav p {
     transform: translateY(0);
   }
 }
+
+/* Floating animation for variable proximity section */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px) scale(1);
+    opacity: 0.3;
+  }
+  50% {
+    transform: translateY(-20px) scale(1.2);
+    opacity: 0.6;
+  }
+}
