@@ -1,5 +1,6 @@
 import HeroSection from './components/HeroSection'
 import ContactSection from './components/ContactSection'
+import PortfolioSection from './components/PortfolioSection'
 
 function App() {
   return (
@@ -9,6 +10,7 @@ function App() {
       </div>
       <div style={{ background: '#000510' }}>
         <ContactSection />
+        <PortfolioSection />
       </div>
     </main>
   )
