@@ -202,13 +202,13 @@ Navigation: text-lg sm:text-xl lg:text-2xl xl:text-3xl font-instrument-serif fon
 
 **Navigation Component Specifications:**
 
+Container: flex justify-between items-center py-5 px-4 sm:px-8 lg:px-16
+
 Text Wrapper (Left Side): flex flex-col items-start
 - "Sydney Based": text-xl font-archivo font-medium leading-[30px] text-[#F7F6F3]
 - "Working nation-wide": text-xl font-archivo font-medium leading-[30px] text-white mix-blend-overlay
 
 Button (Right Side): flex px-4 py-3 justify-center items-center gap-2.5 rounded-2xl bg-white text-dark text-xl font-archivo font-medium leading-[28px]
-
-Navigation Height: h-16 sm:h-18 lg:h-22 (responsive height scaling)
 
 Background: bg-dark/30 backdrop-blur-lg border-b border-white/5
 
@@ -216,7 +216,9 @@ Hover Effects: hover:bg-white/90 (button), hover:scale-1.02 (text wrapper)
 
 Focus States: focus:ring-2 focus:ring-white/50 focus:ring-offset-2 focus:ring-offset-dark (button)
 
-**Note:** The navigation now features a simplified layout with location text on the left and a white "Get in touch" button on the right, removing the previous navigation links and logo.
+Scroll Functionality: Button scrolls to contact-form-section or falls back to viewport height
+
+**Note:** The navigation features a clean layout with location text on the left and a white "Get in touch" button on the right, matching the mockup design.
 
 Spacing:
 
@@ -264,11 +266,11 @@ Gradients: The AI should recreate the specific purple-to-orange gradient for the
 
 Color Stops: ["#3971F9", "#D974FB", "#F84F07"]
 
-Blend: 0.25 (reduced for more subtlety)
+Blend: 0.4 (increased for more visibility)
 
-Amplitude: 0.3 (reduced for gentler waves)
+Amplitude: 0.5 (increased for more vibrant effect)
 
-Speed: 0.12 (slightly slower for more elegant movement)
+Speed: 0.15 (slightly faster for more dynamic movement)
 
 Fractal Noise Iterations: 4 (increased for more detail)
 

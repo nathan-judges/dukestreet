@@ -32,20 +32,6 @@ export default function HeroSection() {
     },
   };
 
-  const scrollToContact = () => {
-    // Scroll to contact form section (placeholder for now)
-    const contactSection = document.getElementById('contact-form-section');
-    if (contactSection) {
-      contactSection.scrollIntoView({ behavior: 'smooth' });
-    } else {
-      // Fallback: scroll down one viewport height
-      window.scrollTo({
-        top: window.innerHeight,
-        behavior: 'smooth'
-      });
-    }
-  };
-
   const scrollToNextSection = () => {
     // Scroll to next section (Introduction/Value Proposition)
     const nextSection = document.getElementById('introduction-section');
@@ -95,21 +81,6 @@ export default function HeroSection() {
             Empowering small businesses, NDIS providers, and creative entrepreneurs 
             with professional audio, web development, and UX/UI design services.
           </motion.p>
-
-          {/* Get in touch button - Enhanced styling */}
-          <motion.div
-            variants={textVariants}
-            className="pt-6 sm:pt-8 lg:pt-10"
-          >
-            <motion.button
-              onClick={scrollToContact}
-              whileHover={{ scale: 1.05, y: -2 }}
-              whileTap={{ scale: 0.95 }}
-              className="bg-yellow text-dark px-8 sm:px-10 lg:px-12 py-3 sm:py-4 lg:py-5 rounded-2xl font-archivo font-semibold text-base sm:text-lg lg:text-xl hover:bg-yellow/90 transition-all duration-300 shadow-xl hover:shadow-2xl hover:shadow-yellow/20 focus:outline-none focus:ring-2 focus:ring-yellow/50 focus:ring-offset-2 focus:ring-offset-dark"
-            >
-              Get in touch
-            </motion.button>
-          </motion.div>
         </motion.div>
 
         {/* Down arrow - Improved positioning and styling */}
