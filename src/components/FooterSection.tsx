@@ -5,7 +5,7 @@ import '../styles/responsive.css';
 const FooterSection: React.FC = () => {
   return (
     <footer
-      className="footer-section bg-[#000510] px-[32px] pt-[80px] pb-[60px] md:px-[64px] md:pt-[160px] md:pb-[120px] md:pl-[148px] grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-10 lg:gap-12 items-start justify-items-start"
+      className="footer-section bg-[#000510] px-[32px] pt-[80px] pb-[60px] md:px-[64px] md:pt-[160px] md:pb-[120px] md:pl-[148px] grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10 lg:gap-12 items-start justify-items-start"
       style={{
         minHeight: '400px'
       }}
@@ -52,7 +52,6 @@ const FooterSection: React.FC = () => {
       
       {/* Policy and Acknowledgement */}
       <div className="footer-col flex flex-col gap-4">
-        <div className="footer-title">Policy</div>
         <div className="footer-stack flex flex-col gap-2">
           <div className="footer-subtext">© 2025 Privacy</div>
           <div className="footer-subtext">Acknowledgement of Country</div>

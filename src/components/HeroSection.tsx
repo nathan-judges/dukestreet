@@ -243,51 +243,16 @@ export default function HeroSection(props: AuroraProps) {
               
               {/* Navigation - At top of hero section */}
               <div 
-                className="absolute top-0 left-0 right-0 z-50 responsive-nav-padding"
-                style={{
-                  display: 'flex',
-                  justifyContent: 'space-between',
-                  alignItems: 'center',
-                  alignSelf: 'stretch'
-                }}
+                className="absolute top-0 left-0 right-0 z-50 responsive-nav-padding flex justify-between items-center self-stretch"
               >
         {/* Text Wrapper */}
-        <div
-          style={{
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'flex-start'
-          }}
-        >
+        <div className="flex flex-col items-start">
           {/* "Sydney Based" */}
-          <p
-            style={{
-              color: '#FFF',
-              fontFamily: 'Archivo',
-              fontSize: '20px',
-              fontStyle: 'normal',
-              fontWeight: 500,
-              lineHeight: '30px',
-              margin: 0,
-              padding: 0
-            }}
-          >
+          <p className="text-white font-archivo text-xl font-medium leading-[30px] m-0 p-0">
             Sydney Based
           </p>
           {/* "Working nation-wide" */}
-          <p
-            style={{
-              color: '#FFF',
-              fontFamily: 'Archivo',
-              fontSize: '20px',
-              fontStyle: 'normal',
-              fontWeight: 500,
-              lineHeight: '30px',
-              opacity: 0.7,
-              margin: 0,
-              padding: 0
-            }}
-          >
+          <p className="text-white font-archivo text-xl font-medium leading-[30px] opacity-70 m-0 p-0">
             Working nation-wide
           </p>
         </div>
@@ -296,36 +261,10 @@ export default function HeroSection(props: AuroraProps) {
         <Squircle
           cornerRadius={20}
           cornerSmoothing={0.6}
-          style={{
-            display: 'flex',
-            padding: '0.75rem 1rem',
-            justifyContent: 'center',
-            alignItems: 'center',
-            gap: '0.625rem',
-            background: '#FFF',
-            border: 'none',
-            cursor: 'pointer',
-            transition: 'all 0.2s ease-in-out'
-          }}
-          onMouseEnter={(e) => {
-            e.currentTarget.style.transform = 'scale(1.05)';
-            e.currentTarget.style.background = '#F8F8F8';
-          }}
-          onMouseLeave={(e) => {
-            e.currentTarget.style.transform = 'scale(1)';
-            e.currentTarget.style.background = '#FFF';
-          }}
+          className="flex py-3 px-4 justify-center items-center gap-2.5 bg-white border-none cursor-pointer transition-all duration-200 ease-in-out hover:scale-105 hover:bg-gray-50"
         >
           {/* Button Text */}
-          <span
-            className="mobile:text-lg tablet:text-xl"
-            style={{
-              color: '#000510',
-              fontFamily: 'Archivo, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
-              fontStyle: 'normal',
-              fontWeight: 500
-            }}
-          >
+          <span className="text-dark font-archivo text-xl font-medium mobile:text-lg tablet:text-xl">
             Get in touch
           </span>
         </Squircle>
