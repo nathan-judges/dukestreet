@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Squircle } from 'corner-smoothing';
+import StarBorder from './StarBorder';
 
 interface HelpRow {
   id: number;
@@ -92,77 +93,84 @@ export default function WhoWeHelp() {
       <div style={{ flex: 1, display: 'flex', justifyContent: 'flex-start' }}>
         <div className="w-full">
           <Squircle
-            cornerRadius={24}
+            cornerRadius={64}
             cornerSmoothing={0.6}
             className="w-full"
-            style={{
-              background: 'rgba(249, 247, 241, 0.03)',
-              border: '1px solid rgba(249, 247, 241, 0.1)',
-              boxShadow: '0 8px 32px rgba(0, 0, 0, 0.2)'
-            }}
+            style={{ borderRadius: '64px' }}
           >
-            <div className="space-y-0">
-              {helpRows.map((row, index) => (
-                <div key={row.id} className="w-full">
-                  <div
-                    className="w-full cursor-pointer transition-all duration-300 ease-out"
-                    style={{
-                      background: expandedRow === row.id ? 'rgba(249, 247, 241, 0.1)' : 'transparent',
-                      borderBottom: index < helpRows.length - 1 ? '1px solid rgba(249, 247, 241, 0.08)' : 'none',
-                      transform: expandedRow === row.id ? 'scale(1.01)' : 'scale(1)',
-                    }}
-                    onClick={() => toggleRow(row.id)}
-                  >
-                    {/* Row Header */}
-                    <div className="p-6 md:p-8 lg:p-10">
-                      <div className="flex items-center justify-between">
-                        <div className="flex items-center gap-4 md:gap-6">
-                          <span className="text-2xl md:text-3xl lg:text-4xl">{row.icon}</span>
-                          <h3 
-                            className="text-lg md:text-xl lg:text-2xl xl:text-3xl font-archivo font-medium"
+            <StarBorder
+              className="w-full"
+              color="rgba(249, 247, 241, 0.08)"
+              speed="8s"
+              thickness={1}
+              style={{
+                borderRadius: '64px',
+                boxShadow: '0 8px 32px rgba(0, 0, 0, 0.2)'
+              }}
+            >
+              <div className="space-y-0">
+                {helpRows.map((row, index) => (
+                  <div key={row.id} className="w-full">
+                    <div
+                      className="w-full cursor-pointer transition-all duration-300 ease-out"
+                      style={{
+                        background: expandedRow === row.id ? 'rgba(249, 247, 241, 0.1)' : 'transparent',
+                        borderBottom: index < helpRows.length - 1 ? '1px solid rgba(249, 247, 241, 0.08)' : 'none',
+                        transform: expandedRow === row.id ? 'scale(1.01)' : 'scale(1)',
+                      }}
+                      onClick={() => toggleRow(row.id)}
+                    >
+                      {/* Row Header */}
+                      <div className="p-6 md:p-8 lg:p-10">
+                        <div className="flex items-center justify-between">
+                          <div className="flex items-center gap-4 md:gap-6">
+                            <span className="text-2xl md:text-3xl lg:text-4xl">{row.icon}</span>
+                            <h3 
+                              className="text-lg md:text-xl lg:text-2xl xl:text-3xl font-archivo font-medium"
+                              style={{
+                                color: expandedRow === row.id ? '#F9F7F1' : '#F9F7F1'
+                              }}
+                            >
+                              {row.title}
+                            </h3>
+                          </div>
+                          <div 
+                            className="text-2xl md:text-3xl transition-transform duration-300"
                             style={{
-                              color: expandedRow === row.id ? '#F9F7F1' : '#F9F7F1'
+                              color: expandedRow === row.id ? '#F9F7F1' : '#F9F7F1',
+                              transform: expandedRow === row.id ? 'rotate(45deg)' : 'rotate(0deg)'
                             }}
                           >
-                            {row.title}
-                          </h3>
-                        </div>
-                        <div 
-                          className="text-2xl md:text-3xl transition-transform duration-300"
-                          style={{
-                            color: expandedRow === row.id ? '#F9F7F1' : '#F9F7F1',
-                            transform: expandedRow === row.id ? 'rotate(45deg)' : 'rotate(0deg)'
-                          }}
-                        >
-                          +
+                            +
+                          </div>
                         </div>
                       </div>
-                    </div>
 
-                    {/* Expandable Content */}
-                    <div 
-                      className="overflow-hidden transition-all duration-300 ease-out"
-                      style={{
-                        maxHeight: expandedRow === row.id ? '200px' : '0px',
-                        opacity: expandedRow === row.id ? 1 : 0
-                      }}
-                    >
-                      <div className="px-6 md:px-8 lg:px-10 pb-6 md:pb-8 lg:pb-10">
-                        <p 
-                          className="text-base md:text-lg lg:text-xl font-archivo font-normal leading-relaxed"
-                          style={{
-                            color: '#F9F7F1',
-                            opacity: 0.8
-                          }}
-                        >
-                          {row.description}
-                        </p>
+                      {/* Expandable Content */}
+                      <div 
+                        className="overflow-hidden transition-all duration-300 ease-out"
+                        style={{
+                          maxHeight: expandedRow === row.id ? '200px' : '0px',
+                          opacity: expandedRow === row.id ? 1 : 0
+                        }}
+                      >
+                        <div className="px-6 md:px-8 lg:px-10 pb-6 md:pb-8 lg:pb-10">
+                          <p 
+                            className="text-base md:text-lg lg:text-xl font-archivo font-normal leading-relaxed"
+                            style={{
+                              color: '#F9F7F1',
+                              opacity: 0.8
+                            }}
+                          >
+                            {row.description}
+                          </p>
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
-              ))}
-            </div>
+                ))}
+              </div>
+            </StarBorder>
           </Squircle>
         </div>
       </div>
