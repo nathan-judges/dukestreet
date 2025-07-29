@@ -67,25 +67,24 @@ export default function ContactSection() {
         throw new Error('Message is too long');
       }
 
-      // Formspree configuration
-      const formDataToSend = {
-        name: formData.name,
-        email: formData.email,
-        services: formData.services.join(', '),
-        message: formData.message,
-        subject: 'Website Enquiry from Duke St Studio'
-      };
+      // Create FormData for Web3Forms (using the correct method from their docs)
+      const formDataToSend = new FormData();
+      formDataToSend.append('access_key', '040dd8f0-4db8-4bd6-ac17-071182b21be3');
+      formDataToSend.append('name', formData.name);
+      formDataToSend.append('email', formData.email);
+      formDataToSend.append('services', formData.services.join(', '));
+      formDataToSend.append('message', formData.message);
+      formDataToSend.append('subject', 'Website Enquiry from Duke St Studio');
 
-      // Send email using Formspree
-      const response = await fetch('https://formspree.io/f/xpzgwqzg', {
+      // Send email using Web3Forms API
+      const response = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formDataToSend),
+        body: formDataToSend
       });
 
-      if (response.ok) {
+      const result = await response.json();
+
+      if (result.success) {
         // Email sent successfully
         setLastSubmitTime(now);
         setIsSubmitted(true);
@@ -101,7 +100,8 @@ export default function ContactSection() {
           setIsSubmitted(false);
         }, 5000); // Show success message for 5 seconds
       } else {
-        throw new Error('Failed to send email');
+        console.error('Web3Forms error:', result);
+        throw new Error(result.message || 'Failed to send email');
       }
 
     } catch (error) {
