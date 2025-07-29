@@ -114,4 +114,20 @@ nav p {
   font-weight: 500;
   line-height: normal;
   opacity: 0.72;
+  transition: color 0.3s ease, opacity 0.3s ease;
+}
+.footer-subtext:hover {
+  opacity: 1;
+}
+.footer-subtext.hover\:text-blue-400:hover {
+  color: #60A5FA !important;
+  opacity: 1;
+}
+.footer-subtext.hover\:text-pink-400:hover {
+  color: #F472B6 !important;
+  opacity: 1;
+}
+.footer-subtext.hover\:text-red-400:hover {
+  color: #F87171 !important;
+  opacity: 1;
 }
