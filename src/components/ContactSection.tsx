@@ -67,41 +67,46 @@ export default function ContactSection() {
         throw new Error('Message is too long');
       }
 
-      // EmailJS configuration
-      // Note: You'll need to set up EmailJS account and get these IDs
-      const templateParams = {
-        to_email: 'hello@dukest.studio',
-        from_name: formData.name,
-        from_email: formData.email,
+      // Formspree configuration
+      const formDataToSend = {
+        name: formData.name,
+        email: formData.email,
         services: formData.services.join(', '),
         message: formData.message,
-        subject: 'Website Enquiry'
+        subject: 'Website Enquiry from Duke St Studio'
       };
 
-      // For now, we'll use a fallback approach
-      // In production, you should set up EmailJS with your own service ID, template ID, and public key
-      console.log('Email would be sent with params:', templateParams);
-      
-      // Simulate email sending for now
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      // Send email using Formspree
+      const response = await fetch('https://formspree.io/f/xpzgwqzg', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formDataToSend),
+      });
 
-      // Update state
-      setLastSubmitTime(now);
-      setIsSubmitted(true);
-      
-      // Reset form after success
-      setTimeout(() => {
-        setFormData({
-          name: '',
-          email: '',
-          services: [],
-          message: ''
-        });
-        setIsSubmitted(false);
-      }, 5000); // Show success message for 5 seconds
+      if (response.ok) {
+        // Email sent successfully
+        setLastSubmitTime(now);
+        setIsSubmitted(true);
+        
+        // Reset form after success
+        setTimeout(() => {
+          setFormData({
+            name: '',
+            email: '',
+            services: [],
+            message: ''
+          });
+          setIsSubmitted(false);
+        }, 5000); // Show success message for 5 seconds
+      } else {
+        throw new Error('Failed to send email');
+      }
 
     } catch (error) {
-      setSubmitError('Failed to send message. Please try again.');
+      console.error('Email sending error:', error);
+      setSubmitError('Failed to send message. Please try again or contact us directly at hello@dukest.studio');
     } finally {
       setIsSubmitting(false);
     }
