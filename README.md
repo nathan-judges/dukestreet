@@ -102,3 +102,4 @@ The project is optimized for deployment on Vercel:
 ## License
 
 This project is proprietary to Duke St. Studio.
+# Trigger Vercel rebuild
