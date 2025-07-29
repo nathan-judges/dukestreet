@@ -220,6 +220,23 @@
   }
 }
 
+/* Responsive variable proximity section corner radius */
+.responsive-variable-proximity-radius {
+  border-radius: 0 0 32px 32px;
+}
+
+@media (min-width: 768px) {
+  .responsive-variable-proximity-radius {
+    border-radius: 0 0 48px 48px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .responsive-variable-proximity-radius {
+    border-radius: 0 0 64px 64px;
+  }
+}
+
 /* Responsive portfolio section */
 .responsive-portfolio-padding {
   padding: 6rem 1rem 4rem 1rem;

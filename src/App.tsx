@@ -14,9 +14,11 @@ function App() {
         <ContactSection />
         <PortfolioSection />
       </div>
-      <VariableProximitySection 
-        text="Whether it's creating podcasts that connect or building websites that convert, we specialise in crafting simple yet beautiful digital experiences. From custom branding to seamless UX/UI design, we help businesses grow with a focus on the future."
-      />
+      <div style={{ background: '#000510' }}>
+        <VariableProximitySection 
+          text="Whether it's creating podcasts that connect or building websites that convert, we specialise in crafting simple yet beautiful digital experiences. From custom branding to seamless UX/UI design, we help businesses grow with a focus on the future."
+        />
+      </div>
       <FooterSection />
     </main>
   )

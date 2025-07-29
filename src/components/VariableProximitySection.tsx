@@ -1,5 +1,6 @@
 /// <reference lib="dom" />
 import { useEffect, useRef, useMemo } from 'react'
+import { Squircle } from 'corner-smoothing'
 
 
 interface VariableProximitySectionProps {
@@ -168,17 +169,21 @@ export default function VariableProximitySection({
   })
 
   return (
-    <section
+    <Squircle
       ref={sectionRef}
-      className="relative w-full min-h-screen flex items-center justify-center overflow-hidden"
+      cornerRadius={64}
+      cornerSmoothing={0.6}
+      className="relative w-full min-h-screen flex items-center justify-center overflow-hidden responsive-variable-proximity-radius"
       style={{
         background: '#F9F7F1',
         padding: 'clamp(2rem, 4vw, 4rem) clamp(1rem, 2vw, 2rem)'
       }}
     >
       {/* Video background for text container */}
-      <div 
+      <Squircle
         ref={containerRef}
+        cornerRadius={64}
+        cornerSmoothing={0.6}
         className="relative z-10 w-full"
         style={{
           display: 'flex',
@@ -187,7 +192,6 @@ export default function VariableProximitySection({
           justifyContent: 'center',
           alignItems: 'center',
           flex: '1 0 0',
-          borderRadius: 'clamp(24px, 6vw, 64px)',
           background: 'rgba(248, 247, 242, 0.85)',
           position: 'relative',
           overflow: 'hidden',
@@ -202,14 +206,7 @@ export default function VariableProximitySection({
           muted
           playsInline
           style={{
-            borderRadius: 'clamp(24px, 6vw, 64px)',
             pointerEvents: 'none',
-          }}
-        />
-        <div
-          className="absolute inset-0"
-          style={{
-            borderRadius: '64px'
           }}
         />
         {/* Text content */}
@@ -260,7 +257,7 @@ export default function VariableProximitySection({
             </span>
           ))}
         </div>
-      </div>
-    </section>
+      </Squircle>
+    </Squircle>
   )
 } 
