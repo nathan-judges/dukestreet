@@ -173,10 +173,11 @@ export default function VariableProximitySection({
       ref={sectionRef}
       cornerRadius={64}
       cornerSmoothing={0.6}
-      className="relative w-full min-h-screen flex items-center justify-center overflow-hidden responsive-variable-proximity-radius"
+      className="relative w-full flex items-center justify-center overflow-hidden responsive-variable-proximity-radius"
       style={{
         background: '#F9F7F1',
-        padding: 'clamp(2rem, 4vw, 4rem) clamp(1rem, 2vw, 2rem)'
+        padding: 'clamp(1rem, 2vw, 4rem) clamp(1rem, 2vw, 2rem)',
+        minHeight: 'clamp(80vh, 90vh, 100vh)'
       }}
     >
       {/* Video background for text container */}

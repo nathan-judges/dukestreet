@@ -288,20 +288,30 @@ export default function HeroSection(props: AuroraProps) {
               </div>
 
               {/* Down Caret - Bottom center */}
-              <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20">
-                <button
-                  onClick={scrollToNextSection}
-                  className="flex items-center justify-center w-12 h-12 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 hover:bg-white/20 transition-all duration-300 ease-in-out group"
+              <div 
+                style={{
+                  position: 'absolute',
+                  bottom: '50px',
+                  left: '50%',
+                  transform: 'translateX(-50%)',
+                  width: '60px',
+                  height: '60px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  cursor: 'pointer',
+                  zIndex: 999
+                }}
+                onClick={scrollToNextSection}
+              >
+                <CaretDown 
+                  size={24} 
+                  weight="bold" 
                   style={{
-                    animation: 'bounce 2s infinite'
+                    color: 'white',
+                    transform: 'scale(1.2)'
                   }}
-                >
-                  <CaretDown 
-                    size={24} 
-                    weight="bold" 
-                    className="text-white group-hover:scale-110 transition-transform duration-300"
-                  />
-                </button>
+                />
               </div>
             </section>
           );

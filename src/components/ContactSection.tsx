@@ -502,7 +502,8 @@ export default function ContactSection() {
           className="responsive-order-text"
           style={{ 
             flex: '1 1 0%', 
-            width: '100%'
+            width: '100%',
+            padding: 'clamp(2rem, 4vw, 4rem)'
           }}
         >
           <p
