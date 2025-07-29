@@ -262,6 +262,7 @@ export default function HeroSection(props: AuroraProps) {
           cornerRadius={20}
           cornerSmoothing={0.6}
           className="flex py-3 px-4 justify-center items-center gap-2.5 bg-white border-none cursor-pointer transition-all duration-200 ease-in-out hover:scale-105 hover:bg-gray-50"
+          onClick={scrollToNextSection}
         >
           {/* Button Text */}
           <span className="text-dark font-archivo text-xl font-medium mobile:text-lg tablet:text-xl">
