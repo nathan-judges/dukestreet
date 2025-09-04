@@ -156,29 +156,29 @@ export default function WhoWeHelp() {
                       </div>
                     </button>
 
-                      {/* Expandable Content */}
-                      <div 
-                        id={`accordion-content-${row.id}`}
-                        role="region"
-                        aria-labelledby={`accordion-button-${row.id}`}
-                        className="overflow-hidden transition-all duration-300 ease-out"
-                        style={{
-                          maxHeight: expandedRow === row.id ? '200px' : '0px',
-                          opacity: expandedRow === row.id ? 1 : 0
-                        }}
-                      >
-                        <div className="px-4 md:px-6 lg:px-8 pb-4 md:pb-6 lg:pb-8">
-                          <p 
-                            className="text-base md:text-lg lg:text-xl font-archivo font-normal leading-relaxed"
-                            style={{
-                              color: '#F9F7F1',
-                              opacity: 0.8
-                            }}
-                          >
-                            {row.description}
-                          </p>
-                        </div>
+                    {/* Expandable Content */}
+                    <div 
+                      id={`accordion-content-${row.id}`}
+                      role="region"
+                      aria-labelledby={`accordion-button-${row.id}`}
+                      className="overflow-hidden transition-all duration-300 ease-out"
+                      style={{
+                        maxHeight: expandedRow === row.id ? '200px' : '0px',
+                        opacity: expandedRow === row.id ? 1 : 0
+                      }}
+                    >
+                      <div className="px-4 md:px-6 lg:px-8 pb-4 md:pb-6 lg:pb-8">
+                        <p 
+                          className="text-base md:text-lg lg:text-xl font-archivo font-normal leading-relaxed"
+                          style={{
+                            color: '#F9F7F1',
+                            opacity: 0.8
+                          }}
+                        >
+                          {row.description}
+                        </p>
                       </div>
+                    </div>
                   </div>
                 ))}
               </div>

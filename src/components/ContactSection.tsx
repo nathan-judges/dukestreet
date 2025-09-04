@@ -14,6 +14,7 @@ export default function ContactSection() {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
   const [lastSubmitTime, setLastSubmitTime] = useState<number>(0);
+  const [fieldErrors, setFieldErrors] = useState<{[key: string]: string}>({});
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -33,12 +34,19 @@ export default function ContactSection() {
   };
 
   const validateForm = () => {
-    if (!formData.name.trim()) return 'Please enter your name';
-    if (!formData.email.trim()) return 'Please enter your email';
-    if (!formData.email.includes('@')) return 'Please enter a valid email';
-    if (formData.services.length === 0) return 'Please select at least one service';
-    if (!formData.message.trim()) return 'Please enter a message';
-    return null;
+    const errors: {[key: string]: string} = {};
+    
+    if (!formData.name.trim()) errors.name = 'Please enter your name';
+    if (!formData.email.trim()) {
+      errors.email = 'Please enter your email';
+    } else if (!formData.email.includes('@')) {
+      errors.email = 'Please enter a valid email address';
+    }
+    if (formData.services.length === 0) errors.services = 'Please select at least one service';
+    if (!formData.message.trim()) errors.message = 'Please enter a message';
+    
+    setFieldErrors(errors);
+    return Object.keys(errors).length === 0;
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -52,9 +60,9 @@ export default function ContactSection() {
     }
 
     // Validate form
-    const validationError = validateForm();
-    if (validationError) {
-      setSubmitError(validationError);
+    const isValid = validateForm();
+    if (!isValid) {
+      setSubmitError('Please fix the errors below');
       return;
     }
 
@@ -225,6 +233,7 @@ export default function ContactSection() {
             {/* Name Input */}
             <div style={{ width: '100%', position: 'relative' }}>
               <label
+                htmlFor="contact-name"
                 style={{
                   position: 'absolute',
                   left: 0,
@@ -246,8 +255,12 @@ export default function ContactSection() {
                 Name
               </label>
               <input
+                id="contact-name"
                 type="text"
                 name="name"
+                required
+                aria-invalid={fieldErrors.name ? 'true' : 'false'}
+                aria-describedby={fieldErrors.name ? 'name-error' : undefined}
                 value={formData.name}
                 onChange={handleInputChange}
                 onFocus={() => handleFocus('name')}
@@ -266,6 +279,20 @@ export default function ContactSection() {
                   transition: 'all 0.3s ease-in-out'
                 }}
               />
+              {fieldErrors.name && (
+                <div 
+                  id="name-error"
+                  role="alert"
+                  style={{
+                    color: '#F84F07',
+                    fontSize: '14px',
+                    marginTop: '4px',
+                    fontFamily: 'Archivo, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif'
+                  }}
+                >
+                  {fieldErrors.name}
+                </div>
+              )}
             </div>
 
             {/* Email Input */}
