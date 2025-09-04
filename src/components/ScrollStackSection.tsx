@@ -118,7 +118,7 @@ export default function WhoWeHelp() {
                   <div key={row.id} className="w-full">
                     <button
                       id={`accordion-button-${row.id}`}
-                      className="w-full text-left cursor-pointer transition-all duration-300 ease-out border-none bg-transparent p-0 focus:outline-none focus:ring-2 focus:ring-[#F8C807] focus:ring-offset-2 focus:ring-offset-transparent"
+                      className="w-full text-left cursor-pointer transition-all duration-300 ease-out border-none bg-transparent p-0 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-50"
                       style={{
                         background: expandedRow === row.id ? 'rgba(249, 247, 241, 0.1)' : 'transparent',
                         borderBottom: index < helpRows.length - 1 ? '1px solid rgba(249, 247, 241, 0.08)' : 'none',
@@ -167,12 +167,13 @@ export default function WhoWeHelp() {
                         opacity: expandedRow === row.id ? 1 : 0
                       }}
                     >
-                      <div className="px-4 md:px-6 lg:px-8 pb-4 md:pb-6 lg:pb-8">
+                      <div className="px-4 md:px-6 lg:px-8 pt-2 pb-6 md:pb-8 lg:pb-10">
                         <p 
                           className="text-base md:text-lg lg:text-xl font-archivo font-normal leading-relaxed"
                           style={{
                             color: '#F9F7F1',
-                            opacity: 0.8
+                            opacity: 0.8,
+                            maxWidth: '90%'
                           }}
                         >
                           {row.description}
