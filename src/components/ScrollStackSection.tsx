@@ -114,14 +114,13 @@ export default function WhoWeHelp() {
               }}
             >
               <div className="space-y-0">
-                {helpRows.map((row, index) => (
+                {helpRows.map((row) => (
                   <div key={row.id} className="w-full">
                     <button
                       id={`accordion-button-${row.id}`}
                       className="w-full text-left cursor-pointer transition-all duration-300 ease-out border-none bg-transparent p-0 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-50"
                       style={{
                         background: expandedRow === row.id ? 'rgba(249, 247, 241, 0.1)' : 'transparent',
-                        borderBottom: index < helpRows.length - 1 ? '1px solid rgba(249, 247, 241, 0.08)' : 'none',
                         transform: expandedRow === row.id ? 'scale(1.01)' : 'scale(1)',
                       }}
                       onClick={() => toggleRow(row.id)}
