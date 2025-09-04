@@ -104,7 +104,6 @@ export default function WhoWeHelp() {
           cornerRadius={64}
           cornerSmoothing={0.6}
           className="w-full responsive-accordion-container"
-          style={{ borderRadius: '64px' }}
         >
           <StarBorder
             className="w-full responsive-accordion-border"
@@ -112,7 +111,6 @@ export default function WhoWeHelp() {
             speed="8s"
             thickness={1}
             style={{
-              borderRadius: '64px',
               boxShadow: '0 8px 32px rgba(0, 0, 0, 0.2)'
             }}
             >
