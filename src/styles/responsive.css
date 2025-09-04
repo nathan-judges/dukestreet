@@ -591,8 +591,24 @@
 }
 
 /* Mobile-specific card positioning to prevent text overlap */
-.responsive-card-mobile-bottom {
-  bottom: 20px !important;
+@media (max-width: 767px) {
+  .responsive-card-container {
+    width: min(92vw, 460px);
+    aspect-ratio: 1 / 1;         /* square to match 1:1 cards */
+    margin: 24px auto 0;         /* pushes deck lower; no overlap with text */
+    position: relative;
+  }
+
+  /* Mobile card sizing and position */
+  .responsive-card {
+    width: clamp(320px, 80vw, 440px);
+  }
+
+  /* Mobile anchor and right offset (override inline) */
+  .responsive-card-mobile-bottom {
+    bottom: 0 !important;        /* keep inside container */
+    right: -12% !important;      /* slightly off-screen right */
+  }
 }
 
 /* Mobile accordion: full width with no border radius */

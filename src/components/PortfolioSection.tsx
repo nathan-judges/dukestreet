@@ -99,6 +99,12 @@ export default function PortfolioSection() {
             const isNext = index === (activeCard + 1) % 3;
             const isPrev = index === (activeCard - 1 + 3) % 3;
             
+            // Mobile-optimized transform distances
+            const isSmall = typeof window !== 'undefined' && window.innerWidth < 768;
+            const cardDistance = isSmall ? 30 : settings.cardDistance;        // 30px vs 60
+            const verticalDistance = isSmall ? 40 : settings.verticalDistance; // 40px vs 70
+            const skew = isSmall ? 8 : settings.skewAmount;                   // 8deg vs 12
+            
             let transform = '';
             let zIndex = 1;
             let opacity = 0.3;
@@ -108,11 +114,11 @@ export default function PortfolioSection() {
               zIndex = 3;
               opacity = 1;
             } else if (isNext) {
-              transform = `translate(-${settings.cardDistance}px, -${settings.verticalDistance}px) scale(0.9) rotate(${settings.skewAmount}deg)`;
+              transform = `translate(-${cardDistance}px, -${verticalDistance}px) scale(0.9) rotate(${skew}deg)`;
               zIndex = 2;
               opacity = 0.7;
             } else if (isPrev) {
-              transform = `translate(${settings.cardDistance}px, ${settings.verticalDistance}px) scale(0.9) rotate(-${settings.skewAmount}deg)`;
+              transform = `translate(${cardDistance}px, ${verticalDistance}px) scale(0.9) rotate(-${skew}deg)`;
               zIndex = 1;
               opacity = 0.5;
             }
@@ -125,8 +131,6 @@ export default function PortfolioSection() {
                 className="responsive-card responsive-card-mobile-bottom"
                 style={{
                   position: 'absolute',
-                  bottom: '-80px',
-                  right: '-25%',
                   backgroundImage: `url(${card.backgroundImage})`,
                   backgroundSize: 'cover',
                   backgroundPosition: 'center',
