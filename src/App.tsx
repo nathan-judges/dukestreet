@@ -28,7 +28,7 @@ function App() {
           <PortfolioSection />
         </Suspense>
       </div>
-      <div style={{ background: '#000510', marginTop: '2rem' }}>
+      <div style={{ background: '#000510', marginTop: 'clamp(8rem, 15vw, 12rem)' }}>
         <Suspense fallback={null}>
           <WhoWeHelp />
         </Suspense>
