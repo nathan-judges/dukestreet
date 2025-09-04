@@ -117,13 +117,10 @@ export default function WhoWeHelp() {
               <div className="accordion-inner">
                 <div className="space-y-0">
                 {helpRows.map((row) => (
-                  <div key={row.id} className="w-full">
+                  <div key={row.id} className={`accordion-row ${expandedRow === row.id ? 'is-expanded' : ''}`}>
                     <button
                       id={`accordion-button-${row.id}`}
                       className="w-full text-left cursor-pointer transition-all duration-300 ease-out border-none bg-transparent accordion-header flex items-center justify-between"
-                      style={{
-                        background: expandedRow === row.id ? 'rgba(249, 247, 241, 0.1)' : 'transparent',
-                      }}
                       onClick={() => toggleRow(row.id)}
                       onKeyDown={(e) => handleKeyDown(e, row.id)}
                       aria-expanded={expandedRow === row.id}
@@ -160,7 +157,6 @@ export default function WhoWeHelp() {
                       style={{
                         maxHeight: expandedRow === row.id ? '200px' : '0px',
                         opacity: expandedRow === row.id ? 1 : 0,
-                        background: expandedRow === row.id ? 'rgba(249, 247, 241, 0.1)' : 'transparent'
                       }}
                     >
                       <div className="accordion-body">

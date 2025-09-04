@@ -53,6 +53,28 @@
   max-width: 68ch;
 }
 
+/* Accordion row container - handles full-width background */
+.accordion-row {
+  position: relative;
+  width: 100%;
+}
+
+.accordion-row.is-expanded {
+  background: rgba(249, 247, 241, 0.1);
+}
+
+/* Ensure the background extends to accordion edges by using negative margins */
+.accordion-row.is-expanded::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: calc(-1 * var(--acc-pad-inline));
+  right: calc(-1 * var(--acc-pad-inline));
+  bottom: 0;
+  background: rgba(249, 247, 241, 0.1);
+  z-index: -1;
+}
+
 /* Focus styles */
 .accordion-header:focus-visible {
   outline: 2px solid rgba(255,255,255,0.5);
