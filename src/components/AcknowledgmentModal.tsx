@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import '../styles/globals.css';
 
 interface AcknowledgmentModalProps {
@@ -7,12 +7,31 @@ interface AcknowledgmentModalProps {
 }
 
 const AcknowledgmentModal: React.FC<AcknowledgmentModalProps> = ({ isOpen, onClose }) => {
+  const [isAnimating, setIsAnimating] = useState(false);
+  const [shouldRender, setShouldRender] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  // Check if mobile on mount
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
   // Handle escape key and prevent body scroll
   useEffect(() => {
     if (isOpen) {
+      setShouldRender(true);
+      // Small delay to ensure DOM is ready for animation
+      setTimeout(() => setIsAnimating(true), 10);
+
       const handleEscape = (e: KeyboardEvent) => {
         if (e.key === 'Escape') {
-          onClose();
+          handleClose();
         }
       };
 
@@ -24,41 +43,57 @@ const AcknowledgmentModal: React.FC<AcknowledgmentModalProps> = ({ isOpen, onClo
         document.body.style.overflow = 'unset';
         document.removeEventListener('keydown', handleEscape);
       };
+    } else {
+      setIsAnimating(false);
+      // Wait for animation to complete before unmounting
+      const timer = setTimeout(() => setShouldRender(false), 300);
+      return () => clearTimeout(timer);
     }
-  }, [isOpen, onClose]);
+  }, [isOpen]);
 
-  if (!isOpen) return null;
+  const handleClose = () => {
+    setIsAnimating(false);
+    setTimeout(() => onClose(), 200);
+  };
+
+  if (!shouldRender) return null;
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center"
+      className="fixed inset-0 z-50 flex items-center justify-center transition-all duration-300 ease-out"
       style={{
-        backdropFilter: 'blur(8px)',
-        WebkitBackdropFilter: 'blur(8px)',
-        background: 'rgba(0, 0, 0, 0.4)'
+        backdropFilter: `blur(${isAnimating ? '8px' : '0px'})`,
+        WebkitBackdropFilter: `blur(${isAnimating ? '8px' : '0px'})`,
+        background: `rgba(0, 0, 0, ${isAnimating ? '0.4' : '0'})`,
       }}
-      onClick={onClose}
+      onClick={handleClose}
     >
       {/* Modal Content */}
       <div
-        className="relative mx-4 max-w-[900px] w-full max-h-[90dvh] overflow-y-auto"
+        className="relative w-full h-full md:mx-4 md:max-w-[900px] md:w-full md:max-h-[90dvh] md:h-auto overflow-y-auto transition-all duration-300 ease-out"
         style={{
           background: 'rgba(255, 255, 255, 0.9)',
           backdropFilter: 'blur(20px)',
           WebkitBackdropFilter: 'blur(20px)',
-          borderRadius: 'clamp(32px, 8vw, 80px)',
-          padding: 'clamp(32px, 8vw, 84px)',
-          boxShadow: '0px 25px 50px -12px rgba(0, 0, 0, 0.25)'
+          borderRadius: isMobile ? '0px' : 'clamp(32px, 8vw, 80px)',
+          padding: isMobile ? 'clamp(32px, 8vw, 64px)' : 'clamp(32px, 8vw, 84px)',
+          paddingTop: isMobile ? 'clamp(80px, 12vw, 120px)' : 'clamp(32px, 8vw, 84px)',
+          boxShadow: '0px 25px 50px -12px rgba(0, 0, 0, 0.25)',
+          transform: isAnimating ? 'scale(1) translateY(0)' : 'scale(0.95) translateY(20px)',
+          opacity: isAnimating ? 1 : 0,
         }}
         onClick={(e) => e.stopPropagation()}
       >
         {/* Close Button */}
         <button
-          onClick={onClose}
-          className="absolute top-8 right-8 w-12 h-12 flex items-center justify-center rounded-full bg-white/20 hover:bg-white/30 transition-colors duration-200"
+          onClick={handleClose}
+          className="absolute w-12 h-12 flex items-center justify-center rounded-full bg-white/20 hover:bg-white/40 active:bg-white/50 hover:scale-110 active:scale-95 transition-all duration-200 ease-out group"
           style={{
+            top: isMobile ? '24px' : '32px',
+            right: isMobile ? '24px' : '32px',
             backdropFilter: 'blur(10px)',
-            WebkitBackdropFilter: 'blur(10px)'
+            WebkitBackdropFilter: 'blur(10px)',
+            boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)'
           }}
           aria-label="Close modal"
         >
@@ -71,7 +106,7 @@ const AcknowledgmentModal: React.FC<AcknowledgmentModalProps> = ({ isOpen, onClo
             strokeWidth="2"
             strokeLinecap="round"
             strokeLinejoin="round"
-            className="text-[#000510]"
+            className="text-[#000510] transition-transform duration-200 ease-out group-hover:rotate-90"
           >
             <path d="m6 6 12 12" />
             <path d="m18 6-12 12" />
