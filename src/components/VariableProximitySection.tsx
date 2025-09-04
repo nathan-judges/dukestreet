@@ -176,8 +176,8 @@ export default function VariableProximitySection({
       className="relative w-full flex items-center justify-center overflow-hidden responsive-variable-proximity-radius"
       style={{
         background: '#F9F7F1',
-        padding: 'clamp(1rem, 2vw, 4rem) clamp(1rem, 2vw, 2rem)',
-        minHeight: 'clamp(80vh, 90vh, 100vh)'
+        padding: 'clamp(1rem, 2dvw, 4rem) clamp(1rem, 2dvw, 2rem)',
+        minHeight: 'clamp(80dvh, 90dvh, 100dvh)'
       }}
     >
       {/* Video background for text container */}

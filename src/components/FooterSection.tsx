@@ -2,7 +2,11 @@ import React from "react";
 import '../styles/globals.css';
 import '../styles/responsive.css';
 
-const FooterSection: React.FC = () => {
+interface FooterSectionProps {
+  onOpenModal: () => void;
+}
+
+const FooterSection: React.FC<FooterSectionProps> = ({ onOpenModal }) => {
   return (
     <footer
       className="footer-section bg-[#000510] px-[32px] pt-[80px] pb-[60px] md:px-[64px] md:pt-[160px] md:pb-[120px] md:pl-[148px] grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10 lg:gap-12 items-start justify-items-start"
@@ -54,7 +58,19 @@ const FooterSection: React.FC = () => {
       <div className="footer-col flex flex-col gap-4">
         <div className="footer-stack flex flex-col gap-2">
           <div className="footer-subtext">© 2025 Privacy</div>
-          <div className="footer-subtext">Acknowledgement of Country</div>
+          <button
+            onClick={onOpenModal}
+            className="footer-subtext hover:text-orange-400 transition-colors duration-300 text-left"
+            style={{ 
+              background: 'none',
+              border: 'none',
+              padding: 0,
+              cursor: 'pointer',
+              textDecoration: 'none'
+            }}
+          >
+            Acknowledgement of Country
+          </button>
         </div>
       </div>
     </footer>

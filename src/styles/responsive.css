@@ -249,8 +249,8 @@
 
 .responsive-portfolio-height {
   min-height: 500px;
-  max-height: 60vh;
-  height: 60vh;
+  max-height: 60dvh;
+  height: 60dvh;
   position: relative;
 }
 
@@ -270,8 +270,8 @@
   
   .responsive-portfolio-height {
     min-height: 500px;
-    max-height: 60vh;
-    height: 60vh;
+    max-height: 60dvh;
+    height: 60dvh;
   }
   
   .responsive-portfolio-radius {
@@ -291,8 +291,8 @@
   
   .responsive-portfolio-height {
     min-height: 500px;
-    max-height: 60vh;
-    height: 60vh;
+    max-height: 60dvh;
+    height: 60dvh;
   }
   
   .responsive-portfolio-radius {
@@ -474,7 +474,7 @@
 
 @media (min-width: 768px) {
   .responsive-card-container {
-    width: 60vw;
+    width: 60dvw;
     height: 800px;
     transform: translate(20%, 15%);
   }
@@ -482,7 +482,7 @@
 
 @media (min-width: 1024px) {
   .responsive-card-container {
-    width: 60vw;
+    width: 60dvw;
     height: 900px;
     transform: translate(25%, 20%);
   }
@@ -496,14 +496,14 @@
 
 @media (min-width: 768px) {
   .responsive-card {
-    width: 50vw;
+    width: 50dvw;
     height: 450px;
   }
 }
 
 @media (min-width: 1024px) {
   .responsive-card {
-    width: 50vw;
+    width: 50dvw;
     height: 520px;
   }
 }
