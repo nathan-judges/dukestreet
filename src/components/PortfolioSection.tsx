@@ -27,21 +27,21 @@ export default function PortfolioSection() {
   const cards = [
     {
       id: 1,
-      title: "Customizable",
-      icon: "⚙️",
-      color: "#4F46E5"
+      title: "Bonafide Podcast",
+      backgroundImage: "/bonafide-cover.jpg",
+      url: "https://www.lukebona.com.au/"
     },
     {
       id: 2,
-      title: "Reliable",
-      icon: "</>",
-      color: "#10B981"
+      title: "ByStorm Beauty",
+      backgroundImage: "/bystorm-cover.jpg",
+      url: "https://bystormbeauty.com/"
     },
     {
       id: 3,
-      title: "Smooth",
-      icon: "1",
-      color: "#F59E0B"
+      title: "Barefaced",
+      backgroundImage: "/barefaced-cover.jpg",
+      url: "https://barefaced.substack.com?utm_source=navbar&utm_medium=web"
     }
   ];
 
@@ -127,7 +127,10 @@ export default function PortfolioSection() {
                   position: 'absolute',
                   bottom: '0',
                   right: '0',
-                  background: card.color,
+                  backgroundImage: `url(${card.backgroundImage})`,
+                  backgroundSize: 'cover',
+                  backgroundPosition: 'center',
+                  backgroundRepeat: 'no-repeat',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
@@ -138,33 +141,18 @@ export default function PortfolioSection() {
                   cursor: 'pointer',
                   boxShadow: isActive 
                     ? '0 20px 40px rgba(0, 0, 0, 0.3)' 
-                    : '0 10px 20px rgba(0, 0, 0, 0.2)'
+                    : '0 10px 20px rgba(0, 0, 0, 0.2)',
+                  overflow: 'hidden'
                 }}
-                onClick={() => setActiveCard(index)}
+                onClick={() => {
+                  if (isActive) {
+                    window.open(card.url, '_blank', 'noopener,noreferrer');
+                  } else {
+                    setActiveCard(index);
+                  }
+                }}
               >
-                <div style={{ textAlign: 'center' }}>
-                  <div
-                    style={{
-                      fontSize: isActive ? '48px' : '32px',
-                      fontWeight: 'bold',
-                      color: '#FFFFFF',
-                      marginBottom: '8px',
-                      transition: 'all 0.6s cubic-bezier(0.4, 0, 0.2, 1)'
-                    }}
-                  >
-                    {card.icon}
-                  </div>
-                  <div
-                    style={{
-                      fontSize: isActive ? '20px' : '16px',
-                      fontWeight: 600,
-                      color: '#FFFFFF',
-                      transition: 'all 0.6s cubic-bezier(0.4, 0, 0.2, 1)'
-                    }}
-                  >
-                    {card.title}
-                  </div>
-                </div>
+                <div style={{ width: '100%', height: '100%' }} />
               </Squircle>
             );
           })}
