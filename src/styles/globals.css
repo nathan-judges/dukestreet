@@ -64,9 +64,21 @@ nav p {
 .hero-section {
   background: #000510;
   border-radius: 0 0 4rem 4rem;
-  height: 95dvh;
+  height: 95vh; /* baseline */
   position: relative;
   overflow: hidden;
+}
+
+@supports (height: 100svh) {
+  .hero-section {
+    height: 95svh; /* stable viewport height */
+  }
+}
+
+@supports (height: 100dvh) and (not (height: 100svh)) {
+  .hero-section {
+    height: min(95svh, 95dvh); /* safety for browsers with both */
+  }
 }
 
 .hero-svg {

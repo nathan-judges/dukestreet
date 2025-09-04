@@ -202,7 +202,7 @@ export default function VariableProximitySection({
       style={{
         background: '#F9F7F1',
         padding: 'clamp(1rem, 2dvw, 4rem) clamp(1rem, 2dvw, 2rem)',
-        minHeight: 'clamp(80dvh, 90dvh, 100dvh)'
+        minHeight: 'clamp(80svh, 90svh, 100svh)'
       }}
     >
       {/* Video background for text container */}

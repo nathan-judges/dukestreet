@@ -61,7 +61,7 @@ export default function WhoWeHelp() {
         alignItems: 'center',
         alignSelf: 'stretch',
         background: '#000510',
-        minHeight: '80vh'
+        minHeight: '80svh'
       }}
     >
       {/* Mobile/Tablet: Title and Subtext First */}
