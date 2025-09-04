@@ -124,6 +124,33 @@ nav p {
   transform: none;
 }
 
+/* Fade-in-up animation for scroll-triggered elements */
+.fade-in-up-section {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.fade-in-up-section.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Animation variants with different delays and speeds */
+.fade-in-up-section.v1 {
+  transition-delay: 0ms;
+}
+
+.fade-in-up-section.v2 {
+  transition-delay: 150ms;
+  transform: translateY(24px);
+}
+
+.fade-in-up-section.v3 {
+  transition-delay: 300ms;
+  transform: translateY(40px);
+}
+
 /* Footer Section Styles */
 .footer-section {
   /* For future custom overrides if needed */

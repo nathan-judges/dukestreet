@@ -7,6 +7,7 @@ const WhoWeHelp = lazy(() => import('./components/ScrollStackSection'));
 const VariableProximitySection = lazy(() => import('./components/VariableProximitySection'));
 const FooterSection = lazy(() => import('./components/FooterSection'));
 const AcknowledgmentModal = lazy(() => import('./components/AcknowledgmentModal'));
+const FadeInUpSection = lazy(() => import('./components/FadeInUpSection'));
 
 
 function App() {
@@ -22,26 +23,36 @@ function App() {
           <HeroSection />
         </Suspense>
       </div>
-      <div style={{ background: '#000510' }}>
+      <div style={{ background: '#000510' }} id="next-section">
         <Suspense fallback={null}>
-          <ContactSection />
-          <PortfolioSection />
+          <FadeInUpSection variant="v1">
+            <ContactSection />
+          </FadeInUpSection>
+          <FadeInUpSection variant="v2">
+            <PortfolioSection />
+          </FadeInUpSection>
         </Suspense>
       </div>
-      <div style={{ background: '#000510', marginTop: 'clamp(1rem, 4vw, 3rem)' }}>
+      <div style={{ background: '#000510', marginTop: 'clamp(6rem, 12vw, 10rem)' }}>
         <Suspense fallback={null}>
-          <WhoWeHelp />
+          <FadeInUpSection variant="v1">
+            <WhoWeHelp />
+          </FadeInUpSection>
         </Suspense>
       </div>
       <div style={{ background: '#000510' }}>
         <Suspense fallback={null}>
-          <VariableProximitySection 
-            text="Whether it's creating podcasts that connect or building websites that convert, we specialise in crafting simple yet beautiful digital experiences. From custom branding to seamless UX/UI design, we help businesses grow with a focus on the future."
-          />
+          <FadeInUpSection variant="v2">
+            <VariableProximitySection 
+              text="Whether it's creating podcasts that connect or building websites that convert, we specialise in crafting simple yet beautiful digital experiences. From custom branding to seamless UX/UI design, we help businesses grow with a focus on the future."
+            />
+          </FadeInUpSection>
         </Suspense>
       </div>
       <Suspense fallback={null}>
-        <FooterSection onOpenModal={openModal} />
+        <FadeInUpSection variant="v3">
+          <FooterSection onOpenModal={openModal} />
+        </FadeInUpSection>
       </Suspense>
       
       {/* Acknowledgment Modal */}
