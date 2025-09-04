@@ -122,10 +122,10 @@ export default function PortfolioSection() {
                 key={card.id}
                 cornerRadius={24}
                 cornerSmoothing={0.6}
-                className="responsive-card responsive-card-mobile-position"
+                className="responsive-card"
                 style={{
                   position: 'absolute',
-                  bottom: '-50px',
+                  bottom: '-80px',
                   right: '-25%',
                   backgroundImage: `url(${card.backgroundImage})`,
                   backgroundSize: 'cover',
