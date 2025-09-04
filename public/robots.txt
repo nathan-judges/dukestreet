@@ -1,0 +1,22 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://dukest.studio/sitemap.xml
+
+# Crawl-delay for politeness
+Crawl-delay: 1
+
+# Disallow common bot traps
+Disallow: /404
+Disallow: /.well-known/
+
+# Allow all static assets
+Allow: /*.css
+Allow: /*.js
+Allow: /*.png
+Allow: /*.jpg
+Allow: /*.jpeg
+Allow: /*.webp
+Allow: /*.avif
+Allow: /*.svg
+Allow: /*.mp4
