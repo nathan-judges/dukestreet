@@ -501,6 +501,15 @@
   bottom: 20px !important;
 }
 
+/* Mobile-specific accordion styling */
+.responsive-accordion-container {
+  border-radius: 32px !important;
+}
+
+.responsive-accordion-border {
+  border-radius: 32px !important;
+}
+
 @media (min-width: 768px) {
   .responsive-card {
     width: clamp(400px, 42vw, 650px);
@@ -509,6 +518,15 @@
   /* Reset mobile positioning for tablet and up */
   .responsive-card-mobile-bottom {
     bottom: -80px !important;
+  }
+  
+  /* Reset accordion border radius for tablet and up */
+  .responsive-accordion-container {
+    border-radius: 64px !important;
+  }
+  
+  .responsive-accordion-border {
+    border-radius: 64px !important;
   }
 }
 

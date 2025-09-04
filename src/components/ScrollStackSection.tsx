@@ -10,7 +10,7 @@ interface HelpRow {
 }
 
 export default function WhoWeHelp() {
-  const [expandedRow, setExpandedRow] = useState<number | null>(null);
+  const [expandedRow, setExpandedRow] = useState<number>(1);
 
   const helpRows: HelpRow[] = [
     {
@@ -40,7 +40,10 @@ export default function WhoWeHelp() {
   ];
 
   const toggleRow = (id: number) => {
-    setExpandedRow(expandedRow === id ? null : id);
+    // Always keep one accordion open - if clicking the same one, don't close it
+    if (expandedRow !== id) {
+      setExpandedRow(id);
+    }
   };
 
   const handleKeyDown = (event: React.KeyboardEvent, id: number) => {
@@ -97,21 +100,21 @@ export default function WhoWeHelp() {
       {/* Left Column - Expandable Rows */}
       <div style={{ flex: 1, display: 'flex', justifyContent: 'flex-start' }}>
         <div className="w-full">
-          <Squircle
-            cornerRadius={64}
-            cornerSmoothing={0.6}
-            className="w-full"
-            style={{ borderRadius: '64px' }}
-          >
-            <StarBorder
-              className="w-full"
-              color="rgba(249, 247, 241, 0.08)"
-              speed="8s"
-              thickness={1}
-              style={{
-                borderRadius: '64px',
-                boxShadow: '0 8px 32px rgba(0, 0, 0, 0.2)'
-              }}
+                  <Squircle
+          cornerRadius={64}
+          cornerSmoothing={0.6}
+          className="w-full responsive-accordion-container"
+          style={{ borderRadius: '64px' }}
+        >
+          <StarBorder
+            className="w-full responsive-accordion-border"
+            color="rgba(249, 247, 241, 0.08)"
+            speed="8s"
+            thickness={1}
+            style={{
+              borderRadius: '64px',
+              boxShadow: '0 8px 32px rgba(0, 0, 0, 0.2)'
+            }}
             >
               <div className="space-y-0">
                 {helpRows.map((row) => (
