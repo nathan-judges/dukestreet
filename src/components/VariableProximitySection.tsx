@@ -1,5 +1,5 @@
 /// <reference lib="dom" />
-import { useEffect, useRef, useMemo } from 'react'
+import { useEffect, useRef, useMemo, useState } from 'react'
 import { Squircle } from 'corner-smoothing'
 
 
@@ -66,12 +66,37 @@ export default function VariableProximitySection({
   const lastPositionRef = useRef({ x: null as number | null, y: null as number | null })
   const lastUpdateTimeRef = useRef(0)
   const videoRef = useRef<HTMLVideoElement>(null);
+  const [shouldLoadVideo, setShouldLoadVideo] = useState(false);
 
   useEffect(() => {
     if (videoRef.current) {
       videoRef.current.playbackRate = 0.7;
     }
   }, []);
+
+  // Lazy load video when section comes into view
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && !shouldLoadVideo) {
+            setShouldLoadVideo(true);
+          }
+        });
+      },
+      { rootMargin: '50px' }
+    );
+
+    if (containerRef.current) {
+      observer.observe(containerRef.current);
+    }
+
+    return () => {
+      if (containerRef.current) {
+        observer.unobserve(containerRef.current);
+      }
+    };
+  }, [shouldLoadVideo]);
 
   // Split text into words with simplified structure
   const words = useMemo(() => {
@@ -198,18 +223,22 @@ export default function VariableProximitySection({
           overflow: 'hidden',
         }}
       >
-        <video
-          ref={videoRef}
-          className="absolute inset-0 w-full h-full object-cover z-0"
-          src="/film.mp4"
-          autoPlay
-          loop
-          muted
-          playsInline
-          style={{
-            pointerEvents: 'none',
-          }}
-        />
+        {shouldLoadVideo && (
+          <video
+            ref={videoRef}
+            className="absolute inset-0 w-full h-full object-cover z-0"
+            src="/film.mp4"
+            autoPlay
+            loop
+            muted
+            playsInline
+            preload="metadata"
+            poster="/hero.svg"
+            style={{
+              pointerEvents: 'none',
+            }}
+          />
+        )}
         {/* Text content */}
         <div
           className="relative z-10 text-center w-full"

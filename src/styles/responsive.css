@@ -466,47 +466,54 @@
   }
 }
 
-/* Responsive card container */
+/* Responsive card container - stays within viewport */
 .responsive-card-container {
   position: relative;
-  width: 450px;
-  height: 550px;
+  width: min(100%, 400px);
+  aspect-ratio: 4 / 5;
   margin: 0 auto;
+  overflow: visible;
 }
 
 @media (min-width: 768px) {
   .responsive-card-container {
-    width: 750px;
-    height: 850px;
+    width: min(90vw, 600px);
     margin: 0;
   }
 }
 
 @media (min-width: 1024px) {
   .responsive-card-container {
-    width: 950px;
-    height: 1000px;
-    margin: 0;
+    width: min(80vw, 700px);
+    max-width: 700px;
   }
 }
 
-/* Responsive individual cards - 1:1 aspect ratio */
+/* Responsive individual cards - fluid sizing with aspect ratio */
 .responsive-card {
-  width: 420px;
-  height: 420px;
+  aspect-ratio: 1 / 1;
+  width: clamp(280px, 35vw, 420px);
+  height: auto;
 }
 
 @media (min-width: 768px) {
   .responsive-card {
-    width: 650px;
-    height: 650px;
+    width: clamp(400px, 42vw, 650px);
   }
 }
 
 @media (min-width: 1024px) {
   .responsive-card {
-    width: 800px;
-    height: 800px;
+    width: clamp(500px, 45vw, 800px);
+    /* Push active card slightly offscreen without causing scroll */
+    transform: translateX(min(8vw, 120px));
+  }
+}
+
+@media (min-width: 1400px) {
+  .responsive-card {
+    width: clamp(600px, 50vw, 900px);
+    transform: translateX(min(12vw, 180px));
   }
 }
 
