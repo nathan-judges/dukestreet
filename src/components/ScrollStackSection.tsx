@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Squircle } from 'corner-smoothing';
 import StarBorder from './StarBorder';
 
@@ -11,18 +11,6 @@ interface HelpRow {
 
 export default function WhoWeHelp() {
   const [expandedRow, setExpandedRow] = useState<number>(1);
-  const [isMobile, setIsMobile] = useState<boolean>(false);
-
-  useEffect(() => {
-    const checkScreenSize = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
-
-    checkScreenSize();
-    window.addEventListener('resize', checkScreenSize);
-
-    return () => window.removeEventListener('resize', checkScreenSize);
-  }, []);
 
   const helpRows: HelpRow[] = [
     {
@@ -113,7 +101,7 @@ export default function WhoWeHelp() {
       <div style={{ flex: 1, display: 'flex', justifyContent: 'flex-start' }}>
         <div className="w-full">
                   <Squircle
-          cornerRadius={isMobile ? 20 : 64}
+          cornerRadius={64}
           cornerSmoothing={0.6}
           className="w-full responsive-accordion-container"
         >

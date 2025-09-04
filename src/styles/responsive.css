@@ -501,13 +501,13 @@
   bottom: 20px !important;
 }
 
-/* Mobile-specific accordion styling - reduced border radius for better spacing */
+/* Mobile-specific accordion styling - add padding for better content spacing */
 .responsive-accordion-container {
-  border-radius: 20px !important;
+  padding: 16px !important;
 }
 
 .responsive-accordion-border {
-  border-radius: 20px !important;
+  padding: 0 !important;
 }
 
 @media (min-width: 768px) {
@@ -520,13 +520,13 @@
     bottom: -80px !important;
   }
   
-  /* Reset accordion border radius for tablet and up */
+  /* Reset accordion styling for tablet and up */
   .responsive-accordion-container {
-    border-radius: 64px !important;
+    padding: 0 !important;
   }
   
   .responsive-accordion-border {
-    border-radius: 64px !important;
+    padding: 0 !important;
   }
 }
 
