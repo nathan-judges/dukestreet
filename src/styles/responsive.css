@@ -469,44 +469,44 @@
 /* Responsive card container */
 .responsive-card-container {
   position: relative;
-  width: 350px;
-  height: 450px;
+  width: 450px;
+  height: 550px;
   margin: 0 auto;
 }
 
 @media (min-width: 768px) {
   .responsive-card-container {
-    width: 600px;
-    height: 700px;
+    width: 750px;
+    height: 850px;
     margin: 0;
   }
 }
 
 @media (min-width: 1024px) {
   .responsive-card-container {
-    width: 750px;
-    height: 800px;
+    width: 950px;
+    height: 1000px;
     margin: 0;
   }
 }
 
 /* Responsive individual cards - 1:1 aspect ratio */
 .responsive-card {
-  width: 320px;
-  height: 320px;
+  width: 420px;
+  height: 420px;
 }
 
 @media (min-width: 768px) {
   .responsive-card {
-    width: 500px;
-    height: 500px;
+    width: 650px;
+    height: 650px;
   }
 }
 
 @media (min-width: 1024px) {
   .responsive-card {
-    width: 600px;
-    height: 600px;
+    width: 800px;
+    height: 800px;
   }
 }
 

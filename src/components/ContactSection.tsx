@@ -216,6 +216,8 @@ export default function ContactSection() {
               display: 'flex',
               flexDirection: 'column',
               width: '100%',
+              height: '100%',
+              minHeight: '600px',
               opacity: isSubmitted ? 0 : 1,
               transition: 'opacity 0.3s ease-in-out'
             }}
@@ -391,10 +393,10 @@ export default function ContactSection() {
               style={{ 
                 width: '100%', 
                 position: 'relative',
-                flex: 1,
+                flex: '1 1 auto',
                 display: 'flex',
                 flexDirection: 'column',
-                minHeight: 0
+                minHeight: '200px'
               }}
             >
               <label
@@ -429,6 +431,7 @@ export default function ContactSection() {
                   width: '100%',
                   padding: '16px 0',
                   paddingTop: focusedField === 'message' || formData.message ? '32px' : '16px',
+                  paddingBottom: '16px',
                   border: 'none',
                   borderBottom: '1px solid #E5E5E5',
                   background: 'transparent',
@@ -437,9 +440,9 @@ export default function ContactSection() {
                   color: '#000510',
                   outline: 'none',
                   resize: 'none',
-                  minHeight: '120px',
-                  flex: 1,
-                  height: '100%',
+                  minHeight: '150px',
+                  flex: '1 1 auto',
+                  boxSizing: 'border-box',
                   transition: 'all 0.3s ease-in-out'
                 }}
               />
