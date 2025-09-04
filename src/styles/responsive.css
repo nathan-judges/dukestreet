@@ -505,15 +505,15 @@
 @media (min-width: 1024px) {
   .responsive-card {
     width: clamp(500px, 45vw, 800px);
-    /* Push active card slightly offscreen without causing scroll */
-    transform: translateX(min(8vw, 120px));
+    /* Position cards to be 1/4 cut off the right side of viewport */
+    transform: translateX(0);
   }
 }
 
 @media (min-width: 1400px) {
   .responsive-card {
     width: clamp(600px, 50vw, 900px);
-    transform: translateX(min(12vw, 180px));
+    transform: translateX(0);
   }
 }
 

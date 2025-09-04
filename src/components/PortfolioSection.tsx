@@ -125,8 +125,8 @@ export default function PortfolioSection() {
                 className="responsive-card"
                 style={{
                   position: 'absolute',
-                  bottom: '0',
-                  right: '0',
+                  bottom: '-50px',
+                  right: '-25%',
                   backgroundImage: `url(${card.backgroundImage})`,
                   backgroundSize: 'cover',
                   backgroundPosition: 'center',
