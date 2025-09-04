@@ -103,10 +103,10 @@ export default function WhoWeHelp() {
                   <Squircle
           cornerRadius={64}
           cornerSmoothing={0.6}
-          className="w-full responsive-accordion-container"
+          className="w-full responsive-accordion-container accordion-shell"
         >
           <StarBorder
-            className="w-full responsive-accordion-border"
+            className="w-full responsive-accordion-border accordion-shell"
             color="rgba(249, 247, 241, 0.08)"
             speed="8s"
             thickness={1}
@@ -114,24 +114,21 @@ export default function WhoWeHelp() {
               boxShadow: '0 8px 32px rgba(0, 0, 0, 0.2)'
             }}
             >
-              <div className="space-y-0">
+              <div className="accordion-inner">
+                <div className="space-y-0">
                 {helpRows.map((row) => (
                   <div key={row.id} className="w-full">
                     <button
                       id={`accordion-button-${row.id}`}
-                      className="w-full text-left cursor-pointer transition-all duration-300 ease-out border-none bg-transparent p-0 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-50"
+                      className="w-full text-left cursor-pointer transition-all duration-300 ease-out border-none bg-transparent accordion-header flex items-center justify-between"
                       style={{
                         background: expandedRow === row.id ? 'rgba(249, 247, 241, 0.1)' : 'transparent',
-                        transform: expandedRow === row.id ? 'scale(1.01)' : 'scale(1)',
                       }}
                       onClick={() => toggleRow(row.id)}
                       onKeyDown={(e) => handleKeyDown(e, row.id)}
                       aria-expanded={expandedRow === row.id}
                       aria-controls={`accordion-content-${row.id}`}
                     >
-                      {/* Row Header */}
-                      <div className="p-4 md:p-6 lg:p-8">
-                        <div className="flex items-center justify-between">
                           <div className="flex items-center gap-4 md:gap-6">
                             <span className="text-2xl md:text-3xl lg:text-4xl">{row.icon}</span>
                             <h3 
@@ -152,8 +149,6 @@ export default function WhoWeHelp() {
                           >
                             +
                           </div>
-                        </div>
-                      </div>
                     </button>
 
                     {/* Expandable Content */}
@@ -168,13 +163,12 @@ export default function WhoWeHelp() {
                         background: expandedRow === row.id ? 'rgba(249, 247, 241, 0.1)' : 'transparent'
                       }}
                     >
-                      <div className="px-4 md:px-6 lg:px-8 pt-2 pb-6 md:pb-8 lg:pb-10">
+                      <div className="accordion-body">
                         <p 
                           className="text-base md:text-lg lg:text-xl font-archivo font-normal leading-relaxed"
                           style={{
                             color: '#F9F7F1',
                             opacity: 0.8,
-                            maxWidth: '90%'
                           }}
                         >
                           {row.description}
@@ -183,6 +177,7 @@ export default function WhoWeHelp() {
                     </div>
                   </div>
                 ))}
+                </div>
               </div>
             </StarBorder>
           </Squircle>

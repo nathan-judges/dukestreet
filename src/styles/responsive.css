@@ -1,7 +1,79 @@
 /* Responsive Design Utilities */
 
+/* Accordion spacing tokens */
+:root {
+  --acc-radius-mobile: 0px;
+  --acc-radius-desktop: 64px;
+  --acc-pad-inline: clamp(20px, 5vw, 32px);
+  --acc-pad-block: clamp(16px, 4vw, 24px);
+  --acc-header-gap: 12px;
+  --acc-row-gap: 0px;
+  --acc-body-pad-top: 8px;
+  --acc-body-pad-bottom: 16px;
+}
+
 /* Mobile-first approach */
 /* Base styles are for mobile (default) */
+
+/* Accordion shell: owns shape and overflow */
+.accordion-shell {
+  overflow: hidden;
+  border-radius: var(--acc-radius-desktop);
+}
+
+@media (max-width: 767px) {
+  .accordion-shell {
+    border-radius: var(--acc-radius-mobile);
+  }
+}
+
+/* Accordion inner: owns padding, layout, spacing */
+.accordion-inner {
+  padding: var(--acc-pad-block) var(--acc-pad-inline);
+}
+
+/* Row header styling */
+.accordion-header {
+  padding-block: 12px;
+  padding-inline: 0; /* Handled by .accordion-inner */
+  gap: var(--acc-header-gap);
+  min-height: 44px;
+}
+
+.accordion-header[aria-expanded="true"] {
+  padding-bottom: calc(12px + var(--acc-body-pad-top));
+}
+
+/* Body text styling */
+.accordion-body {
+  padding-inline: 0; /* Handled by .accordion-inner */
+  padding-top: var(--acc-body-pad-top);
+  padding-bottom: var(--acc-body-pad-bottom);
+  line-height: 1.55;
+  max-width: 68ch;
+}
+
+/* Focus styles */
+.accordion-header:focus-visible {
+  outline: 2px solid rgba(255,255,255,0.5);
+  outline-offset: 4px;
+}
+
+/* Mobile adjustments for better spacing */
+@media (max-width: 767px) {
+  .accordion-header {
+    padding-top: 16px;
+  }
+  
+  .accordion-inner {
+    padding-top: calc(var(--acc-pad-block) + 4px);
+    padding-bottom: calc(var(--acc-pad-block) + 4px);
+  }
+  
+  .accordion-body {
+    padding-bottom: calc(var(--acc-body-pad-bottom) + 4px);
+  }
+}
 
 /* Tablet breakpoint */
 @media (min-width: 768px) {
