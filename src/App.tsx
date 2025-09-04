@@ -33,7 +33,7 @@ function App() {
           <PortfolioSection />
         </Suspense>
       </div>
-      <div style={{ background: '#000510' }}>
+      <div style={{ background: '#000510', marginTop: '2rem' }}>
         <Suspense fallback={<div className="preloader"><Spinner /></div>}>
           <WhoWeHelp />
         </Suspense>

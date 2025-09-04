@@ -51,13 +51,11 @@ export default function WhoWeHelp() {
         alignItems: 'center',
         alignSelf: 'stretch',
         background: '#000510',
-        minHeight: '80vh',
-        paddingTop: '96px',
-        paddingBottom: '96px'
+        minHeight: '80vh'
       }}
     >
       {/* Mobile/Tablet: Title and Subtext First */}
-      <div className="lg:hidden w-full mb-6 md:mb-12">
+      <div className="lg:hidden w-full mb-4 md:mb-8">
         <h2
           className="responsive-portfolio-title"
           style={{
@@ -67,7 +65,7 @@ export default function WhoWeHelp() {
             fontWeight: 600,
             lineHeight: 'normal',
             letterSpacing: '-1.44px',
-            margin: '0 0 48px 0'
+            margin: '0 0 24px 0'
           }}
         >
           Who we help
@@ -121,7 +119,7 @@ export default function WhoWeHelp() {
                       onClick={() => toggleRow(row.id)}
                     >
                       {/* Row Header */}
-                      <div className="p-6 md:p-8 lg:p-10">
+                      <div className="p-4 md:p-6 lg:p-8">
                         <div className="flex items-center justify-between">
                           <div className="flex items-center gap-4 md:gap-6">
                             <span className="text-2xl md:text-3xl lg:text-4xl">{row.icon}</span>
@@ -154,7 +152,7 @@ export default function WhoWeHelp() {
                           opacity: expandedRow === row.id ? 1 : 0
                         }}
                       >
-                        <div className="px-6 md:px-8 lg:px-10 pb-6 md:pb-8 lg:pb-10">
+                        <div className="px-4 md:px-6 lg:px-8 pb-4 md:pb-6 lg:pb-8">
                           <p 
                             className="text-base md:text-lg lg:text-xl font-archivo font-normal leading-relaxed"
                             style={{
@@ -186,7 +184,7 @@ export default function WhoWeHelp() {
             fontWeight: 600,
             lineHeight: 'normal',
             letterSpacing: '-1.44px',
-            margin: '0 0 48px 0'
+            margin: '0 0 24px 0'
           }}
         >
           Who we help
