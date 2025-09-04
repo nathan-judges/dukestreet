@@ -43,6 +43,13 @@ export default function WhoWeHelp() {
     setExpandedRow(expandedRow === id ? null : id);
   };
 
+  const handleKeyDown = (event: React.KeyboardEvent, id: number) => {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      toggleRow(id);
+    }
+  };
+
   return (
     <section 
       className="responsive-portfolio-padding responsive-portfolio-layout responsive-portfolio-height responsive-portfolio-radius"
@@ -109,14 +116,18 @@ export default function WhoWeHelp() {
               <div className="space-y-0">
                 {helpRows.map((row, index) => (
                   <div key={row.id} className="w-full">
-                    <div
-                      className="w-full cursor-pointer transition-all duration-300 ease-out"
+                    <button
+                      id={`accordion-button-${row.id}`}
+                      className="w-full text-left cursor-pointer transition-all duration-300 ease-out border-none bg-transparent p-0 focus:outline-none focus:ring-2 focus:ring-[#F8C807] focus:ring-offset-2 focus:ring-offset-transparent"
                       style={{
                         background: expandedRow === row.id ? 'rgba(249, 247, 241, 0.1)' : 'transparent',
                         borderBottom: index < helpRows.length - 1 ? '1px solid rgba(249, 247, 241, 0.08)' : 'none',
                         transform: expandedRow === row.id ? 'scale(1.01)' : 'scale(1)',
                       }}
                       onClick={() => toggleRow(row.id)}
+                      onKeyDown={(e) => handleKeyDown(e, row.id)}
+                      aria-expanded={expandedRow === row.id}
+                      aria-controls={`accordion-content-${row.id}`}
                     >
                       {/* Row Header */}
                       <div className="p-4 md:p-6 lg:p-8">
@@ -143,9 +154,13 @@ export default function WhoWeHelp() {
                           </div>
                         </div>
                       </div>
+                    </button>
 
                       {/* Expandable Content */}
                       <div 
+                        id={`accordion-content-${row.id}`}
+                        role="region"
+                        aria-labelledby={`accordion-button-${row.id}`}
                         className="overflow-hidden transition-all duration-300 ease-out"
                         style={{
                           maxHeight: expandedRow === row.id ? '200px' : '0px',
@@ -164,7 +179,6 @@ export default function WhoWeHelp() {
                           </p>
                         </div>
                       </div>
-                    </div>
                   </div>
                 ))}
               </div>

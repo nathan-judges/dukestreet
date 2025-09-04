@@ -10,6 +10,8 @@ const AcknowledgmentModal: React.FC<AcknowledgmentModalProps> = ({ isOpen, onClo
   const [isAnimating, setIsAnimating] = useState(false);
   const [shouldRender, setShouldRender] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+  const modalRef = React.useRef<HTMLDivElement>(null);
+  const titleId = 'acknowledgment-modal-title';
 
   // Check if mobile on mount
   useEffect(() => {
@@ -22,12 +24,22 @@ const AcknowledgmentModal: React.FC<AcknowledgmentModalProps> = ({ isOpen, onClo
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
-  // Handle escape key and prevent body scroll
+  // Handle escape key, prevent body scroll, and manage focus
   useEffect(() => {
     if (isOpen) {
       setShouldRender(true);
-      // Small delay to ensure DOM is ready for animation
-      setTimeout(() => setIsAnimating(true), 10);
+      
+      // Store the currently focused element
+      const previouslyFocusedElement = document.activeElement as HTMLElement;
+      
+      // Small delay to ensure DOM is ready for animation and focus
+      setTimeout(() => {
+        setIsAnimating(true);
+        // Focus the modal for screen readers
+        if (modalRef.current) {
+          modalRef.current.focus();
+        }
+      }, 10);
 
       const handleEscape = (e: KeyboardEvent) => {
         if (e.key === 'Escape') {
@@ -35,13 +47,43 @@ const AcknowledgmentModal: React.FC<AcknowledgmentModalProps> = ({ isOpen, onClo
         }
       };
 
+      // Simple focus trap
+      const handleTabKey = (e: KeyboardEvent) => {
+        if (e.key === 'Tab' && modalRef.current) {
+          const focusableElements = modalRef.current.querySelectorAll(
+            'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+          );
+          const firstElement = focusableElements[0] as HTMLElement;
+          const lastElement = focusableElements[focusableElements.length - 1] as HTMLElement;
+
+          if (e.shiftKey) {
+            if (document.activeElement === firstElement) {
+              lastElement.focus();
+              e.preventDefault();
+            }
+          } else {
+            if (document.activeElement === lastElement) {
+              firstElement.focus();
+              e.preventDefault();
+            }
+          }
+        }
+      };
+
       // Prevent body scroll when modal is open
       document.body.style.overflow = 'hidden';
       document.addEventListener('keydown', handleEscape);
+      document.addEventListener('keydown', handleTabKey);
 
       return () => {
         document.body.style.overflow = 'unset';
         document.removeEventListener('keydown', handleEscape);
+        document.removeEventListener('keydown', handleTabKey);
+        
+        // Return focus to the previously focused element
+        if (previouslyFocusedElement) {
+          previouslyFocusedElement.focus();
+        }
       };
     } else {
       setIsAnimating(false);
@@ -70,6 +112,11 @@ const AcknowledgmentModal: React.FC<AcknowledgmentModalProps> = ({ isOpen, onClo
     >
       {/* Modal Content */}
       <div
+        ref={modalRef}
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby={titleId}
+        tabIndex={-1}
         className="relative w-full h-full md:mx-4 md:max-w-[900px] md:w-full md:max-h-[90dvh] md:h-auto overflow-y-auto transition-all duration-300 ease-out"
         style={{
           background: 'rgba(255, 255, 255, 0.9)',
@@ -117,6 +164,7 @@ const AcknowledgmentModal: React.FC<AcknowledgmentModalProps> = ({ isOpen, onClo
         <div className="flex flex-col gap-8">
           {/* Title */}
           <h2
+            id={titleId}
             className="font-['Archivo:Medium',_sans-serif] text-[#f84f07] tracking-[-1.44px] leading-normal"
             style={{
               fontSize: 'clamp(32px, 5vw, 48px)'
