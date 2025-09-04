@@ -60,7 +60,7 @@
 }
 
 .accordion-row.is-expanded {
-  background: rgba(249, 247, 241, 0.1);
+  background: rgba(18, 18, 18, 0.4);
 }
 
 /* Ensure the background extends to accordion edges by using negative margins */
@@ -71,7 +71,7 @@
   left: calc(-1 * var(--acc-pad-inline));
   right: calc(-1 * var(--acc-pad-inline));
   bottom: 0;
-  background: rgba(249, 247, 241, 0.1);
+  background: rgba(18, 18, 18, 0.4);
   z-index: -1;
 }
 
