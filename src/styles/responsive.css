@@ -501,13 +501,21 @@
   bottom: 20px !important;
 }
 
-/* Mobile-specific accordion styling - add padding for better content spacing */
+/* Mobile accordion padding for better text spacing */
+@media (max-width: 767px) {
+  .responsive-accordion-container .space-y-0 {
+    padding-top: 16px !important;
+    padding-bottom: 16px !important;
+  }
+}
+
+/* Mobile-specific accordion styling - reduced border radius for better spacing */
 .responsive-accordion-container {
-  padding: 16px !important;
+  border-radius: 20px !important;
 }
 
 .responsive-accordion-border {
-  padding: 0 !important;
+  border-radius: 20px !important;
 }
 
 @media (min-width: 768px) {
@@ -520,13 +528,13 @@
     bottom: -80px !important;
   }
   
-  /* Reset accordion styling for tablet and up */
+  /* Reset accordion border radius for tablet and up */
   .responsive-accordion-container {
-    padding: 0 !important;
+    border-radius: 64px !important;
   }
   
   .responsive-accordion-border {
-    padding: 0 !important;
+    border-radius: 64px !important;
   }
 }
 
