@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 
 type FadeInUpVariant = 'v1' | 'v2' | 'v3';
 

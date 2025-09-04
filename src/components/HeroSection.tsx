@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 // Import OGL for WebGL rendering
 import { Renderer, Program, Mesh, Color, Triangle } from "ogl";
@@ -134,6 +134,11 @@ export default function HeroSection(props: AuroraProps) {
   propsRef.current = props;
 
   const ctnDom = useRef<HTMLDivElement>(null);
+  const [heroImgVisible, setHeroImgVisible] = useState(false);
+
+  useEffect(() => {
+    setTimeout(() => setHeroImgVisible(true), 100); // slight delay for smoothness
+  }, []);
 
   // Scroll to next section function
   const scrollToNextSection = () => {
@@ -273,7 +278,7 @@ export default function HeroSection(props: AuroraProps) {
       
                     {/* Hero SVG - Centered with padding */}
               <div 
-                className="relative z-10 flex items-center justify-center w-full h-full responsive-padding"
+                className={`relative z-10 flex items-center justify-center w-full h-full responsive-padding hero-fade-up${heroImgVisible ? ' is-visible' : ''}`}
               >
                 <img 
                   src="/hero.svg" 
