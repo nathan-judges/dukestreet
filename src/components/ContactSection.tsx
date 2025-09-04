@@ -387,7 +387,16 @@ export default function ContactSection() {
             </div>
 
             {/* Message Textarea */}
-            <div style={{ width: '100%', position: 'relative' }}>
+            <div 
+              style={{ 
+                width: '100%', 
+                position: 'relative',
+                flex: 1,
+                display: 'flex',
+                flexDirection: 'column',
+                minHeight: 0
+              }}
+            >
               <label
                 style={{
                   position: 'absolute',
@@ -427,8 +436,10 @@ export default function ContactSection() {
                   fontSize: '16px',
                   color: '#000510',
                   outline: 'none',
-                  resize: 'vertical',
-                  minHeight: '80px',
+                  resize: 'none',
+                  minHeight: '120px',
+                  flex: 1,
+                  height: '100%',
                   transition: 'all 0.3s ease-in-out'
                 }}
               />
@@ -450,7 +461,7 @@ export default function ContactSection() {
             )}
 
             {/* Send Button */}
-            <div style={{ alignSelf: 'flex-end' }}>
+            <div style={{ alignSelf: 'flex-end', marginTop: 'auto', paddingTop: '1rem' }}>
               <Squircle
                 cornerRadius={20}
                 cornerSmoothing={0.6}
@@ -490,7 +501,7 @@ export default function ContactSection() {
                     lineHeight: '28px'
                   }}
                 >
-                  {isSubmitting ? 'Sending...' : 'Send ☞'}
+                  {isSubmitting ? 'Sending...' : 'Send ➽'}
                 </span>
               </Squircle>
             </div>
