@@ -30,6 +30,7 @@
 /* Accordion inner: owns padding, layout, spacing */
 .accordion-inner {
   padding: var(--acc-pad-block) var(--acc-pad-inline);
+  background: #0E121B; /* unified accordion background */
 }
 
 /* Row header styling */
@@ -38,6 +39,12 @@
   padding-inline: 0; /* Handled by .accordion-inner */
   gap: var(--acc-header-gap);
   min-height: 44px;
+}
+
+/* Increase spacing between titles when closed */
+.accordion-header[aria-expanded="false"] {
+  padding-top: 18px;
+  padding-bottom: 18px;
 }
 
 .accordion-header[aria-expanded="true"] {
@@ -53,25 +60,22 @@
   max-width: 68ch;
 }
 
-/* Accordion row container - handles full-width background */
+/* Accordion row container - transparent so inner controls color */
 .accordion-row {
   position: relative;
   width: 100%;
-}
-
-.accordion-row.is-expanded {
-  background: rgba(18, 18, 18, 0.4);
+  background: transparent;
 }
 
 /* Ensure the background extends to accordion edges by using negative margins */
-.accordion-row.is-expanded::before {
+.accordion-row::before {
   content: '';
   position: absolute;
   top: 0;
   left: calc(-1 * var(--acc-pad-inline));
   right: calc(-1 * var(--acc-pad-inline));
   bottom: 0;
-  background: rgba(18, 18, 18, 0.4);
+  background: #0E121B;
   z-index: -1;
 }
 
@@ -333,7 +337,7 @@
 
 /* Responsive portfolio section */
 .responsive-portfolio-padding {
-  padding: 3rem 1rem;
+  padding: 9rem 1rem 3rem 1rem; /* tripled top padding on mobile */
 }
 
 .responsive-portfolio-layout {
@@ -356,7 +360,7 @@
 
 @media (min-width: 768px) {
   .responsive-portfolio-padding {
-    padding: 5rem 2rem;
+    padding: 5rem 2rem; /* reset to normal tablet padding */
   }
   
   .responsive-portfolio-layout {
@@ -531,7 +535,7 @@
 /* Responsive portfolio text */
 .responsive-portfolio-title {
   font-size: 2rem;
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem; /* 24px on mobile */
 }
 
 .responsive-portfolio-text {
