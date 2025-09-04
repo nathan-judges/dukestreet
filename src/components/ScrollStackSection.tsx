@@ -164,7 +164,8 @@ export default function WhoWeHelp() {
                       className="overflow-hidden transition-all duration-300 ease-out"
                       style={{
                         maxHeight: expandedRow === row.id ? '200px' : '0px',
-                        opacity: expandedRow === row.id ? 1 : 0
+                        opacity: expandedRow === row.id ? 1 : 0,
+                        background: expandedRow === row.id ? 'rgba(249, 247, 241, 0.1)' : 'transparent'
                       }}
                     >
                       <div className="px-4 md:px-6 lg:px-8 pt-2 pb-6 md:pb-8 lg:pb-10">
