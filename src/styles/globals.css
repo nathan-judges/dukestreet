@@ -181,3 +181,43 @@ nav p {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
+
+/* Playful word animation for contact section */
+@keyframes wordSlideIn {
+  0% {
+    opacity: 0;
+    transform: translateY(30px) rotate(-3deg) scale(0.8);
+  }
+  50% {
+    opacity: 0.8;
+    transform: translateY(-5px) rotate(1deg) scale(1.05);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) rotate(0deg) scale(1);
+  }
+}
+
+/* Extra bouncy animation for emphasis words */
+@keyframes wordSlideInBounce {
+  0% {
+    opacity: 0;
+    transform: translateY(40px) rotate(-5deg) scale(0.6);
+  }
+  30% {
+    opacity: 0.7;
+    transform: translateY(-10px) rotate(2deg) scale(1.15);
+  }
+  60% {
+    opacity: 0.9;
+    transform: translateY(5px) rotate(-1deg) scale(0.95);
+  }
+  80% {
+    opacity: 1;
+    transform: translateY(-2px) rotate(1deg) scale(1.05);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) rotate(0deg) scale(1);
+  }
+}

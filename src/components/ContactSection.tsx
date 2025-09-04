@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Squircle } from 'corner-smoothing';
 
 export default function ContactSection() {
@@ -14,6 +14,35 @@ export default function ContactSection() {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
   const [lastSubmitTime, setLastSubmitTime] = useState<number>(0);
+  const [isAnimated, setIsAnimated] = useState(false);
+  const textRef = useRef<HTMLParagraphElement>(null);
+
+  // Intersection Observer for scroll animation
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && !isAnimated) {
+            setIsAnimated(true);
+          }
+        });
+      },
+      {
+        threshold: 0.3, // Trigger when 30% of the element is visible
+        rootMargin: '-50px 0px' // Add some margin for better timing
+      }
+    );
+
+    if (textRef.current) {
+      observer.observe(textRef.current);
+    }
+
+    return () => {
+      if (textRef.current) {
+        observer.unobserve(textRef.current);
+      }
+    };
+  }, [isAnimated]);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -216,6 +245,8 @@ export default function ContactSection() {
               display: 'flex',
               flexDirection: 'column',
               width: '100%',
+              flex: 1,
+              minHeight: 0,
               opacity: isSubmitted ? 0 : 1,
               transition: 'opacity 0.3s ease-in-out'
             }}
@@ -387,7 +418,16 @@ export default function ContactSection() {
             </div>
 
             {/* Message Textarea */}
-            <div style={{ width: '100%', position: 'relative' }}>
+            <div 
+              style={{ 
+                width: '100%', 
+                position: 'relative',
+                flex: 1,
+                display: 'flex',
+                flexDirection: 'column',
+                minHeight: 0
+              }}
+            >
               <label
                 style={{
                   position: 'absolute',
@@ -429,7 +469,10 @@ export default function ContactSection() {
                   outline: 'none',
                   resize: 'vertical',
                   minHeight: '80px',
-                  transition: 'all 0.3s ease-in-out'
+                  transition: 'all 0.3s ease-in-out',
+                  flex: 1,
+                  height: '100%',
+                  boxSizing: 'border-box'
                 }}
               />
             </div>
@@ -507,6 +550,7 @@ export default function ContactSection() {
           }}
         >
           <p
+            ref={textRef}
             className="responsive-text-large"
             style={{
               color: '#000510',
@@ -515,10 +559,39 @@ export default function ContactSection() {
               fontStyle: 'normal',
               fontWeight: 500,
               margin: 0,
-              padding: 0
+              padding: 0,
+              lineHeight: '1.2'
             }}
           >
-            We empower small businesses, NDIS providers, & creative entrepreneurs to grow their brand presence and tell their story authentically.
+            {isAnimated ? (
+              <>
+                {['We', 'empower', 'small', 'businesses,', 'NDIS', 'providers,', '&', 'creative', 'entrepreneurs', 'to', 'grow', 'their', 'brand', 'presence', 'and', 'tell', 'their', 'story', 'authentically.'].map((word, index) => {
+                  // Special emphasis words that get extra bounce
+                  const isEmphasisWord = ['empower', 'creative', 'grow', 'authentically.'].includes(word);
+                  
+                  return (
+                    <span
+                      key={index}
+                      style={{
+                        display: 'inline-block',
+                        marginRight: word === '&' ? '0.3em' : '0.25em',
+                        opacity: 0,
+                        transform: 'translateY(20px) rotate(-2deg)',
+                        animation: `${isEmphasisWord ? 'wordSlideInBounce' : 'wordSlideIn'} 0.6s ease-out forwards`,
+                        animationDelay: `${index * 0.08}s`,
+                        fontWeight: isEmphasisWord ? 600 : 500
+                      }}
+                    >
+                      {word}
+                    </span>
+                  );
+                })}
+              </>
+            ) : (
+              <span style={{ opacity: 0 }}>
+                We empower small businesses, NDIS providers, & creative entrepreneurs to grow their brand presence and tell their story authentically.
+              </span>
+            )}
           </p>
         </div>
       </Squircle>
