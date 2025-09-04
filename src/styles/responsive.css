@@ -501,13 +501,13 @@
   bottom: 20px !important;
 }
 
-/* Mobile-specific accordion styling */
+/* Mobile-specific accordion styling - reduced border radius for better spacing */
 .responsive-accordion-container {
-  border-radius: 32px !important;
+  border-radius: 20px !important;
 }
 
 .responsive-accordion-border {
-  border-radius: 32px !important;
+  border-radius: 20px !important;
 }
 
 @media (min-width: 768px) {
