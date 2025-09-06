@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Squircle } from 'corner-smoothing';
 
 export default function PortfolioSection() {
@@ -45,6 +45,24 @@ export default function PortfolioSection() {
     }
   ];
 
+  const titleRef = useRef<HTMLHeadingElement>(null);
+  const textRef = useRef<HTMLParagraphElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+        }
+      });
+    }, { threshold: 0.2 });
+
+    if (titleRef.current) observer.observe(titleRef.current);
+    if (textRef.current) observer.observe(textRef.current);
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <section 
       className="responsive-portfolio-padding responsive-portfolio-layout responsive-portfolio-height responsive-portfolio-radius"
@@ -58,7 +76,8 @@ export default function PortfolioSection() {
       {/* Left Column - Text Content */}
       <div style={{ flex: 1 }}>
         <h2
-          className="responsive-portfolio-title"
+          ref={titleRef}
+          className="responsive-portfolio-title hero-fade-up"
           style={{
             color: '#F9F7F1',
             fontFamily: 'Archivo, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
@@ -71,7 +90,8 @@ export default function PortfolioSection() {
           Why choose us
         </h2>
         <p
-          className="responsive-portfolio-text"
+          ref={textRef}
+          className="responsive-portfolio-text hero-fade-up"
           style={{
             color: '#F9F7F1',
             fontFamily: 'Archivo, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',

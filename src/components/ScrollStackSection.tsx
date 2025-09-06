@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Squircle } from 'corner-smoothing';
 import StarBorder from './StarBorder';
 
@@ -11,6 +11,27 @@ interface HelpRow {
 
 export default function WhoWeHelp() {
   const [expandedRow, setExpandedRow] = useState<number>(1);
+  const mobileTitleRef = useRef<HTMLHeadingElement>(null);
+  const mobileTextRef = useRef<HTMLParagraphElement>(null);
+  const desktopTitleRef = useRef<HTMLHeadingElement>(null);
+  const desktopTextRef = useRef<HTMLParagraphElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+        }
+      });
+    }, { threshold: 0.2 });
+
+    if (mobileTitleRef.current) observer.observe(mobileTitleRef.current);
+    if (mobileTextRef.current) observer.observe(mobileTextRef.current);
+    if (desktopTitleRef.current) observer.observe(desktopTitleRef.current);
+    if (desktopTextRef.current) observer.observe(desktopTextRef.current);
+
+    return () => observer.disconnect();
+  }, []);
 
   const helpRows: HelpRow[] = [
     {
@@ -67,7 +88,8 @@ export default function WhoWeHelp() {
       {/* Mobile/Tablet: Title and Subtext First */}
       <div className="lg:hidden w-full mb-4 md:mb-8">
         <h2
-          className="responsive-portfolio-title"
+          ref={mobileTitleRef}
+          className="responsive-portfolio-title hero-fade-up"
           style={{
             color: '#F9F7F1',
             fontFamily: 'Archivo, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
@@ -81,7 +103,8 @@ export default function WhoWeHelp() {
           Who we help
         </h2>
         <p
-          className="responsive-portfolio-text"
+          ref={mobileTextRef}
+          className="responsive-portfolio-text hero-fade-up"
           style={{
             color: '#F9F7F1',
             fontFamily: 'Archivo, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
@@ -183,7 +206,8 @@ export default function WhoWeHelp() {
       {/* Desktop: Right Column - Text Content */}
       <div className="hidden lg:block" style={{ flex: '0 0 auto', marginLeft: '64px' }}>
         <h2
-          className="responsive-portfolio-title"
+          ref={desktopTitleRef}
+          className="responsive-portfolio-title hero-fade-up"
           style={{
             color: '#F9F7F1',
             fontFamily: 'Archivo, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
@@ -197,7 +221,8 @@ export default function WhoWeHelp() {
           Who we help
         </h2>
         <p
-          className="responsive-portfolio-text"
+          ref={desktopTextRef}
+          className="responsive-portfolio-text hero-fade-up"
           style={{
             color: '#F9F7F1',
             fontFamily: 'Archivo, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',

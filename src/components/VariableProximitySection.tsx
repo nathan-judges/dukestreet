@@ -67,6 +67,7 @@ export default function VariableProximitySection({
   const lastUpdateTimeRef = useRef(0)
   const videoRef = useRef<HTMLVideoElement>(null);
   const [shouldLoadVideo, setShouldLoadVideo] = useState(false);
+  const [isTextVisible, setIsTextVisible] = useState(false);
 
   useEffect(() => {
     if (videoRef.current) {
@@ -74,13 +75,14 @@ export default function VariableProximitySection({
     }
   }, []);
 
-  // Lazy load video when section comes into view
+  // Lazy load video when section comes into view and trigger fade-up visibility
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting && !shouldLoadVideo) {
-            setShouldLoadVideo(true);
+          if (entry.isIntersecting) {
+            if (!shouldLoadVideo) setShouldLoadVideo(true);
+            setIsTextVisible(true);
           }
         });
       },
@@ -241,7 +243,7 @@ export default function VariableProximitySection({
         )}
         {/* Text content */}
         <div
-          className="relative z-10 text-center w-full"
+          className={`relative z-10 text-center w-full hero-fade-up${isTextVisible ? ' is-visible' : ''}`}
           style={{
             color: '#000510',
             textAlign: 'center',
