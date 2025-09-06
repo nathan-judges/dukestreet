@@ -292,6 +292,8 @@ export default function HeroSection(props: AuroraProps) {
                 />
               </div>
 
+              {/* Glass bubble overlay removed */}
+
               {/* Down Caret - Bottom center */}
               <div 
                 style={{
